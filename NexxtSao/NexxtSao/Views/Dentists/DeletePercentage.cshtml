@@ -1,0 +1,54 @@
+﻿@model NexxtSao.Models.MVC.DentistPercentage
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+@*<p></p>
+<h2>@Resources.Resource.ViewDelete</h2>*@
+
+<h3>@Resources.Resource.MsgDelete</h3>
+<hr />
+<p></p>
+<div class="row">
+    <div class="col-md-10">
+        @*<h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+        <hr />*@
+        <div class="form-row">
+            <div class="col-md-10 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Dentist.Odontologo)</strong>
+                @Html.DisplayFor(model => model.Dentist.Odontologo)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-10 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.TreatmentCategory.CategoriaTratamiento)</strong>
+                @Html.DisplayFor(model => model.TreatmentCategory.CategoriaTratamiento)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-10 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Porcentaje)</strong>
+                @Html.DisplayFor(model => model.Porcentaje)
+            </div>
+        </div>
+        <hr />
+        <p></p>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  {id = Model.DentistId})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
+                </button>
+
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i>
+                    @Resources.Resource.ButtonDelete
+                </button>
+            </div>
+        }
+    </div>
+</div>
+

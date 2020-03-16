@@ -1,0 +1,79 @@
+﻿@model IEnumerable<NexxtSao.Models.MVC.Dentist>
+
+@{
+    ViewBag.Title = @Resources.Resource.Dentist_ViewIndex_Titulo1;
+}
+<p></p>
+<h2>@Resources.Resource.Dentist_ViewIndex_Titulo1</h2>
+
+<p>
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Odontologo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DentistSpecialty.Especialidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City.Ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Odontologo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DentistSpecialty.Especialidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Movil)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City.Ciudad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Activo)
+    </td>
+    <td>
+        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.DentistId})'">
+            <i class="fa fa-pencil-alt"></i>
+        </button>
+
+        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.DentistId})'">
+            <i class="fa fa-clipboard-list"></i>
+        </button>
+
+        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.DentistId})'">
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+</tr>
+        }
+
+</table>

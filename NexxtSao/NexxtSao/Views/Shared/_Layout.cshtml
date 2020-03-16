@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/all.min.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/Content/regular.min.css" rel="stylesheet" />
+    <link href="~/Content/solid.min.css" rel="stylesheet" />
+    <link href="~/Content/svg-with-js.min.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title - NexxtSao</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        @Html.ActionLink("NexxtSao", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @*<a class="navbar-brand" href="#">Navbar</a>*@
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item active">
+                    @Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "nav-link" })
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administrador
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Compañia", "Index", "Companies", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Usuarios", "Index", "Users", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Pais", "Index", "Countries", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Nivel Precio", "Index", "LevelPrices", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Archivo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Ciudad", "Index", "Cities", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Zona", "Index", "Zones", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Categoria Tratamiento", "Index", "TreatmentCategories", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Tratamientos", "Index", "Treatments", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Especialidad Odontologos", "Index", "DentistSpecialties", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Odontologos", "Index", "Dentists", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>                            
+                            @Html.ActionLink("Proveedor", "Index", "Providers", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administrativo
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Pacientes", "Index", "Clients", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sistema
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Identificacion", "Index", "Identifications", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Encabezado", "Index", "HeadTexts", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Consecutivos", "Index", "Registers", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Impuestos", "Index", "Taxes", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Software Odontologico</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

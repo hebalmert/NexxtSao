@@ -1,0 +1,106 @@
+﻿@model NexxtSao.Models.MVC.Dentist
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+<p></p>
+<h2>@Resources.Resource.ViewDelete</h2>
+
+<h3>@Resources.Resource.MsgDelete</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                @Html.DisplayFor(model => model.Date)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Odontologo)</strong>
+                @Html.DisplayFor(model => model.Odontologo)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.DentistSpecialty.Especialidad)</strong>
+                @Html.DisplayFor(model => model.DentistSpecialty.Especialidad)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
+                @Html.DisplayFor(model => model.Identification.TipoDocumento)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.IdentificationNumber)</strong>
+                @Html.DisplayFor(model => model.IdentificationNumber)
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.UserName)</strong>
+                @Html.DisplayFor(model => model.UserName)
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Movil)</strong>
+                @Html.DisplayFor(model => model.Movil)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Phone)</strong>
+                @Html.DisplayFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Address)</strong>
+                @Html.DisplayFor(model => model.Address)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.City.Ciudad)</strong>
+                @Html.DisplayFor(model => model.City.Ciudad)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Zone.Zona)</strong>
+                @Html.DisplayFor(model => model.Zone.Zona)
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Activo)</strong>
+                @Html.DisplayFor(model => model.Activo)
+            </div>
+        </div>
+        <hr />
+        <p></p>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
+                </button>
+
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fa fa-trash"></i>
+                    @Resources.Resource.ButtonDelete
+                </button>
+            </div>
+        }
+    </div>
+</div>

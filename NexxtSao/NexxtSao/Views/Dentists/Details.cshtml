@@ -1,0 +1,276 @@
+﻿@model NexxtSao.Models.MVC.Dentist
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+<p></p>
+<h2>@Resources.Resource.ViewDetail</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                @Html.DisplayFor(model => model.Date)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Odontologo)</strong>
+                @Html.DisplayFor(model => model.Odontologo)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.DentistSpecialty.Especialidad)</strong>
+                @Html.DisplayFor(model => model.DentistSpecialty.Especialidad)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
+                @Html.DisplayFor(model => model.Identification.TipoDocumento)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.IdentificationNumber)</strong>
+                @Html.DisplayFor(model => model.IdentificationNumber)
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.UserName)</strong>
+                @Html.DisplayFor(model => model.UserName)
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Movil)</strong>
+                @Html.DisplayFor(model => model.Movil)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Phone)</strong>
+                @Html.DisplayFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Address)</strong>
+                @Html.DisplayFor(model => model.Address)
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.City.Ciudad)</strong>
+                @Html.DisplayFor(model => model.City.Ciudad)
+            </div>
+
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Zone.Zona)</strong>
+                @Html.DisplayFor(model => model.Zone.Zona)
+            </div>
+        </div>
+        <hr />
+        <div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong> @Html.DisplayNameFor(model => model.Activo)</strong>
+                @Html.DisplayFor(model => model.Activo)
+            </div>
+        </div>
+        <hr />
+        <p></p>
+        <p>
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
+            <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.DentistId })'">
+                <i class="fa fa-pencil-alt"></i>
+                @Resources.Resource.ButtonEdit
+            </button>
+
+            @*<button type="submit" class="dialog-window btn btn-warning btn-sm" onclick="location.href = '@Url.Action("AddPercentage", "Dentists", new { id = Model.DentistId, co= Model.CompanyId })'">
+                    <i class="fa fa-pencil-alt"></i>
+                    @Resources.Resource.Button_Add
+                </button>*@
+
+            @Html.ActionLink(@Resources.Resource.DentistPercentage_IndexView_Titulo1, "AddPercentage", "Dentists", new { id = Model.DentistId, co = Model.CompanyId }, new { @class = "dialog-window btn btn-secondary btn-sm" })
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <h4>Procentajes Asignados</h4>
+            <hr>
+            @if (Model.DentistPercentages.Count == 0)
+            {
+                <h5>No Hay Porcentajes Creados</h5>
+            }
+            else
+            {
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr class="table-secondary">
+                            <th>
+                                Categoria
+                            </th>
+                            <th>
+                                Porcentaje
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        @{
+                            int registros = 0;
+                        }
+                    </thead>
+                    @foreach (var item in Model.DentistPercentages.ToList())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TreatmentCategory.CategoriaTratamiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Porcentaje)
+                            </td>
+                            @{
+                                registros += +1;
+                            }
+                            <td>
+                                @*<button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                                            '@Url.Action("EditPercentage", new { id = item.DentistPercentageId})'">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </button>*@
+                                @Html.ActionLink(@Resources.Resource.ButtonEdit, "EditPercentage", "Dentists", new { id = item.DentistPercentageId }, new { @class = "dialog-window btn btn-warning btn-sm" })
+
+                                @*<button title="Borrar" class=" btn btn-danger btn-sm" onclick="location.href =
+                                             '@Url.Action("DeletePercentage", new { id = item.DentistPercentageId})'">
+                                        <i class="fa fa-trash"></i>
+                                    </button>*@
+
+                                @Html.ActionLink(@Resources.Resource.ButtonDelete, "DeletePercentage", "Dentists", new { id = item.DentistPercentageId }, new { @class = "dialog-window btn btn-danger btn-sm" })
+
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td align="right">
+                            <strong>Registros: @registros</strong>
+                        </td>
+                    </tr>
+                </table>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="AddPercentage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="EditPercentage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DeletePercentage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#AddPercentage .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#AddPercentage').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#AddPercentage .te').html(data);
+                        $('#AddPercentage').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#EditPercentage .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#EditPercentage').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#EditPercentage .te').html(data);
+                        $('#EditPercentage').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#DeletePercentage .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#DeletePercentage').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#DeletePercentage .te').html(data);
+                        $('#DeletePercentage').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+}
