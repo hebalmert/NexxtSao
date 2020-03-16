@@ -30,6 +30,7 @@ namespace NexxtSao
         {
             UsersHelper.CheckRole("Admin");
             UsersHelper.CheckRole("User");
+            UsersHelper.CheckRole("Dentist");
             UsersHelper.CheckSuperUser();
         }
     }

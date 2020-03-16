@@ -12,6 +12,8 @@ using NexxtSao.Models.MVC;
 
 namespace NexxtSao.Controllers.MVC
 {
+    [Authorize(Roles = "User")]
+
     public class TreatmentsController : Controller
     {
         private NexxtSaoContext db = new NexxtSaoContext();
