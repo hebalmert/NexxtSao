@@ -18,6 +18,109 @@ namespace NexxtSao.Controllers.MVC
     {
         private NexxtSaoContext db = new NexxtSaoContext();
 
+        // GET: Clients/Edit/5
+        public ActionResult EditHistory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var clientehistoria = db.ClientHistories.Find(id);
+            if (clientehistoria == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(clientehistoria);
+        }
+
+        // POST: Clients/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditHistory(ClientHistory clienthistory)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Entry(clienthistory).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { id = clienthistory.ClientId});
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null &&
+                        ex.InnerException.InnerException != null &&
+                        ex.InnerException.InnerException.Message.Contains("_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_DoubleData));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
+            }
+
+            return View(clienthistory);
+        }
+
+
+        // GET: Clients/Create
+        public ActionResult AddHistory(int id, int co)
+        {
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var historia = new ClientHistory
+            {
+                CompanyId = co,
+                ClientId = id,
+                Date =DateTime.UtcNow
+            };
+
+            return View(historia);
+        }
+
+        // POST: Clients/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddHistory(ClientHistory clienthistory)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.ClientHistories.Add(clienthistory);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Details", new { id = clienthistory.ClientId});
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null &&
+                        ex.InnerException.InnerException != null &&
+                        ex.InnerException.InnerException.Message.Contains("_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, (@Resources.Resource.Msg_DoubleData));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
+            }
+
+            return View(clienthistory);
+        }
+
         // GET: Clients
         public ActionResult Index()
         {

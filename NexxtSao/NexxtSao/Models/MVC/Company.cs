@@ -96,5 +96,7 @@ namespace NexxtSao.Models.MVC
 
         public virtual ICollection<DentistPercentage> DentistPercentages { get; set; }
 
+        public virtual ICollection<ClientHistory> ClientHistories { get; set; }
+
     }
 }

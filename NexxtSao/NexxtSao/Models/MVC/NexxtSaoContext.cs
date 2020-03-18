@@ -51,5 +51,7 @@
         public DbSet<Dentist> Dentists { get; set; }
 
         public DbSet<DentistPercentage> DentistPercentages { get; set; }
+
+        public DbSet<ClientHistory> ClientHistories { get; set; }
     }
 }

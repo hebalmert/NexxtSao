@@ -8,8 +8,10 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h4>@Resources.Resource.Client_IndeView_titulo1</h4>
-        <hr />
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Client_IndeView_titulo1</h4>
+        </div>
+        <p></p>
         <div class="form-row">
             <div class="col-md-6 mb-2">
                 <strong> @Html.DisplayNameFor(model => model.Date)</strong>
@@ -93,7 +95,208 @@
                 <i class="fa fa-pencil-alt"></i>
                 @Resources.Resource.ButtonEdit
             </button>
+            @if (Model.ClientHistories.Count == 0)
+            {
+                <button type="submit" class="btn btn-secondary btn-sm" onclick="location.href = '@Url.Action("AddHistory", new { id = Model.ClientId, co = Model.CompanyId })'">
+                    <i class="fa fa-book-medical"></i>
+                    @Resources.Resource.ButtonMedical
+                </button>
+            }
         </p>
     </div>
-</div>
+    <div class="col-md-6">
+        <div>
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.ClienteHistory_IndexView_Titulo1</h4>
+            </div>
+            <p></p>
+            @if (Model.ClientHistories.Count == 0)
+            {
+                <h5>No hay Historia Medica</h5>
+            }
+            else
+            {
+                foreach (var item in Model.ClientHistories.ToList())
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.MedicoActual, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.MedicoActual, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
 
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.TomaMedicamento, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.TomaMedicamento, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Alergias, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Alergias, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Cardiopatias, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Cardiopatias, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.PresionArterial, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.PresionArterial, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Embarazo, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Embarazo, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Diabetes, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Diabetes, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Hepatitis, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Hepatitis, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Irradiaciones, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Irradiaciones, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.DiscraciasSanguineas, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.DiscraciasSanguineas, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.FiebreReumatica, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.FiebreReumatica, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Renales, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Renales, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Inmunosupresion, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Inmunosupresion, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                        <div class="ccol-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.TranstornoEmaocional, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.TranstornoEmaocional, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.TranstornoRespiratorio, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.TranstornoRespiratorio, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.TranstornoGastrico, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.TranstornoGastrico, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Epilepsia, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Epilepsia, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.Cirugias, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.Cirugias, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.EnfermedadOral, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.EnfermedadOral, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.FumaLicor, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.FumaLicor, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <div class="checkbox">
+                                @Html.LabelFor(model => item.OtrasAlteraciones, htmlAttributes: new { @class = "control-label col-md-9" })
+                                @Html.EditorFor(model => item.OtrasAlteraciones, new { htmlAttributes = new { @disabled = "disabled" } })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            <div class="col-md-12">
+                                @Html.LabelFor(model => item.Detalle, htmlAttributes: new { @class = "control-label col-md-12" })
+                                @Html.EditorFor(model => item.Detalle, new { htmlAttributes = new { @readonly = "True", @class = "form-control col-md-12" } })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <p></p>
+                    <p>
+                        <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("EditHistory", new { id = item.ClientHistoryId})'">
+                            <i class="fa fa-pencil-alt"></i>
+                            @Resources.Resource.ButtonEdit
+                        </button>
+                    </p>
+                }
+            }
+        </div>
+    </div>
+</div>

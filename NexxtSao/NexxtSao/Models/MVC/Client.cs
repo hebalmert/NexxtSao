@@ -109,5 +109,7 @@ namespace NexxtSao.Models.MVC
         public virtual City City { get; set; }
 
         public virtual Zone Zone { get; set; }
+
+        public virtual ICollection<ClientHistory> ClientHistories { get; set; }
     }
 }

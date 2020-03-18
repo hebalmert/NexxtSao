@@ -132,6 +132,9 @@
   <data name="ButtonEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="ButtonMedical" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="ButtonNew" xml:space="preserve">
     <value>New</value>
   </data>
@@ -164,6 +167,84 @@
   </data>
   <data name="City_ViewIndex_Titulo1" xml:space="preserve">
     <value>City</value>
+  </data>
+  <data name="ClienteHistory_IndexView_Titulo1" xml:space="preserve">
+    <value>Clinic History</value>
+  </data>
+  <data name="ClienteHistory_Model_Detalle" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="ClienteHistory_Model_Embarazo" xml:space="preserve">
+    <value>Pregnancy</value>
+  </data>
+  <data name="ClientHisotry_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="ClientHisotry_Model_Epilepsia" xml:space="preserve">
+    <value>Epilepsy</value>
+  </data>
+  <data name="ClientHisotry_Model_TransGastrico" xml:space="preserve">
+    <value>Gastric Disorder</value>
+  </data>
+  <data name="ClientHisotry_Model_TransRepiratorio" xml:space="preserve">
+    <value>Respiratory Disorder</value>
+  </data>
+  <data name="ClientHistory_Model_Alergias" xml:space="preserve">
+    <value>Allergies</value>
+  </data>
+  <data name="ClientHistory_Model_Cardiopatias" xml:space="preserve">
+    <value>Cardipathy</value>
+  </data>
+  <data name="ClientHistory_Model_Cirugias" xml:space="preserve">
+    <value>Surgery (Includes Oral)</value>
+  </data>
+  <data name="ClientHistory_Model_Cliente" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="ClientHistory_Model_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ClientHistory_Model_Diabetes" xml:space="preserve">
+    <value>Diabetes</value>
+  </data>
+  <data name="ClientHistory_Model_Discracias" xml:space="preserve">
+    <value>Blood Dyscracies</value>
+  </data>
+  <data name="ClientHistory_Model_FiebreReumatica" xml:space="preserve">
+    <value>Rheumatic Fever</value>
+  </data>
+  <data name="ClientHistory_Model_Fumalico" xml:space="preserve">
+    <value>Smoke or Consume Liguor</value>
+  </data>
+  <data name="ClientHistory_Model_Hepatitis" xml:space="preserve">
+    <value>Hepatitis</value>
+  </data>
+  <data name="ClientHistory_Model_Inmunosupresion" xml:space="preserve">
+    <value>Immunosuppression</value>
+  </data>
+  <data name="ClientHistory_Model_Irradiaciones" xml:space="preserve">
+    <value>Irradiations</value>
+  </data>
+  <data name="ClientHistory_Model_Medicamento" xml:space="preserve">
+    <value>Take Medication</value>
+  </data>
+  <data name="ClientHistory_Model_MedicoActual" xml:space="preserve">
+    <value>Medical Treatment</value>
+  </data>
+  <data name="ClientHistory_Model_PresionArterial" xml:space="preserve">
+    <value>Blood Pressure Alteration</value>
+  </data>
+  <data name="ClientHistory_Model_Ranales" xml:space="preserve">
+    <value>Kidney Disease</value>
+  </data>
+  <data name="ClientHistory_Model_TransEmoacional" xml:space="preserve">
+    <value>Emotional Disorder</value>
+  </data>
+  <data name="ClientHistoy_Model_EnfermedadOral" xml:space="preserve">
+    <value>Oral Disease</value>
+  </data>
+  <data name="ClientHistoy_Model_OtrasAlteraciones" xml:space="preserve">
+    <value>Other Alterations</value>
   </data>
   <data name="Client_IndeView_titulo1" xml:space="preserve">
     <value>Patients</value>

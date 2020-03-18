@@ -115,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Historia.
+        /// </summary>
+        public static string ButtonMedical {
+            get {
+                return ResourceManager.GetString("ButtonMedical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nuevo.
         /// </summary>
         public static string ButtonNew {
@@ -336,6 +345,240 @@ namespace Resources {
         public static string Client_Model_Zone {
             get {
                 return ResourceManager.GetString("Client_Model_Zone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia Clinica.
+        /// </summary>
+        public static string ClienteHistory_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("ClienteHistory_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalles.
+        /// </summary>
+        public static string ClienteHistory_Model_Detalle {
+            get {
+                return ResourceManager.GetString("ClienteHistory_Model_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Embarazo.
+        /// </summary>
+        public static string ClienteHistory_Model_Embarazo {
+            get {
+                return ResourceManager.GetString("ClienteHistory_Model_Embarazo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string ClientHisotry_Model_Company {
+            get {
+                return ResourceManager.GetString("ClientHisotry_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Epilepsia.
+        /// </summary>
+        public static string ClientHisotry_Model_Epilepsia {
+            get {
+                return ResourceManager.GetString("ClientHisotry_Model_Epilepsia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transtorno Gastrico.
+        /// </summary>
+        public static string ClientHisotry_Model_TransGastrico {
+            get {
+                return ResourceManager.GetString("ClientHisotry_Model_TransGastrico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transtorno Respiratorio.
+        /// </summary>
+        public static string ClientHisotry_Model_TransRepiratorio {
+            get {
+                return ResourceManager.GetString("ClientHisotry_Model_TransRepiratorio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alergias.
+        /// </summary>
+        public static string ClientHistory_Model_Alergias {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Alergias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cardiopatias.
+        /// </summary>
+        public static string ClientHistory_Model_Cardiopatias {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Cardiopatias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cirugias (Incluye Orales).
+        /// </summary>
+        public static string ClientHistory_Model_Cirugias {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Cirugias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paciente.
+        /// </summary>
+        public static string ClientHistory_Model_Cliente {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Cliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string ClientHistory_Model_Date {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diabetes.
+        /// </summary>
+        public static string ClientHistory_Model_Diabetes {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Diabetes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discracias Sanguineas.
+        /// </summary>
+        public static string ClientHistory_Model_Discracias {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Discracias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fiebre Reumatica.
+        /// </summary>
+        public static string ClientHistory_Model_FiebreReumatica {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_FiebreReumatica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fuma o Consume LIcor.
+        /// </summary>
+        public static string ClientHistory_Model_Fumalico {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Fumalico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hepatitis.
+        /// </summary>
+        public static string ClientHistory_Model_Hepatitis {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Hepatitis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inmunosupresion.
+        /// </summary>
+        public static string ClientHistory_Model_Inmunosupresion {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Inmunosupresion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Irradiaciones.
+        /// </summary>
+        public static string ClientHistory_Model_Irradiaciones {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Irradiaciones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toma Medicamentos.
+        /// </summary>
+        public static string ClientHistory_Model_Medicamento {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Medicamento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento Medico.
+        /// </summary>
+        public static string ClientHistory_Model_MedicoActual {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_MedicoActual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alteracion Presion Arterial.
+        /// </summary>
+        public static string ClientHistory_Model_PresionArterial {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_PresionArterial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enfermedades Renales.
+        /// </summary>
+        public static string ClientHistory_Model_Ranales {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_Ranales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transtorno Emocional.
+        /// </summary>
+        public static string ClientHistory_Model_TransEmoacional {
+            get {
+                return ResourceManager.GetString("ClientHistory_Model_TransEmoacional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enfermedad Oral.
+        /// </summary>
+        public static string ClientHistoy_Model_EnfermedadOral {
+            get {
+                return ResourceManager.GetString("ClientHistoy_Model_EnfermedadOral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Otras Alteraciones.
+        /// </summary>
+        public static string ClientHistoy_Model_OtrasAlteraciones {
+            get {
+                return ResourceManager.GetString("ClientHistoy_Model_OtrasAlteraciones", resourceCulture);
             }
         }
         

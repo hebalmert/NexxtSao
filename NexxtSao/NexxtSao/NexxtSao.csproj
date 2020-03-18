@@ -211,6 +211,7 @@
     <Compile Include="Models\MVC\AccountViewModels.cs" />
     <Compile Include="Models\MVC\City.cs" />
     <Compile Include="Models\MVC\Client.cs" />
+    <Compile Include="Models\MVC\ClientHistory.cs" />
     <Compile Include="Models\MVC\Company.cs" />
     <Compile Include="Models\MVC\Country.cs" />
     <Compile Include="Models\MVC\Dentist.cs" />
@@ -506,6 +507,8 @@
     <Content Include="Views\Dentists\AddPercentage.cshtml" />
     <Content Include="Views\Dentists\EditPercentage.cshtml" />
     <Content Include="Views\Dentists\DeletePercentage.cshtml" />
+    <Content Include="Views\Clients\AddHistory.cshtml" />
+    <Content Include="Views\Clients\EditHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
