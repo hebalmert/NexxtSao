@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using NexxtSao.Classes;
 using NexxtSao.Models;
 using NexxtSao.Models.MVC;
+using PagedList;
 
 namespace NexxtSao.Controllers.MVC
 {
@@ -170,9 +171,26 @@ namespace NexxtSao.Controllers.MVC
             return PartialView(dentistPercentage);
         }
 
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var odontologos = (from dentist in db.Dentists
+                            where dentist.Odontologo.StartsWith(Prefix) && dentist.CompanyId == user.CompanyId
+                            select new
+                            {
+                                label = dentist.Odontologo,
+                                val = dentist.DentistId
+                            }).ToList();
+
+            return Json(odontologos);
+
+        }
 
         // GET: Dentists
-        public ActionResult Index()
+        public ActionResult Index(int? DentistId, int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -180,12 +198,26 @@ namespace NexxtSao.Controllers.MVC
                 return RedirectToAction("Index", "Home");
             }
 
-            var dentists = db.Dentists.Where(c => c.CompanyId == user.CompanyId)
+            page = (page ?? 1);
+
+            if (DentistId != null)
+            {
+                var dentists = db.Dentists.Where(c => c.CompanyId == user.CompanyId && c.DentistId == DentistId)
                 .Include(d => d.City)
                 .Include(d => d.DentistSpecialty)
                 .Include(d => d.Identification)
                 .Include(d => d.Zone);
-            return View(dentists.OrderByDescending(o=> o.Odontologo).ToList());
+                return View(dentists.OrderBy(o => o.Odontologo).ToList().ToPagedList((int)page, 10));
+            }
+            else
+            {
+                var dentists = db.Dentists.Where(c => c.CompanyId == user.CompanyId)
+                .Include(d => d.City)
+                .Include(d => d.DentistSpecialty)
+                .Include(d => d.Identification)
+                .Include(d => d.Zone);
+                return View(dentists.OrderBy(o => o.Odontologo).ToList().ToPagedList((int)page, 10));
+            }
         }
 
         // GET: Dentists/Details/5
@@ -238,7 +270,7 @@ namespace NexxtSao.Controllers.MVC
                 {
                     db.Dentists.Add(dentist);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new { id = dentist.DentistId});
                 }
                 catch (Exception ex)
                 {

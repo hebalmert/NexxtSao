@@ -8,104 +8,115 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
-        <hr />
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.Date)</strong>
-                @Html.DisplayFor(model => model.Date)
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong>@Html.DisplayNameFor(model => model.Odontologo)</strong>
-                @Html.DisplayFor(model => model.Odontologo)
-            </div>
+        @*<h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+            <hr />*@
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                        @Html.DisplayFor(model => model.Date)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Odontologo)</strong>
+                        @Html.DisplayFor(model => model.Odontologo)
+                    </div>
 
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.DentistSpecialty.Especialidad)</strong>
-                @Html.DisplayFor(model => model.DentistSpecialty.Especialidad)
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
-                @Html.DisplayFor(model => model.Identification.TipoDocumento)
-            </div>
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.DentistSpecialty.Especialidad)</strong>
+                        @Html.DisplayFor(model => model.DentistSpecialty.Especialidad)
+                    </div>
+                </div>
+                <div class="form-row">
+                    @*<div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
+                        @Html.DisplayFor(model => model.Identification.TipoDocumento)
+                    </div>*@
 
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.IdentificationNumber)</strong>
-                @Html.DisplayFor(model => model.IdentificationNumber)
-            </div>
-        </div>
-        <hr />
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.UserName)</strong>
-                @Html.DisplayFor(model => model.UserName)
-            </div>
-        </div>
-        <hr />
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong>@Html.DisplayNameFor(model => model.Movil)</strong>
-                @Html.DisplayFor(model => model.Movil)
-            </div>
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.IdentificationNumber)</strong>
+                        @Html.DisplayFor(model => model.Identification.TipoDocumento): 
+                        @Html.DisplayFor(model => model.IdentificationNumber)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.UserName)</strong>
+                        @Html.DisplayFor(model => model.UserName)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Movil)</strong>
+                        @Html.DisplayFor(model => model.Movil)
+                    </div>
 
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.Phone)</strong>
-                @Html.DisplayFor(model => model.Phone)
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Phone)</strong>
+                        @Html.DisplayFor(model => model.Phone)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Address)</strong>
+                        @Html.DisplayFor(model => model.Address)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.City.Ciudad)</strong>
+                        @Html.DisplayFor(model => model.City.Ciudad)
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Zone.Zona)</strong>
+                        @Html.DisplayFor(model => model.Zone.Zona)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Activo)</strong>
+                        @Html.DisplayFor(model => model.Activo)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                            <i class="fa fa-backspace"></i>
+                            @Resources.Resource.ButtonBack
+                        </button>
+
+                        <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.DentistId })'">
+                            <i class="fa fa-pencil-alt"></i>
+                            @Resources.Resource.ButtonEdit
+                        </button>
+
+                        @*<button type="submit" class="dialog-window btn btn-warning btn-sm" onclick="location.href = '@Url.Action("AddPercentage", "Dentists", new { id = Model.DentistId, co= Model.CompanyId })'">
+                                <i class="fa fa-pencil-alt"></i>
+                                @Resources.Resource.Button_Add
+                            </button>*@
+
+                        @Html.ActionLink(@Resources.Resource.DentistPercentage_IndexView_Titulo1, "AddPercentage", "Dentists", new { id = Model.DentistId, co = Model.CompanyId }, new { @class = "dialog-window btn btn-secondary btn-sm" })
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.Address)</strong>
-                @Html.DisplayFor(model => model.Address)
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong>@Html.DisplayNameFor(model => model.City.Ciudad)</strong>
-                @Html.DisplayFor(model => model.City.Ciudad)
-            </div>
-
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.Zone.Zona)</strong>
-                @Html.DisplayFor(model => model.Zone.Zona)
-            </div>
-        </div>
-        <hr />
-        <div class="form-row">
-            <div class="col-md-6 mb-2">
-                <strong> @Html.DisplayNameFor(model => model.Activo)</strong>
-                @Html.DisplayFor(model => model.Activo)
-            </div>
-        </div>
-        <hr />
-        <p></p>
-        <p>
-            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
-                <i class="fa fa-backspace"></i>
-                @Resources.Resource.ButtonBack
-            </button>
-
-            <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.DentistId })'">
-                <i class="fa fa-pencil-alt"></i>
-                @Resources.Resource.ButtonEdit
-            </button>
-
-            @*<button type="submit" class="dialog-window btn btn-warning btn-sm" onclick="location.href = '@Url.Action("AddPercentage", "Dentists", new { id = Model.DentistId, co= Model.CompanyId })'">
-                    <i class="fa fa-pencil-alt"></i>
-                    @Resources.Resource.Button_Add
-                </button>*@
-
-            @Html.ActionLink(@Resources.Resource.DentistPercentage_IndexView_Titulo1, "AddPercentage", "Dentists", new { id = Model.DentistId, co = Model.CompanyId }, new { @class = "dialog-window btn btn-secondary btn-sm" })
-        </p>
     </div>
     <div class="col-md-6">
         <div>
-            <h4>Procentajes Asignados</h4>
-            <hr>
+            @*<h4>Procentajes Asignados</h4>
+                <hr>*@
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.DentistPercentage_IndexView_Titulo1</h4>
+            </div>
+            <p></p>
             @if (Model.DentistPercentages.Count == 0)
             {
                 <h5>No Hay Porcentajes Creados</h5>
@@ -158,7 +169,7 @@
                         </tr>
                     }
                     <tr>
-                        <td align="right">
+                        <td align="left">
                             <strong>Registros: @registros</strong>
                         </td>
                     </tr>

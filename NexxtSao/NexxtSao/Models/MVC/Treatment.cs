@@ -63,5 +63,11 @@ namespace NexxtSao.Models.MVC
         public virtual TreatmentCategory TreatmentCategory { get; set; }
 
         public virtual Tax Tax { get; set; }
+
+        public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
+
+        public virtual ICollection<EstimateDetail> EstimateDetails { get; set; }
+
+
     }
 }

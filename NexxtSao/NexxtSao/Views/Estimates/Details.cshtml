@@ -1,0 +1,153 @@
+﻿@model NexxtSao.Models.MVC.Estimate
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+<p></p>
+@*<h2>@Resources.Resource.ViewDetail</h2>*@
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Estimado)</strong>
+                        @Html.DisplayFor(model => model.Estimado)
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                        @Html.DisplayFor(model => model.Date)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-1">
+                        <strong>@Html.DisplayNameFor(model => model.Client.Cliente)</strong>
+                        @Html.DisplayFor(model => model.Client.Cliente)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
+                        @Html.DisplayFor(model => model.SubTotal)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Iva)</strong>
+                        @Html.DisplayFor(model => model.Iva)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Total)</strong>
+                        @Html.DisplayFor(model => model.Total)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Clients", new  { id = Model.ClientId})'">
+                            <i class="fa fa-backspace"></i>
+                            @Resources.Resource.ButtonBack
+                        </button>
+
+                        <button type="button" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("AddEstimate" , new  { id = Model.EstimateId})'">
+                            <i class="fa fa-plus"></i>
+                            @Resources.Resource.Button_Add
+                        </button>
+
+                        @*<button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.EstimateId })'">
+                    <i class="fa fa-pencil-alt"></i>
+                    @Resources.Resource.ButtonEdit
+                </button>*@
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div>
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo1</h4>
+            </div>
+            <p></p>
+            @if (Model.EstimateDetails.Count == 0)
+            {
+                <h5>No Hay Item Creados</h5>
+            }
+            else
+            {
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr class="table-secondary">
+                            <th>
+                                Tratamiento
+                            </th>
+                            <th>
+                                Unitatio
+                            </th>
+                            <th>
+                                Catnidad
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        @{
+                            int registros = 0;
+                        }
+                    </thead>
+                    @foreach (var item in Model.EstimateDetails.ToList())
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tratamiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unitario)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cantidad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+                            @{
+                                registros += +1;
+                            }
+                            <td>
+                                @*<button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                                    '@Url.Action("EditPercentage", new { id = item.DentistPercentageId})'">
+                                     <i class="fa fa-pencil-alt"></i>
+                                     </button>*@
+
+                                @Html.ActionLink(@Resources.Resource.ButtonEdit, "EditEstimate", "Estimates", new { id = item.EstimateDetailId }, new { @class = "dialog-window btn btn-warning btn-sm" })
+
+                                @*<button title="Borrar" class=" btn btn-danger btn-sm" onclick="location.href =
+                                    '@Url.Action("DeletePercentage", new { id = item.DentistPercentageId})'">
+                                     <i class="fa fa-trash"></i>
+                                     </button>*@
+
+                                @Html.ActionLink(@Resources.Resource.ButtonDelete, "DeleteEstimateDetail", new { id = item.EstimateDetailId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Desea Eliminar este Registro?')" })
+
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td align="right">
+                            <strong>Registros: @registros</strong>
+                        </td>
+                    </tr>
+                </table>
+
+            }
+        </div>
+    </div>
+</div>

@@ -153,6 +153,12 @@
   <data name="Button_Add" xml:space="preserve">
     <value>Add Item</value>
   </data>
+  <data name="Button_Estimate_Edit" xml:space="preserve">
+    <value>Estimate Edit</value>
+  </data>
+  <data name="Button_Estimate_New" xml:space="preserve">
+    <value>Estimate</value>
+  </data>
   <data name="CategoryTreatments_Model_Categoria" xml:space="preserve">
     <value>Treatments Category</value>
   </data>
@@ -405,6 +411,96 @@
   <data name="Dentist_ViewIndex_Titulo1" xml:space="preserve">
     <value>Dentist</value>
   </data>
+  <data name="EstimadeDetailAdd_IndexView_Titulo1" xml:space="preserve">
+    <value>Item Estimate</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Cantidad" xml:space="preserve">
+    <value>Cuantity</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Categoria" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Estimate" xml:space="preserve">
+    <value>Estimate</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_LevelPrice" xml:space="preserve">
+    <value>Level Price</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Tasa" xml:space="preserve">
+    <value>Tax</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Tratamiento" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="EstimadeDetailAdd_Model_Unitario" xml:space="preserve">
+    <value>Unit Price</value>
+  </data>
+  <data name="EstimatDetail_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="EstimateDetail_IndeView_Titulo1" xml:space="preserve">
+    <value>Detalle Estimado</value>
+  </data>
+  <data name="EstimateDetail_Model_Abono" xml:space="preserve">
+    <value>Payments</value>
+  </data>
+  <data name="EstimateDetail_Model_Cantidad" xml:space="preserve">
+    <value>Cuantity</value>
+  </data>
+  <data name="EstimateDetail_Model_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="EstimateDetail_Model_EstemateId" xml:space="preserve">
+    <value>Estimate</value>
+  </data>
+  <data name="EstimateDetail_Model_Saldo" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="EstimateDetail_Model_Tasa" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="EstimateDetail_Model_Tratamiento" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="EstimateDetail_Model_Treatment" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="EstimateDetail_Model_Unitario" xml:space="preserve">
+    <value>Unit Price</value>
+  </data>
+  <data name="Estimate_IndexView_Titulo1" xml:space="preserve">
+    <value>Estimate</value>
+  </data>
+  <data name="Estimate_Model_Client" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="Estimate_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Estimate_Model_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Estimate_Model_Encabezado" xml:space="preserve">
+    <value>Head text</value>
+  </data>
+  <data name="Estimate_Model_Estimado" xml:space="preserve">
+    <value>Estimate</value>
+  </data>
+  <data name="Estimate_Model_Impuesto" xml:space="preserve">
+    <value>Impuesto</value>
+  </data>
+  <data name="Estimate_Model_SubTotal" xml:space="preserve">
+    <value>Sub Total</value>
+  </data>
+  <data name="Estimate_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
   <data name="HeadText_IndexViewTitulo1" xml:space="preserve">
     <value>Header</value>
   </data>
@@ -446,6 +542,12 @@
   </data>
   <data name="Msg_MaxLength" xml:space="preserve">
     <value>The Field {0} must be less than {1} Caracteres</value>
+  </data>
+  <data name="Msg_NoDoleteItem" xml:space="preserve">
+    <value>The Item has Subscriptions and cannot be Deleted</value>
+  </data>
+  <data name="Msg_NoTotalMenorAbono" xml:space="preserve">
+    <value>The New Price cannot be Less than the Existing Payments</value>
   </data>
   <data name="Msg_Range" xml:space="preserve">
     <value>You most Select an Item</value>

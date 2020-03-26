@@ -98,5 +98,8 @@ namespace NexxtSao.Models.MVC
 
         public virtual ICollection<ClientHistory> ClientHistories { get; set; }
 
+        public virtual ICollection<Estimate> Estimates { get; set; }
+
+        public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
     }
 }

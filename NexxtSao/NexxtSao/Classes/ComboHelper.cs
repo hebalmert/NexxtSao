@@ -95,6 +95,18 @@ namespace NexxtSao.Classes
             return categoriatratamiento.OrderBy(d => d.CategoriaTratamiento).ToList();
         }
 
+        //Combos de Tipo de tratamientos
+        public static List<Treatment> GetTreatmen(int companyid)
+        {
+            var tratamiento = db.Treatments.Where(c => c.CompanyId == companyid).ToList();
+            tratamiento.Add(new Treatment
+            {
+                TreatmentId = 0,
+                Servicio = @Resources.Resource.ComboSelect,
+            });
+            return tratamiento.OrderBy(d => d.Servicio).ToList();
+        }
+
         //Combos de Tipo de Especialidades
         public static List<DentistSpecialty> GetDentistSpecialty(int companyid)
         {
@@ -107,6 +119,17 @@ namespace NexxtSao.Classes
             return especial.OrderBy(d => d.Especialidad).ToList();
         }
 
+        //Preparacion de Lista de Level Price
+        public static List<LevelPrice> GetPrice()
+        {
+            var nivelprecio = db.LevelPrices.ToList();
+            nivelprecio.Add(new LevelPrice
+            {
+                LevelPriceId = 0,
+                NivelPrecio = @Resources.Resource.ComboSelect,
+            });
+            return nivelprecio.OrderBy(o => o.NivelPrecio).ToList();
+        }
 
         public void Dispose()
         {

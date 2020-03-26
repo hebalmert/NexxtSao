@@ -1,0 +1,73 @@
+﻿@model NexxtSao.Models.MVC.Estimate
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDelete;
+}
+<p></p>
+<h2>@Resources.Resource.ViewDelete</h2>
+
+<h3>@Resources.Resource.MsgDelete</h3>
+<div>
+    <h4>@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estimado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estimado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Iva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

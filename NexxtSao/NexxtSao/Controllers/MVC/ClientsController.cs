@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using NexxtSao.Classes;
 using NexxtSao.Models;
 using NexxtSao.Models.MVC;
+using PagedList;
 
 namespace NexxtSao.Controllers.MVC
 {
@@ -47,7 +48,7 @@ namespace NexxtSao.Controllers.MVC
                 {
                     db.Entry(clienthistory).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Details", new { id = clienthistory.ClientId});
+                    return RedirectToAction("Details", new { id = clienthistory.ClientId });
                 }
                 catch (Exception ex)
                 {
@@ -81,7 +82,7 @@ namespace NexxtSao.Controllers.MVC
             {
                 CompanyId = co,
                 ClientId = id,
-                Date =DateTime.UtcNow
+                Date = DateTime.UtcNow
             };
 
             return View(historia);
@@ -101,7 +102,7 @@ namespace NexxtSao.Controllers.MVC
                     db.ClientHistories.Add(clienthistory);
                     db.SaveChanges();
 
-                    return RedirectToAction("Details", new { id = clienthistory.ClientId});
+                    return RedirectToAction("Details", new { id = clienthistory.ClientId });
                 }
                 catch (Exception ex)
                 {
@@ -121,8 +122,26 @@ namespace NexxtSao.Controllers.MVC
             return View(clienthistory);
         }
 
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var odontologos = (from paciente in db.Clients
+                               where paciente.Cliente.StartsWith(Prefix) && paciente.CompanyId == user.CompanyId
+                               select new
+                               {
+                                   label = paciente.Cliente,
+                                   val = paciente.ClientId
+                               }).ToList();
+
+            return Json(odontologos);
+
+        }
+
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(int? clienteid, int? page = null)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -130,11 +149,24 @@ namespace NexxtSao.Controllers.MVC
                 return RedirectToAction("Index", "Home");
             }
 
-            var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId)
+            page = (page ?? 1);
+
+            if (clienteid != null)
+            {
+                var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId && c.ClientId == clienteid)
                 .Include(c => c.City)
                 .Include(c => c.Identification)
                 .Include(c => c.Zone);
-            return View(clients.OrderByDescending(o=> o.Cliente).ToList());
+                return View(clients.OrderBy(o => o.Cliente).ToList().ToPagedList((int)page, 10));
+            }
+            else
+            {
+                var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId)
+                .Include(c => c.City)
+                .Include(c => c.Identification)
+                .Include(c => c.Zone);
+                return View(clients.OrderBy(o => o.Cliente).ToList().ToPagedList((int)page, 10));
+            }
         }
 
         // GET: Clients/Details/5
@@ -188,12 +220,12 @@ namespace NexxtSao.Controllers.MVC
             client.Cliente = n1 + " " + n2;
 
             if (ModelState.IsValid)
-            {               
+            {
                 try
                 {
                     db.Clients.Add(client);
                     db.SaveChanges();
-                    
+
                     if (client.PhotoFile != null)
                     {
                         var folder = "~/Content/Patients";

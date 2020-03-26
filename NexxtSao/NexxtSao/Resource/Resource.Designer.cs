@@ -61,11 +61,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Agregar Item.
+        ///   Looks up a localized string similar to Add Item.
         /// </summary>
         public static string Button_Add {
             get {
                 return ResourceManager.GetString("Button_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editar Presupuesto.
+        /// </summary>
+        public static string Button_Estimate_Edit {
+            get {
+                return ResourceManager.GetString("Button_Estimate_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presupuesto.
+        /// </summary>
+        public static string Button_Estimate_New {
+            get {
+                return ResourceManager.GetString("Button_Estimate_New", resourceCulture);
             }
         }
         
@@ -925,6 +943,285 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EstimadeDetailAdd_ {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Presupuesto.
+        /// </summary>
+        public static string EstimadeDetailAdd_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Cantidad {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Cantidad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Categoria {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Categoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Company {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presupuesto.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Estimate {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Estimate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nivel Precio.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_LevelPrice {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_LevelPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasa.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Tasa {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Tasa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Total {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Tratamiento {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Tratamiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unitario.
+        /// </summary>
+        public static string EstimadeDetailAdd_Model_Unitario {
+            get {
+                return ResourceManager.GetString("EstimadeDetailAdd_Model_Unitario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string EstimatDetail_Model_Total {
+            get {
+                return ResourceManager.GetString("EstimatDetail_Model_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presupuesto.
+        /// </summary>
+        public static string Estimate_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("Estimate_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paciente.
+        /// </summary>
+        public static string Estimate_Model_Client {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Client", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string Estimate_Model_Company {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string Estimate_Model_Date {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encabezado.
+        /// </summary>
+        public static string Estimate_Model_Encabezado {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Encabezado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Presupuesto.
+        /// </summary>
+        public static string Estimate_Model_Estimado {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Estimado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impuesto.
+        /// </summary>
+        public static string Estimate_Model_Impuesto {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Impuesto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub Total.
+        /// </summary>
+        public static string Estimate_Model_SubTotal {
+            get {
+                return ResourceManager.GetString("Estimate_Model_SubTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Estimate_Model_Total {
+            get {
+                return ResourceManager.GetString("Estimate_Model_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle Presupuesto.
+        /// </summary>
+        public static string EstimateDetail_IndeView_Titulo1 {
+            get {
+                return ResourceManager.GetString("EstimateDetail_IndeView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Abono.
+        /// </summary>
+        public static string EstimateDetail_Model_Abono {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Abono", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad.
+        /// </summary>
+        public static string EstimateDetail_Model_Cantidad {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Cantidad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string EstimateDetail_Model_Category {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimado.
+        /// </summary>
+        public static string EstimateDetail_Model_EstemateId {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_EstemateId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saldo.
+        /// </summary>
+        public static string EstimateDetail_Model_Saldo {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Saldo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasa.
+        /// </summary>
+        public static string EstimateDetail_Model_Tasa {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Tasa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento.
+        /// </summary>
+        public static string EstimateDetail_Model_Tratamiento {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Tratamiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento.
+        /// </summary>
+        public static string EstimateDetail_Model_Treatment {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Treatment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unitario.
+        /// </summary>
+        public static string EstimateDetail_Model_Unitario {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Unitario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Encabezado.
         /// </summary>
         public static string HeadText_IndexViewTitulo1 {
@@ -1038,6 +1335,24 @@ namespace Resources {
         public static string Msg_MaxLength {
             get {
                 return ResourceManager.GetString("Msg_MaxLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El Item Tiene Abonos y no puede ser Borrado.
+        /// </summary>
+        public static string Msg_NoDoleteItem {
+            get {
+                return ResourceManager.GetString("Msg_NoDoleteItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El Nuevo Precio no puede ser Menos al Abono Existente.
+        /// </summary>
+        public static string Msg_NoTotalMenorAbono {
+            get {
+                return ResourceManager.GetString("Msg_NoTotalMenorAbono", resourceCulture);
             }
         }
         

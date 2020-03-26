@@ -111,5 +111,7 @@ namespace NexxtSao.Models.MVC
         public virtual Zone Zone { get; set; }
 
         public virtual ICollection<ClientHistory> ClientHistories { get; set; }
+
+        public virtual ICollection<Estimate> Estimates { get; set; }
     }
 }

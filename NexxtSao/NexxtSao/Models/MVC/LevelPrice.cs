@@ -1,4 +1,5 @@
-﻿using Resources;
+﻿using NexxtSao.Models.MVC;
+using Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,5 +17,9 @@ namespace NexxtSao.Models
         [MaxLength(20, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "LevelPrice_Modal_NivelPrecio")]
         public string NivelPrecio { get; set; }
+
+        public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
+
+        public virtual ICollection<EstimateDetail> EstimateDetails { get; set; }
     }
 }

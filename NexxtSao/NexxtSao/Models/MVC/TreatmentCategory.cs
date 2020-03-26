@@ -30,5 +30,9 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<Treatment> Treatments { get; set; }
 
         public virtual ICollection<DentistPercentage> DentistPercentages { get; set; }
+
+        public virtual ICollection<EstimateDetail> EstimateDetails { get; set; }
+
+        public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
     }
 }

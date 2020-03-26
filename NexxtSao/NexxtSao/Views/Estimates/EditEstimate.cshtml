@@ -1,0 +1,171 @@
+﻿@model NexxtSao.Models.MVC.EstimateDetailAdd
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewCreate;
+}
+<p></p>
+<h2>@Resources.Resource.ViewCreate</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+    <hr />
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.EstimateId)
+        @Html.HiddenFor(model => model.EstimateDetailId)
+        @Html.HiddenFor(model => model.TreatmentCategoryId)
+        @Html.HiddenFor(model => model.TreatmentId)
+        @Html.HiddenFor(model => model.Tasa)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Categoria, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Categoria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tratamiento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tratamiento, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tratamiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LevelPriceId, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.DropDownList("LevelPriceId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LevelPriceId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Unitario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Unitario, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Unitario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Estimates", new  { id = Model.EstimateDetailId})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
+                </button>
+
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i>
+                    @Resources.Resource.ButtonSave
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //$('#TreatmentCategoryId').attr("readonly", "readonly");
+            //$("#TreatmentCategoryId").removeAttr("readonly");
+            //$('#TreatmentId').attr("readonly", "readonly");
+            //$("#TreatmentId").removeAttr("readonly");
+
+            $("#TreatmentCategoryId").change(function ()
+            {
+                $("#TreatmentId").empty();
+                $("#TreatmentId").append('<option value="0">[Seleccione Item...]</option>');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetTreatment")',
+                    dataType: 'json',
+                    data: { treatmentcategoryid: $("#TreatmentCategoryId").val() },
+                    success: function (data) {
+                        $.each(data, function (i, data) {
+                            $("#TreatmentId").append('<option value="'
+                             + data.TreatmentId + '">'
+                             + data.Servicio + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+
+            $("#LevelPriceId").change(function ()
+            {
+                $("#Unitario").empty();
+                $("#Cantidad").val(0);
+                $("#Total").val(0);
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("GetPrecio")',
+                        dataType: 'json',
+                        data: { levelpriceid: $("#LevelPriceId").val(), treatmentid: $("#TreatmentId").val() },
+                        success: function (data)
+                        {
+                            //console.log(data);
+                            $("#Unitario").val(data);
+                        },
+                        error: function (ex) {
+                            alert('Error de Lectura de Relacion' + ex);
+                        }
+                    });
+                    return false;
+            })
+
+            $("#Cantidad").on("input", function ()
+            {
+                var val1 = parseInt($('#Unitario').val());
+                var val2 = parseInt($('#Cantidad').val());
+
+                if (val1 == 0 || val2 == 0)
+                {
+                    $('#Total').val(0);
+                    return false;
+                }
+
+                if (val1 < 0 || val2 < 0)
+                {
+                    $('#Cantidad').val(0);
+                    $('#Total').val(0);
+                    return false;
+                }
+
+                if (!isNaN(val1) && !isNaN(val2))
+                $('#Total').val(val1 * val2);
+            })
+            
+        });
+    </script>
+
+}
