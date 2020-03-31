@@ -17,6 +17,7 @@ namespace NexxtSao.Models.MVC
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Index("Client_FullNname_Company_Index", 1, IsUnique = true)]
         [Index("Client_IdentificationNumber_Company_Index", 1, IsUnique = true)]
+        [Index("Client_Historia_Company_Index", 1, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Company_Model_Compania")]
         public int CompanyId { get; set; }
 
@@ -29,6 +30,12 @@ namespace NexxtSao.Models.MVC
         [DataType(DataType.ImageUrl)]
         [Display(ResourceType = typeof(Resource), Name = "User_Model_Photo")]
         public string Photo { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [MaxLength(10, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Index("Client_Historia_Company_Index", 2, IsUnique = true)]
+        [Display(ResourceType = typeof(Resource), Name = "Client_Model_Hsitoria")]
+        public string Historia { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
@@ -113,5 +120,9 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<ClientHistory> ClientHistories { get; set; }
 
         public virtual ICollection<Estimate> Estimates { get; set; }
+
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
+
+        public virtual ICollection<PaymentsGeneral> PaymentsGenerals { get; set; }
     }
 }

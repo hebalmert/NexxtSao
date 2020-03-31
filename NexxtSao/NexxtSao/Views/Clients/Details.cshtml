@@ -19,6 +19,12 @@
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Historia)</strong>
+                        @Html.DisplayFor(model => model.Historia)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
                         <strong>@Html.DisplayNameFor(model => model.Cliente)</strong>
                         @Html.DisplayFor(model => model.Cliente)
                     </div>
@@ -30,9 +36,9 @@
                 </div>
                 <div class="form-row">
                     @*<div class="col-md-6 mb-2">
-                            <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
-                            @Html.DisplayFor(model => model.Identification.TipoDocumento)
-                        </div>*@
+                <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
+                @Html.DisplayFor(model => model.Identification.TipoDocumento)
+            </div>*@
 
                     <div class="col-md-12 mb-2">
                         <strong> @Html.DisplayNameFor(model => model.IdentificationNumber)</strong>
@@ -98,21 +104,21 @@
                         </button>
 
                         @*@if (Model.Estimates.Count == 0)
-                            {
-                                <button type="submit" class="btn btn-info btn-sm" onclick="location.href = '@Url.Action("Create", "Estimates", new { id = Model.ClientId })'">
-                                    <i class="fa fa-newspaper"></i>
-                                    @Resources.Resource.Button_Estimate_New
-                                </button>
-                            }
-                            else
-                            {
-                                var et = Model.Estimates.Where(c => c.ClientId == Model.ClientId).FirstOrDefault();
+                {
+                    <button type="submit" class="btn btn-info btn-sm" onclick="location.href = '@Url.Action("Create", "Estimates", new { id = Model.ClientId })'">
+                        <i class="fa fa-newspaper"></i>
+                        @Resources.Resource.Button_Estimate_New
+                    </button>
+                }
+                else
+                {
+                    var et = Model.Estimates.Where(c => c.ClientId == Model.ClientId).FirstOrDefault();
 
-                                <button type="submit" class="btn btn-info btn-sm" onclick="location.href = '@Url.Action("Details", "Estimates", new { id = et.EstimateId })'">
-                                    <i class="fa fa-newspaper"></i>
-                                    @Resources.Resource.Button_Estimate_New
-                                </button>
-                            }*@
+                    <button type="submit" class="btn btn-info btn-sm" onclick="location.href = '@Url.Action("Details", "Estimates", new { id = et.EstimateId })'">
+                        <i class="fa fa-newspaper"></i>
+                        @Resources.Resource.Button_Estimate_New
+                    </button>
+                }*@
                     </p>
                 </div>
             </div>

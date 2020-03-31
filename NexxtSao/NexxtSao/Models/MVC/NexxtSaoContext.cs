@@ -57,5 +57,9 @@
         public DbSet<Estimate> Estimates { get; set; }
 
         public DbSet<EstimateDetail> EstimateDetails { get; set; }
+
+        public DbSet<DirectPayment> DirectPayments { get; set; }
+
+        public DbSet<PaymentsGeneral> PaymentsGenerals { get; set; }
     }
 }

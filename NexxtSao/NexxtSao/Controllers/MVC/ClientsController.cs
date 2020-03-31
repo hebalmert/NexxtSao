@@ -198,6 +198,7 @@ namespace NexxtSao.Controllers.MVC
                 CompanyId = user.CompanyId,
                 Date = DateTime.Today,
                 Nacimiento = DateTime.Today,
+                Historia = "Codigo",
                 Activo = true
             };
 
@@ -223,6 +224,18 @@ namespace NexxtSao.Controllers.MVC
             {
                 try
                 {
+                    int Recep = 0;
+                    int sum = 0;
+                    var db2 = new NexxtSaoContext();
+
+                    var register = db2.Registers.Where(c => c.CompanyId == client.CompanyId).FirstOrDefault();
+                    Recep = register.History;
+                    sum = Recep + 1;
+                    register.History = sum;
+                    db2.Entry(register).State = EntityState.Modified;
+                    db2.SaveChanges();
+                    client.Historia =Convert.ToString(sum);
+
                     db.Clients.Add(client);
                     db.SaveChanges();
 

@@ -16,8 +16,16 @@ namespace NexxtSao.Models.MVC
         public int CompanyId { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Register_Model_History")]
+        public int History { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Register_Model_Estimate")]
         public int Estimate { get; set; }
+
+        [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Register_Model_BillingNote")]
+        public int NotaCobro { get; set; }
 
         public virtual Company Company { get; set; }
     }

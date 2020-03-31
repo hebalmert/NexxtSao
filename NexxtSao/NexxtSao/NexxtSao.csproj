@@ -199,6 +199,7 @@
     <Compile Include="Controllers\MVC\CountriesController.cs" />
     <Compile Include="Controllers\MVC\DentistsController.cs" />
     <Compile Include="Controllers\MVC\DentistSpecialtiesController.cs" />
+    <Compile Include="Controllers\MVC\DirectPaymentsController.cs" />
     <Compile Include="Controllers\MVC\EstimatesController.cs" />
     <Compile Include="Controllers\MVC\HeadTextsController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Models\MVC\Dentist.cs" />
     <Compile Include="Models\MVC\DentistPercentage.cs" />
     <Compile Include="Models\MVC\DentistSpecialty.cs" />
+    <Compile Include="Models\MVC\DirectPayment.cs" />
     <Compile Include="Models\MVC\Estimate.cs" />
     <Compile Include="Models\MVC\EstimateDetail.cs" />
     <Compile Include="Models\MVC\EstimateDetailAdd.cs" />
@@ -233,6 +235,7 @@
     <Compile Include="Models\MVC\LevelPrice.cs" />
     <Compile Include="Models\MVC\ManageViewModels.cs" />
     <Compile Include="Models\MVC\NexxtSaoContext.cs" />
+    <Compile Include="Models\MVC\PaymentsGeneral.cs" />
     <Compile Include="Models\MVC\Register.cs" />
     <Compile Include="Models\MVC\Tax.cs" />
     <Compile Include="Models\MVC\Treatment.cs" />
@@ -532,6 +535,9 @@
     <Content Include="Views\Estimates\Index.cshtml" />
     <Content Include="Views\Estimates\AddEstimate.cshtml" />
     <Content Include="Views\Estimates\EditEstimate.cshtml" />
+    <Content Include="Views\DirectPayments\Index.cshtml" />
+    <Content Include="Views\DirectPayments\Create.cshtml" />
+    <Content Include="Views\DirectPayments\PrintPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

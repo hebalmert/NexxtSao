@@ -24,5 +24,7 @@ namespace NexxtSao.Models.MVC
         public string TextoEncabezado { get; set; }
 
         public virtual Company Company { get; set; }
+
+        public virtual ICollection<PaymentsGeneral> PaymentsGenerals { get; set; }
     }
 }

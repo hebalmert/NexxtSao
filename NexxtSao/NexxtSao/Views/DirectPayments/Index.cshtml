@@ -1,37 +1,23 @@
-﻿@*@model IEnumerable<NexxtSao.Models.MVC.Client>*@
-
-@model PagedList.IPagedList<NexxtSao.Models.MVC.Client>
+﻿@model PagedList.IPagedList<NexxtSao.Models.MVC.Client>
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = @Resources.Resource.Client_IndeView_titulo1;
+    ViewBag.Title = @Resources.Resource.DirectPayment_IndexView_Titulo1;
 }
 <p></p>
 
 <div class="row">
     <div class="col-md-6">
-        <div class="form-horizontal">
-            <div class="form-group">
-                <div class="col-md-7">
-                    <h2>@Resources.Resource.Client_IndeView_titulo1</h2>
-                    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
-                        <i class="fa fa-plus"></i>
-                        @Resources.Resource.ButtonNew
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
+        <h2>@Resources.Resource.DirectPayment_IndexView_Titulo1</h2>
         <div>
-            @using (Html.BeginForm("Index", "Clients"))
+            @using (Html.BeginForm("Index", "DirectPayments"))
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        <div class="col-md-7">
+                        <div class="col-md-10">
                             <p></p>
                             <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder=@Resources.Resource.Client_IndeView_titulo1 />
                             <input type="hidden" id="item_list" name="clienteid" /><br />
@@ -46,15 +32,15 @@
             }
         </div>
     </div>
+    <div class="col-md-6">
+
+    </div>
 </div>
 <table class="table table-striped">
     <thead class="thead-light">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Historia)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Cliente)
@@ -78,9 +64,6 @@
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Historia)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Cliente)
             </td>
             <td>
@@ -91,28 +74,9 @@
             </td>
             <td>
                 <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
-                   '@Url.Action("Edit", new { id = item.ClientId})'">
-                    <i class="fa fa-pencil-alt"></i>
+                   '@Url.Action("Create", new { id = item.ClientId})'">
+                    <i class="fa fa-plus"></i>
                 </button>
-
-                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
-                   '@Url.Action("Details", new { id = item.ClientId})'">
-                    <i class="fa fa-clipboard-list"></i>
-                </button>
-
-                <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
-                    '@Url.Action("Delete", new { id = item.ClientId})'">
-                    <i class="fa fa-trash"></i>
-                </button>
-
-                @if (item.Estimates.Count > 0)
-                {
-                    var et = item.Estimates.Where(c => c.ClientId == item.ClientId).FirstOrDefault();
-
-                    <button title="Presupuesto" type="submit" class="btn btn-info btn-sm" onclick="location.href = '@Url.Action("Details", "Estimates", new { id = et.EstimateId })'">
-                        <i class="fa fa-newspaper"></i>@*@Resources.Resource.Button_Estimate_New*@
-                    </button>
-                }
             </td>
         </tr>
     }

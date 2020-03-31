@@ -95,5 +95,9 @@ namespace NexxtSao.Models.MVC
         public virtual Zone Zone { get; set; }
 
         public virtual ICollection<DentistPercentage> DentistPercentages { get; set; }
+
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
+
+        public virtual ICollection<PaymentsGeneral> PaymentsGenerals { get; set; }
     }
 }

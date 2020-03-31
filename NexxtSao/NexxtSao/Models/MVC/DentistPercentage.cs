@@ -35,7 +35,7 @@ namespace NexxtSao.Models.MVC
         [Range(0, 1, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]  //Porcentaje entre 0 y 1, 12%= 0.12
         [DisplayFormat(DataFormatString = "{0:P2}", ApplyFormatInEditMode = false)] //Formato Porcentaje con 2 decimales
         [Display(ResourceType = typeof(Resource), Name = "DentistPercentage_Model_Rate")]
-        public decimal Porcentaje { get; set; }
+        public double Porcentaje { get; set; }
 
         public virtual Company Company { get; set; }
 

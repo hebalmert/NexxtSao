@@ -313,6 +313,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Historia.
+        /// </summary>
+        public static string Client_Model_Hsitoria {
+            get {
+                return ResourceManager.GetString("Client_Model_Hsitoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apellido.
         /// </summary>
         public static string Client_Model_LastName {
@@ -943,6 +952,285 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pagos Generales.
+        /// </summary>
+        public static string DirectGeneral_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("DirectGeneral_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad.
+        /// </summary>
+        public static string DirectGeneral_Model_Cantidad {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Cantidad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paciente.
+        /// </summary>
+        public static string DirectGeneral_Model_Cliente {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Cliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string DirectGeneral_Model_Company {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comprobante Pago.
+        /// </summary>
+        public static string DirectGeneral_Model_ComprobantePago {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_ComprobantePago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string DirectGeneral_Model_Date {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encabezado.
+        /// </summary>
+        public static string DirectGeneral_Model_Encabezado {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Encabezado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Facturado.
+        /// </summary>
+        public static string DirectGeneral_Model_Facturado {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Facturado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha Facturado.
+        /// </summary>
+        public static string DirectGeneral_Model_FechaFacturado {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_FechaFacturado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nota Cobro.
+        /// </summary>
+        public static string DirectGeneral_Model_NotaCobro {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_NotaCobro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio.
+        /// </summary>
+        public static string DirectGeneral_Model_Precio {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Precio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pago Odontologo.
+        /// </summary>
+        public static string DirectGeneral_Model_ProcentajeProfesional {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_ProcentajeProfesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odontologo.
+        /// </summary>
+        public static string DirectGeneral_Model_Profesional {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Profesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento.
+        /// </summary>
+        public static string DirectGeneral_Model_Servicio {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Servicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasa Odontologo.
+        /// </summary>
+        public static string DirectGeneral_Model_TasaProfesional {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_TasaProfesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impuesto.
+        /// </summary>
+        public static string DirectGeneral_Model_Tax {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Tax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string DirectGeneral_Model_Total {
+            get {
+                return ResourceManager.GetString("DirectGeneral_Model_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cobro Directo.
+        /// </summary>
+        public static string DirectPayment_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("DirectPayment_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad.
+        /// </summary>
+        public static string DirectPayment_Model_Cantidad {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Cantidad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Categoria.
+        /// </summary>
+        public static string DirectPayment_Model_Categoria {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Categoria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paciente.
+        /// </summary>
+        public static string DirectPayment_Model_Cliente {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Cliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string DirectPayment_Model_Company {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string DirectPayment_Model_Date {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nivel Precio.
+        /// </summary>
+        public static string DirectPayment_Model_LevelPrice {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_LevelPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nota Cobro.
+        /// </summary>
+        public static string DirectPayment_Model_NotaCobro {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_NotaCobro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio.
+        /// </summary>
+        public static string DirectPayment_Model_Precio {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Precio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odontologo.
+        /// </summary>
+        public static string DirectPayment_Model_Profesional {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Profesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impuesto.
+        /// </summary>
+        public static string DirectPayment_Model_Rate {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tratamiento.
+        /// </summary>
+        public static string DirectPayment_Model_Servicio {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Servicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasa Odontologo.
+        /// </summary>
+        public static string DirectPayment_Model_TasaProfesional {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_TasaProfesional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string DirectPayment_Model_Total {
+            get {
+                return ResourceManager.GetString("DirectPayment_Model_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string EstimadeDetailAdd_ {
@@ -1393,11 +1681,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nota Cobro.
+        /// </summary>
+        public static string Register_Model_BillingNote {
+            get {
+                return ResourceManager.GetString("Register_Model_BillingNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Presupuesto.
         /// </summary>
         public static string Register_Model_Estimate {
             get {
                 return ResourceManager.GetString("Register_Model_Estimate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia.
+        /// </summary>
+        public static string Register_Model_History {
+            get {
+                return ResourceManager.GetString("Register_Model_History", resourceCulture);
             }
         }
         

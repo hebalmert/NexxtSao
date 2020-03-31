@@ -119,6 +119,30 @@ namespace NexxtSao.Classes
             return especial.OrderBy(d => d.Especialidad).ToList();
         }
 
+        //Combos de Tipo de Dentistas
+        public static List<Dentist> GetDentist(int companyid)
+        {
+            var odontologo = db.Dentists.Where(c => c.CompanyId == companyid).ToList();
+            odontologo.Add(new Dentist
+            {
+                DentistId = 0,
+                Odontologo = @Resources.Resource.ComboSelect,
+            });
+            return odontologo.OrderBy(d => d.Odontologo).ToList();
+        }
+
+        //Combos de Tipo de Dentistas
+        public static List<Client> GetClient(int companyid)
+        {
+            var pacientes = db.Clients.Where(c => c.CompanyId == companyid).ToList();
+            pacientes.Add(new Client
+            {
+                ClientId = 0,
+                Cliente = @Resources.Resource.ComboSelect,
+            });
+            return pacientes.OrderBy(d => d.Cliente).ToList();
+        }
+
         //Preparacion de Lista de Level Price
         public static List<LevelPrice> GetPrice()
         {

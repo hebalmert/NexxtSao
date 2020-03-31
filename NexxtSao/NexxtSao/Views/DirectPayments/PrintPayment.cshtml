@@ -1,0 +1,115 @@
+﻿@model NexxtSao.Models.MVC.PaymentsGeneral
+
+@{
+    ViewBag.Title = "Ticket Venta";
+}
+
+
+<div id="dvmismatch">
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <table class="table table-borderless">
+                    <tr>
+                        <td width="150">
+                            @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                            {
+                                <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:80px;height:80px;max-width: 100%; height: auto;" />
+                            }
+                        </td>
+                        <th class="text-sm-center">
+                            <small>@Model.Company.Name</small>
+                            <small>@Model.Client.Identification.TipoDocumento:@Model.Company.Rif</small>
+                        </th>
+                    <tr />
+                </table>
+                <table class="table table-borderless">
+                    <tr class="text-center">
+                        <th>
+                            <small>@Model.HeadText.TextoEncabezado</small>
+                        </th>
+                    <tr />
+                </table>
+                <hr />
+                <small>Comprobante de Pago</small>
+                <hr />
+                <p>
+                    <small>@Html.DisplayNameFor(model => model.NotaCobro):</small>
+                    <small>@Html.DisplayFor(model => model.NotaCobro)</small>
+                </p>
+                <p>
+                    <small>@Html.DisplayNameFor(model => model.Date):</small>
+                    <small>@Html.DisplayFor(model => model.Date)</small>
+                </p>
+                <small>@Html.DisplayNameFor(model => model.Client.Historia):</small>
+                <small>@Html.DisplayFor(model => model.Client.Historia)</small>
+                <p>
+                    <small>@Html.DisplayFor(model => model.Client.Identification.TipoDocumento):</small>
+
+                    <small>@Html.DisplayFor(model => model.Client.IdentificationNumber)</small>
+                </p>
+                <small>@Html.DisplayNameFor(model => model.Cliente):</small>
+                <small>@Html.DisplayFor(model => model.Cliente)</small>
+                <p>
+                    <small>@Html.DisplayNameFor(model => model.Client.Address):</small>
+                    <small>@Html.DisplayFor(model => model.Client.Address)</small>
+                </p>
+                <small>@Html.DisplayNameFor(model => model.Client.Phone):</small>
+                <small>@Html.DisplayFor(model => model.Client.Phone)</small>
+                <hr />
+                <small>@Html.DisplayNameFor(model => model.Tratamiento)</small>
+                <small>@Html.DisplayFor(model => model.Tratamiento)</small>
+                <hr />
+                <table class="table table-borderless" align="right">
+                    <tr class="text-left">
+                        <th>
+                            <small>@Html.DisplayNameFor(model => model.Precio)</small>
+                        </th>
+                        <th align="center">
+                            <small>@Html.DisplayNameFor(model => model.Cantidad)</small>
+                        </th>
+                        <th align="right">
+                            <small>@Html.DisplayNameFor(model => model.Total)</small>
+                        </th>
+                    <tr />
+                    <tr class="text-right">
+                        <td align="right">
+                            <small>@Html.DisplayFor(model => model.Precio)</small>
+                        </td>
+                        <td align="center">
+                            <small>@Html.DisplayFor(model => model.Cantidad)</small>
+                        </td>
+                        <td align="right">
+                            <small>@Html.DisplayFor(model => model.Total)</small>
+                        </td>
+                    <tr />
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<p></p>
+<p>
+    @Html.ActionLink("Volver", "Index", new { }, new { @class = "btn btn-success btn-sm" }) |
+    @Html.ActionLink("Print", "PrintPayment", new { }, new { @class = "btn btn-primary btn-sm", onclick = "printContent()" })
+    @*<input id="printdiv" type="submit" value="Print" onclick="printContent('dvmismatch')" />*@
+
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function printContent() {
+            var divContents = $("#dvmismatch").html();
+            var printWindow = window.open('', '', 'height=400,width=300');
+            printWindow.document.write('<html><head><title>DIV Contents</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+            q('.print default').trigger('click');
+        }
+    </script>
+}

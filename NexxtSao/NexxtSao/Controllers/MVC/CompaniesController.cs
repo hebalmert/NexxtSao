@@ -86,7 +86,9 @@ namespace NexxtSao.Controllers.MVC
                     var registro = new Register
                     {
                         CompanyId = company.CompanyId,
-                        Estimate = 0
+                        Estimate = 0,
+                        History = 0,
+                        NotaCobro = 0
                     };
                     db.Registers.Add(registro);
                     db.SaveChanges();

@@ -28,7 +28,7 @@ namespace NexxtSao.Controllers.MVC
 
             var treatmentCategories = db.TreatmentCategories.Where(c => c.CompanyId == user.CompanyId);
 
-            return View(treatmentCategories.OrderByDescending(o=> o.CategoriaTratamiento).ToList());
+            return View(treatmentCategories.OrderBy(o=> o.CategoriaTratamiento).ToList());
         }
 
         // GET: TreatmentCategories/Details/5

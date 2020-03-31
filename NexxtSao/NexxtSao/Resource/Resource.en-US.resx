@@ -279,6 +279,9 @@
   <data name="Client_Model_FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="Client_Model_Hsitoria" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="Client_Model_LastName" xml:space="preserve">
     <value>Las Name</value>
   </data>
@@ -410,6 +413,99 @@
   </data>
   <data name="Dentist_ViewIndex_Titulo1" xml:space="preserve">
     <value>Dentist</value>
+  </data>
+  <data name="DirectGeneral_IndexView_Titulo1" xml:space="preserve">
+    <value>Pending Payments</value>
+  </data>
+  <data name="DirectGeneral_Model_Cantidad" xml:space="preserve">
+    <value>Cuantity</value>
+  </data>
+  <data name="DirectGeneral_Model_Cliente" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="DirectGeneral_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="DirectGeneral_Model_ComprobantePago" xml:space="preserve">
+    <value>Payment Number</value>
+  </data>
+  <data name="DirectGeneral_Model_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DirectGeneral_Model_Encabezado" xml:space="preserve">
+    <value>Head Text</value>
+  </data>
+  <data name="DirectGeneral_Model_Facturado" xml:space="preserve">
+    <value>Invoiced</value>
+  </data>
+  <data name="DirectGeneral_Model_FechaFacturado" xml:space="preserve">
+    <value>Invoiced Date</value>
+  </data>
+  <data name="DirectGeneral_Model_NotaCobro" xml:space="preserve">
+    <value>Billing Note</value>
+  </data>
+  <data name="DirectGeneral_Model_Precio" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="DirectGeneral_Model_ProcentajeProfesional" xml:space="preserve">
+    <value>Dentiste Percentage</value>
+  </data>
+  <data name="DirectGeneral_Model_Profesional" xml:space="preserve">
+    <value>Dentist</value>
+  </data>
+  <data name="DirectGeneral_Model_Servicio" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="DirectGeneral_Model_TasaProfesional" xml:space="preserve">
+    <value>Dentist Rate</value>
+  </data>
+  <data name="DirectGeneral_Model_Tax" xml:space="preserve">
+    <value>Tax</value>
+  </data>
+  <data name="DirectGeneral_Model_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="DirectPayment_IndexView_Titulo1" xml:space="preserve">
+    <value>Direct Payment</value>
+  </data>
+  <data name="DirectPayment_Model_Cantidad" xml:space="preserve">
+    <value>Cuantity</value>
+  </data>
+  <data name="DirectPayment_Model_Categoria" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="DirectPayment_Model_Cliente" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="DirectPayment_Model_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="DirectPayment_Model_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DirectPayment_Model_LevelPrice" xml:space="preserve">
+    <value>Level Price</value>
+  </data>
+  <data name="DirectPayment_Model_NotaCobro" xml:space="preserve">
+    <value>Billing Note</value>
+  </data>
+  <data name="DirectPayment_Model_Precio" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="DirectPayment_Model_Profesional" xml:space="preserve">
+    <value>Dentist</value>
+  </data>
+  <data name="DirectPayment_Model_Rate" xml:space="preserve">
+    <value>Tax</value>
+  </data>
+  <data name="DirectPayment_Model_Servicio" xml:space="preserve">
+    <value>Treatment</value>
+  </data>
+  <data name="DirectPayment_Model_TasaProfesional" xml:space="preserve">
+    <value>Dentist Rate</value>
+  </data>
+  <data name="DirectPayment_Model_Total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="EstimadeDetailAdd_IndexView_Titulo1" xml:space="preserve">
     <value>Item Estimate</value>
@@ -558,8 +654,14 @@
   <data name="Msg_Required" xml:space="preserve">
     <value>The Field {0} is Required</value>
   </data>
+  <data name="Register_Model_BillingNote" xml:space="preserve">
+    <value>Billing Note</value>
+  </data>
   <data name="Register_Model_Estimate" xml:space="preserve">
     <value>Estimate</value>
+  </data>
+  <data name="Register_Model_History" xml:space="preserve">
+    <value>History</value>
   </data>
   <data name="Register_ViewIndex_Titulo1" xml:space="preserve">
     <value>Consecutive</value>

@@ -68,6 +68,6 @@ namespace NexxtSao.Models.MVC
 
         public virtual ICollection<EstimateDetail> EstimateDetails { get; set; }
 
-
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
     }
 }

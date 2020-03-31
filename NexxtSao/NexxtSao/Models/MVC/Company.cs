@@ -101,5 +101,9 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<Estimate> Estimates { get; set; }
 
         public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
+
+        public virtual ICollection<DirectPayment> DirectPayments { get; set; }
+
+        public virtual ICollection<PaymentsGeneral> PaymentsGenerals { get; set; }
     }
 }

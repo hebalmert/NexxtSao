@@ -102,7 +102,7 @@ namespace NexxtSao.Controllers.MVC
             //ViewBag.TreatmentId = new SelectList(ComboHelper.GetTreatmen(estimatedetall.CompanyId), "TreatmentId", "Servicio", estimatedetall.TreatmentId);
             ViewBag.LevelPriceId = new SelectList(ComboHelper.GetPrice(), "LevelPriceId", "NivelPrecio", estimatedetall.LevelPriceId);
 
-            return View(estimatedetailadd);
+            return PartialView(estimatedetailadd);
         }
 
         // POST: Estimates/Edit/5
@@ -166,7 +166,7 @@ namespace NexxtSao.Controllers.MVC
                 }
             }
 
-            return View(estimatedetailadd);
+            return PartialView(estimatedetailadd);
         }
 
 
@@ -192,7 +192,7 @@ namespace NexxtSao.Controllers.MVC
             ViewBag.TreatmentId = new SelectList(ComboHelper.GetTreatmen(user.CompanyId), "TreatmentId", "Servicio");
             ViewBag.LevelPriceId = new SelectList(ComboHelper.GetPrice(), "LevelPriceId", "NivelPrecio");
 
-            return View(estimadoadd);
+            return PartialView(estimadoadd);
         }
 
         // POST: Estimates/Create
@@ -259,7 +259,7 @@ namespace NexxtSao.Controllers.MVC
             ViewBag.TreatmentId = new SelectList(ComboHelper.GetTreatmen(estimatedetailadd.CompanyId), "TreatmentId", "Servicio", estimatedetailadd.TreatmentId);
             ViewBag.LevelPriceId = new SelectList(ComboHelper.GetPrice(), "LevelPriceId", "NivelPrecio", estimatedetailadd.LevelPriceId);
 
-            return View(estimatedetailadd);
+            return PartialView(estimatedetailadd);
         }
 
         // GET: Estimates

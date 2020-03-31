@@ -18,6 +18,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Estimate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotaCobro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.History)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -26,6 +32,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Estimate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotaCobro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.History)
             </td>
             <td>
                 <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
