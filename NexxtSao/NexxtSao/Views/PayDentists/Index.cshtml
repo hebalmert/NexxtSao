@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NexxtSao.Models.MVC.PayDentist>
+
+@{
+    ViewBag.Title = @Resources.Resource.PayDentist_IndexView_Titulo1;
+}
+<p></p>
+<h2>@Resources.Resource.PayDentist_IndexView_Titulo1</h2>
+
+<p>
+    <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+        <i class="fa fa-plus"></i>
+        @Resources.Resource.ButtonNew
+    </button>
+</p>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NotaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dentist.Odontologo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagoProfesional)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dentist.Odontologo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PagoProfesional)
+            </td>
+            <td>
+                @if (item.PayDentistDetails.Count == 0)
+                {
+                    <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.PayDentistId })'">
+                        <i class="fa fa-pencil-alt"></i>
+                    </button>
+                }
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.PayDentistId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+                @if (item.PayDentistDetails.Count == 0)
+                {
+                    <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                    '@Url.Action("Delete", new { id = item.PayDentistId })'">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

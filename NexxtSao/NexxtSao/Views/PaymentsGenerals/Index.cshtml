@@ -1,0 +1,144 @@
+﻿@model IEnumerable<NexxtSao.Models.MVC.PaymentsGeneral>
+
+@{
+    ViewBag.Title = @Resources.Resource.DirectPayment_IndexView_Titulo1;
+}
+
+
+<p>
+    &ensp;
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <h2>@Resources.Resource.DirectPayment_IndexView_Titulo1</h2>
+    </div>
+    <div class="col-md-6">
+        @using (Html.BeginForm("Index", "PaymentsGenerals"))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <h4>Buscar Cliente</h4>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.DropDownList("DentistId", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Buscar" class="btn btn-warning btn-sm" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NotaCobro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dentist.Odontologo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TasaProfesional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tratamiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PagoProfesional)
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        double TotalTotal = 0;
+        double PorcentajeTotal = 0;
+        int registros = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotaCobro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dentist.Odontologo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TasaProfesional)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Cliente)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Tratamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.PagoProfesional)
+            </td>
+            <td>
+                @*<button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+            '@Url.Action("Edit", "DirectPayments", new { id = item.DirectPaymentId})'">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </button>*@
+
+                <button title=@Resources.Resource.ButtonDetail class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", "PaymentsGenerals", new { id = item.PaymentsGeneralId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+                @*<button title=@Resources.Resource.ButtonDelete class="btn btn-danger btn-sm" onclick="location.href =
+        '@Url.Action("Delete", "DirectGenerals", new { id = item.DirectPaymentId})'">
+            <span class="glyphicon glyphicon-trash"></span>
+        </button>*@
+            </td>
+            @{
+                TotalTotal += item.Total;
+                PorcentajeTotal += item.PagoProfesional;
+                registros += +1;
+            }
+        </tr>
+
+    }
+    <tr>
+        <td align="center">
+        </td>
+        <td align="center">
+        </td>
+        <td align="center">
+        </td>
+        <td align="center">
+        </td>
+        <td align="center">
+            <strong>Totales</strong>
+        </td>
+        <td align="right">
+            Registros: @registros
+        </td>
+        <td align="center">
+            @TotalTotal
+        </td>
+        <td align="right">
+            @PorcentajeTotal
+        </td>
+    </tr>
+</table>

@@ -75,6 +75,9 @@
                             @Html.ActionLink("Pacientes", "Index", "Clients", new { }, new { @class = "dropdown-item" })
                             <div class="dropdown-divider"></div>
                             @Html.ActionLink("Cobro Directo", "Index", "DirectPayments", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Pagos Pendientes", "Index", "PaymentsGenerals", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Pago Odontologos", "Index", "PayDentists", new { }, new { @class = "dropdown-item" })
                         </div>
                     </li>
                 }

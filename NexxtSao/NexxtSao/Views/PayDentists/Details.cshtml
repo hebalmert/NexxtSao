@@ -1,0 +1,167 @@
+﻿@model NexxtSao.Models.MVC.PayDentist
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+<p></p>
+@*<h2>@Resources.Resource.ViewDetail</h2>*@
+
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.PayDentist_IndexView_Titulo1</h4>
+                <div class="card-body">
+                    @*<h4>@Resources.Resource.PayDentist_IndexView_Titulo1</h4>
+                        <hr />*@
+                    <div class="form-row">
+                        <div class="col-md-4 mb-2">
+                            <strong> @Html.DisplayNameFor(model => model.NotaPago)</strong>
+                            @Html.DisplayFor(model => model.NotaPago)
+                        </div>
+
+                        <div class="col-md-4 mb-2">
+                            <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                            @Html.DisplayFor(model => model.Date)
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div class="col-md-12 mb-2">
+                            <strong> @Html.DisplayNameFor(model => model.Dentist.Odontologo)</strong>
+                            @Html.DisplayFor(model => model.Dentist.Odontologo)
+                        </div>
+
+                    </div>
+                    <hr />
+                    <div class="form-row">
+
+                        <div class="col-md-12 mb-2">
+                            <strong> @Html.DisplayNameFor(model => model.Detalle)</strong>
+                            @Html.DisplayFor(model => model.Detalle)
+                        </div>
+
+                    </div>
+                    <hr />
+                    <div class="form-row">
+
+                        <div class="col-md-12 mb-2">
+                            <strong> @Html.DisplayNameFor(model => model.PagoProfesional)</strong>
+                            @Html.DisplayFor(model => model.PagoProfesional)
+                        </div>
+
+                    </div>
+
+                    <hr />
+                    <p></p>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-2">
+                            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  {})'">
+                                <i class="fa fa-backspace"></i>
+                                @Resources.Resource.ButtonBack
+                            </button>
+
+                            @if (Model.PayDentistDetails.Count == 0)
+                            {
+                                <button title=@Resources.Resource.ButtonEdit class="btn btn-warning btn-sm" onclick="location.href =
+                                '@Url.Action("Edit", "PayDentists", new { id = Model.PayDentistId})'">
+                                    <i class="fa fa-pencil-alt"></i>
+                                    @Resources.Resource.ButtonEdit
+                                </button>
+
+                                @*<button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.PayDentistId})'">
+                                        <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+                                    </button>*@
+
+                                @*<button type="button" class="btn btn-warning btn-sm" onclick="location.href ='@Url.Action("Adds", new { idPay = Model.PayDentistId, idProfe = Model.DentistId, idCompany = Model.CompanyId, NPago = Model.NotaPago})'">
+                                        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.Button_Add
+                                    </button>*@
+
+                                <button title=@Resources.Resource.Button_Add class="btn btn-primary btn-sm" onclick="location.href =
+                                '@Url.Action("Adds", "PayDentists", new { idPay = Model.PayDentistId, idProfe = Model.DentistId, idCompany = Model.CompanyId, NPago = Model.NotaPago})'">
+                                    <i class="fa fa-plus"></i>
+                                    @Resources.Resource.Button_Add
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div>
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.ViewDetail @Resources.Resource.PayDentistDetail_Model_PagoProf</h4>
+                <div class="card-body">
+                    @*<h4>Servicios Pagados</h4>
+                        <hr>*@
+                    @if (Model.PayDentistDetails.Count == 0)
+                    {
+                        <h5>No Hay Servicios Agregados</h5>
+                    }
+                    else
+                    {
+                        <table class="table table-striped">
+                            <thead class="thead-light">
+                                <tr class="table-secondary">
+                                    <th>
+                                        Nota Cobro
+                                    </th>
+                                    <th>
+                                        Fecha
+                                    </th>
+                                    <th>
+                                        Servicio
+                                    </th>
+                                    <th>
+                                        Monto
+                                    </th>
+                                </tr>
+                            </thead>
+                            @{
+                                int registros = 0;
+                                double sum = 0;
+                            }
+
+                            @foreach (var item in Model.PayDentistDetails.ToList())
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NotaCobro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PaymentsGeneral.Tratamiento)
+                                    </td>
+                                    <td align="right">
+                                        @Html.DisplayFor(modelItem => item.PagoProfesional)
+                                    </td>
+                                    @{
+                                        registros += +1;
+                                        sum += item.PagoProfesional;
+                                    }
+                                </tr>
+                            }
+                            <tr>
+                                <td align="center">
+                                </td>
+                                <td align="center">
+                                    <strong>Tickets</strong>
+                                </td>
+                                <td align="right">
+                                    Registros: @registros
+                                </td>
+                                <td align="right">
+                                    <strong>@sum</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

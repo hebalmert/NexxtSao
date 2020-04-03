@@ -27,6 +27,10 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Register_Model_BillingNote")]
         public int NotaCobro { get; set; }
 
+        [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "Register_Model_NotaPago")]
+        public int NotaPago { get; set; }
+
         public virtual Company Company { get; set; }
     }
 }

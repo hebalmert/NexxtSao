@@ -99,5 +99,7 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<DirectPayment> DirectPayments { get; set; }
 
         public virtual ICollection<PaymentsGeneral> PaymentsGenerals { get; set; }
+
+        public virtual ICollection<PayDentist> PayDentists { get; set; }
     }
 }

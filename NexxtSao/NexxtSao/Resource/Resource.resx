@@ -645,6 +645,9 @@
   <data name="Msg_NoDoleteItem" xml:space="preserve">
     <value>El Item Tiene Abonos y no puede ser Borrado</value>
   </data>
+  <data name="Msg_NoRegisterToContinue" xml:space="preserve">
+    <value>No Existen Registros para Continuar</value>
+  </data>
   <data name="Msg_NoTotalMenorAbono" xml:space="preserve">
     <value>El Nuevo Precio no puede ser Menos al Abono Existente</value>
   </data>
@@ -657,6 +660,48 @@
   <data name="Msg_Required" xml:space="preserve">
     <value>El Campo {0} es Requerido</value>
   </data>
+  <data name="PayDentistDetail_IndexView_Titulo1" xml:space="preserve">
+    <value>Pagos Odontologos</value>
+  </data>
+  <data name="PayDentistDetail_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="PayDentistDetail_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="PayDentistDetail_Model_NotaCobro" xml:space="preserve">
+    <value>Nota Cobro</value>
+  </data>
+  <data name="PayDentistDetail_Model_PagoProf" xml:space="preserve">
+    <value>Pago Odontologo</value>
+  </data>
+  <data name="PayDentistDetail_Model_PayDentist" xml:space="preserve">
+    <value>Pago Odontolgo</value>
+  </data>
+  <data name="PayDentistDetail_Model_PaymentGeneral" xml:space="preserve">
+    <value>Pagos Generales</value>
+  </data>
+  <data name="PayDentist_IndexView_Titulo1" xml:space="preserve">
+    <value>Pago Odontologo</value>
+  </data>
+  <data name="PayDentist_Model_Company" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="PayDentist_Model_Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="PayDentist_Model_Detalle" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="PayDentist_Model_NotaPago" xml:space="preserve">
+    <value>Nota Pago</value>
+  </data>
+  <data name="PayDentist_Model_PagoProfessional" xml:space="preserve">
+    <value>Total Pago</value>
+  </data>
+  <data name="PayDentist_Model_Professional" xml:space="preserve">
+    <value>Odontologo</value>
+  </data>
   <data name="Register_Model_BillingNote" xml:space="preserve">
     <value>Nota Cobro</value>
   </data>
@@ -665,6 +710,9 @@
   </data>
   <data name="Register_Model_History" xml:space="preserve">
     <value>Historia</value>
+  </data>
+  <data name="Register_Model_NotaPago" xml:space="preserve">
+    <value>Nota Pago</value>
   </data>
   <data name="Register_ViewIndex_Titulo1" xml:space="preserve">
     <value>Consecutivo</value>

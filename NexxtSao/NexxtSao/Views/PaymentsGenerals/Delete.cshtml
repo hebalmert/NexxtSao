@@ -1,0 +1,160 @@
+﻿@model NexxtSao.Models.MVC.PaymentsGeneral
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PaymentsGeneral</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dentist.Odontologo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dentist.Odontologo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeadText.TextoEncabezado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeadText.TextoEncabezado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NotaCobro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NotaCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TasaProfesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TasaProfesional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tratamiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tratamiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PagoProfesional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PagoProfesional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facturado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facturado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacturadoDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacturadoDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComprobantePago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComprobantePago)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

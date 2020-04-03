@@ -1636,6 +1636,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Existen Registros para Continuar.
+        /// </summary>
+        public static string Msg_NoRegisterToContinue {
+            get {
+                return ResourceManager.GetString("Msg_NoRegisterToContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El Nuevo Precio no puede ser Menos al Abono Existente.
         /// </summary>
         public static string Msg_NoTotalMenorAbono {
@@ -1681,6 +1690,132 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pago Odontologo.
+        /// </summary>
+        public static string PayDentist_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("PayDentist_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string PayDentist_Model_Company {
+            get {
+                return ResourceManager.GetString("PayDentist_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string PayDentist_Model_Date {
+            get {
+                return ResourceManager.GetString("PayDentist_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string PayDentist_Model_Detalle {
+            get {
+                return ResourceManager.GetString("PayDentist_Model_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nota Pago.
+        /// </summary>
+        public static string PayDentist_Model_NotaPago {
+            get {
+                return ResourceManager.GetString("PayDentist_Model_NotaPago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Pago.
+        /// </summary>
+        public static string PayDentist_Model_PagoProfessional {
+            get {
+                return ResourceManager.GetString("PayDentist_Model_PagoProfessional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odontologo.
+        /// </summary>
+        public static string PayDentist_Model_Professional {
+            get {
+                return ResourceManager.GetString("PayDentist_Model_Professional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pagos Odontologos.
+        /// </summary>
+        public static string PayDentistDetail_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string PayDentistDetail_Model_Company {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_Model_Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string PayDentistDetail_Model_Date {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_Model_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nota Cobro.
+        /// </summary>
+        public static string PayDentistDetail_Model_NotaCobro {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_Model_NotaCobro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pago Odontologo.
+        /// </summary>
+        public static string PayDentistDetail_Model_PagoProf {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_Model_PagoProf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pago Odontolgo.
+        /// </summary>
+        public static string PayDentistDetail_Model_PayDentist {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_Model_PayDentist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pagos Generales.
+        /// </summary>
+        public static string PayDentistDetail_Model_PaymentGeneral {
+            get {
+                return ResourceManager.GetString("PayDentistDetail_Model_PaymentGeneral", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nota Cobro.
         /// </summary>
         public static string Register_Model_BillingNote {
@@ -1704,6 +1839,15 @@ namespace Resources {
         public static string Register_Model_History {
             get {
                 return ResourceManager.GetString("Register_Model_History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nota Pago.
+        /// </summary>
+        public static string Register_Model_NotaPago {
+            get {
+                return ResourceManager.GetString("Register_Model_NotaPago", resourceCulture);
             }
         }
         

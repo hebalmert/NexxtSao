@@ -1,0 +1,98 @@
+﻿@model NexxtSao.Models.MVC.PaymentsGeneral
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewEdit;
+}
+
+@*<h2>@Resources.Resource.ViewDetail</h2>*@
+<p></p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.ViewDetail @Resources.Resource.DirectPayment_IndexView_Titulo1</h4>
+            <div class="card-body">
+                @*<h4>@Resources.Resource.DirectPayment_IndexView_Titulo1</h4>
+                <hr />*@
+                <div class="form-row">
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.NotaCobro)</strong>
+                        @Html.DisplayFor(model => model.NotaCobro)
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                        @Html.DisplayFor(model => model.Date)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Dentist.Odontologo)</strong>
+                        @Html.DisplayFor(model => model.Dentist.Odontologo)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.TasaProfesional)</strong>
+                        @Html.DisplayFor(model => model.TasaProfesional)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.PagoProfesional)</strong>
+                        @Html.DisplayFor(model => model.PagoProfesional)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Cliente)</strong>
+                        @Html.DisplayFor(model => model.Cliente)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Tratamiento)</strong>
+                        @Html.DisplayFor(model => model.Tratamiento)
+                    </div>
+                </div>
+                <p></p>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Precio)</strong>
+                        @Html.DisplayFor(model => model.Precio)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Cantidad)</strong>
+                        @Html.DisplayFor(model => model.Cantidad)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Total)</strong>
+                        @Html.DisplayFor(model => model.Total)
+                    </div>
+                </div>
+                <hr />
+                <p>
+                    <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
+                        <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+                    </button>
+                    @*<button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.DirectPaymentId})'">
+                            <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
+                        </button>*@
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

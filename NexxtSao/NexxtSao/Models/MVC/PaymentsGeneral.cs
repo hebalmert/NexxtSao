@@ -75,6 +75,9 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "DirectGeneral_Model_Total")]
         public double Total { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)] //Formato Porcentaje con 2 decimales
+        public double TTotal { get; }
+
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]  //Currency es formato de Moneda del pais IP
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)] //Formato Porcentaje con 2 decimales
@@ -110,5 +113,7 @@ namespace NexxtSao.Models.MVC
         public virtual Client Client { get; set; }
 
         public virtual HeadText HeadText { get; set; }
+
+        public virtual ICollection<PayDentistDetail> PayDentistDetails { get; set; }
     }
 }

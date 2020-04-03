@@ -61,5 +61,9 @@
         public DbSet<DirectPayment> DirectPayments { get; set; }
 
         public DbSet<PaymentsGeneral> PaymentsGenerals { get; set; }
+
+        public DbSet<PayDentist> PayDentists { get; set; }
+
+        public DbSet<PayDentistDetail> PayDentistDetails { get; set; }
     }
 }
