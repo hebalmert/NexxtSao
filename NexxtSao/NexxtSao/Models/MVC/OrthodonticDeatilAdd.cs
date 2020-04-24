@@ -32,6 +32,7 @@ namespace NexxtSao.Models.MVC
 
 
         //Se incrusta el Dentista y la tasa de ganancia para mostrar al usuario si tiene o no porcentaje el Odontologo
+
         //[Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "DentistPercentage_Model_Dentist")]
         public int DentistId { get; set; }
