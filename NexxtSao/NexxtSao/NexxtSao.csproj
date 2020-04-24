@@ -201,11 +201,13 @@
     <Compile Include="Controllers\MVC\DentistSpecialtiesController.cs" />
     <Compile Include="Controllers\MVC\DirectPaymentsController.cs" />
     <Compile Include="Controllers\MVC\EstimatesController.cs" />
+    <Compile Include="Controllers\MVC\EvolutionsController.cs" />
     <Compile Include="Controllers\MVC\HeadTextsController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
     <Compile Include="Controllers\MVC\IdentificationsController.cs" />
     <Compile Include="Controllers\MVC\LevelPricesController.cs" />
     <Compile Include="Controllers\MVC\ManageController.cs" />
+    <Compile Include="Controllers\MVC\OrthodonticsController.cs" />
     <Compile Include="Controllers\MVC\PayDentistsController.cs" />
     <Compile Include="Controllers\MVC\PaymentsGeneralsController.cs" />
     <Compile Include="Controllers\MVC\RegistersController.cs" />
@@ -231,12 +233,17 @@
     <Compile Include="Models\MVC\Estimate.cs" />
     <Compile Include="Models\MVC\EstimateDetail.cs" />
     <Compile Include="Models\MVC\EstimateDetailAdd.cs" />
+    <Compile Include="Models\MVC\EvolutionDetailAdd.cs" />
+    <Compile Include="Models\MVC\EvolutionDetails.cs" />
     <Compile Include="Models\MVC\HeadText.cs" />
     <Compile Include="Models\MVC\Identification.cs" />
     <Compile Include="Models\MVC\IdentityModels.cs" />
     <Compile Include="Models\MVC\LevelPrice.cs" />
     <Compile Include="Models\MVC\ManageViewModels.cs" />
     <Compile Include="Models\MVC\NexxtSaoContext.cs" />
+    <Compile Include="Models\MVC\Orthodontic.cs" />
+    <Compile Include="Models\MVC\OrthodonticDeatilAdd.cs" />
+    <Compile Include="Models\MVC\OrthodonticDetail.cs" />
     <Compile Include="Models\MVC\PayDentist.cs" />
     <Compile Include="Models\MVC\PayDentistDetail.cs" />
     <Compile Include="Models\MVC\PaymentsGeneral.cs" />
@@ -552,6 +559,17 @@
     <Content Include="Views\PayDentists\Details.cshtml" />
     <Content Include="Views\PayDentists\Edit.cshtml" />
     <Content Include="Views\PayDentists\Index.cshtml" />
+    <Content Include="Views\Evolutions\Index.cshtml" />
+    <Content Include="Views\Evolutions\Details.cshtml" />
+    <Content Include="Views\Evolutions\AddComment.cshtml" />
+    <Content Include="Views\Orthodontics\Index.cshtml" />
+    <Content Include="Views\Orthodontics\Details.cshtml" />
+    <Content Include="Views\Orthodontics\Visit.cshtml" />
+    <Content Include="Views\Orthodontics\AddOrthodontic.cshtml" />
+    <Content Include="Views\Orthodontics\Create.cshtml" />
+    <Content Include="Views\Orthodontics\Edit.cshtml" />
+    <Content Include="Views\Orthodontics\EditOrthodontic.cshtml" />
+    <Content Include="Views\Evolutions\ViewDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -215,6 +215,7 @@ namespace NexxtSao.Controllers.MVC
                         TreatmentCategoryId = estimatedetailadd.TreatmentCategoryId,
                         TreatmentId = estimatedetailadd.TreatmentId,
                         Tratamiento = tratamiento.Servicio,
+                        Diente = estimatedetailadd.Diente,
                         LevelPriceId = estimatedetailadd.LevelPriceId,
                         Tasa = estimatedetailadd.Tasa,
                         Unitario = estimatedetailadd.Unitario,

@@ -1,0 +1,142 @@
+﻿@model PagedList.IPagedList<NexxtSao.Models.MVC.Client>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = @Resources.Resource.Orthodoncia_IndexView_Titulo1;
+}
+<p></p>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>@Resources.Resource.Orthodoncia_IndexView_Titulo1</h2>
+        <div>
+            @using (Html.BeginForm("Index", "Orthodontics"))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <p></p>
+                            <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder=@Resources.Resource.Client_IndeView_titulo1 />
+                            <input type="hidden" id="item_list" name="clienteid" /><br />
+                            <button type="submit" class="btn btn-warning btn-sm">
+                                <i class="fa fa-search"></i>
+                                @Resources.Resource.ButtonSearch
+                            </button>
+                            @*<input type="submit" value="Buscar" class="btn btn-warning btn-sm" />*@
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Nacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Movil)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img src="@Url.Content(item.Photo)" alt="Image" style="width:60px;height:60px;max-width: 100%; height: auto;" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movil)
+            </td>
+            <td>
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.ClientId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new
+{
+    page,
+    sortOrder =
+         ViewBag.CurrentSort,
+    currentFilter = ViewBag.CurrentFilter,
+    @class = "page-link"
+}), new PagedListRenderOptions
+{
+    FunctionToTransformEachPageLink = (liTag, aTag) =>
+    {
+        aTag.Attributes.Add("class", "page-link");
+            liTag.InnerHtml = aTag.ToString();
+            return liTag;
+        },
+        LiElementClasses = new[] { "page-item" },
+        UlElementClasses = new[] { "pagination justify-content-center" }
+    })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <link href="~/Content/JquerySearch/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/JquerySearch/jquery-1.12.4.js"></script>
+    <script src="~/Content/JquerySearch/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txt_search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Clients/Search/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#item_list").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+    </script>
+}

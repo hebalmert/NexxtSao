@@ -69,14 +69,6 @@
                                     @Resources.Resource.ButtonEdit
                                 </button>
 
-                                @*<button type="button" class="btn btn-info btn-sm" onclick="location.href ='@Url.Action("Edit", new { id = Model.PayDentistId})'">
-                                        <span class="glyphicon glyphicon-list"></span> @Resources.Resource.ButtonEdit
-                                    </button>*@
-
-                                @*<button type="button" class="btn btn-warning btn-sm" onclick="location.href ='@Url.Action("Adds", new { idPay = Model.PayDentistId, idProfe = Model.DentistId, idCompany = Model.CompanyId, NPago = Model.NotaPago})'">
-                                        <span class="glyphicon glyphicon-plus"></span> @Resources.Resource.Button_Add
-                                    </button>*@
-
                                 <button title=@Resources.Resource.Button_Add class="btn btn-primary btn-sm" onclick="location.href =
                                 '@Url.Action("Adds", "PayDentists", new { idPay = Model.PayDentistId, idProfe = Model.DentistId, idCompany = Model.CompanyId, NPago = Model.NotaPago})'">
                                     <i class="fa fa-plus"></i>
@@ -155,7 +147,7 @@
                                     Registros: @registros
                                 </td>
                                 <td align="right">
-                                    <strong>@sum</strong>
+                                    <strong>@string.Format("{0:c}", sum)</strong>
                                 </td>
                             </tr>
                         </table>

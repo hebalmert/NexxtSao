@@ -1,4 +1,4 @@
-﻿@model NexxtSao.Models.MVC.Estimate
+﻿@model NexxtSao.Models.MVC.Client
 
 @{
     ViewBag.Title = @Resources.Resource.ViewDetail;
@@ -7,39 +7,50 @@
 @*<h2>@Resources.Resource.ViewDetail</h2>*@
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="card">
-            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+            <h4 class="card-header">@Resources.Resource.Orthodoncia_Paciente</h4>
             <div class="card-body">
                 <div class="form-row">
                     <div class="col-md-6 mb-2">
-                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
-                        @Html.DisplayFor(model => model.Date)
-                    </div>
-
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Estimado)</strong>
-                        @Html.DisplayFor(model => model.Estimado)
+                        <strong>@Html.DisplayNameFor(model => model.Historia)</strong>
+                        @Html.DisplayFor(model => model.Historia)
                     </div>
                 </div>
                 <div class="form-row">
-
+                    <div class="col-md-12 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
+                        @Html.DisplayFor(model => model.IdentificationNumber)
+                    </div>
                 </div>
+                <hr />
                 <div class="form-row">
                     <div class="col-md-12 mb-1">
-                        <strong>@Html.DisplayNameFor(model => model.Client.Cliente)</strong>
-                        @Html.DisplayFor(model => model.Client.Cliente)
+                        <strong>@Html.DisplayNameFor(model => model.FirstName)</strong>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.LastName)</strong>
+                        @Html.DisplayFor(model => model.LastName)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Nacimiento)</strong>
+                        @Html.DisplayFor(model => model.Nacimiento)
                     </div>
                 </div>
                 <hr />
                 <div class="form-row">
                     <p>
-                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Clients", new  { id = Model.ClientId})'">
+                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", "Orthodontics", new  { clienteid = Model.ClientId})'">
                             <i class="fa fa-backspace"></i>
                             @Resources.Resource.ButtonBack
                         </button>
 
-                        <a title="Add Item" href="@Url.Action("AddEstimate", new { id = Model.EstimateId })" class="dialog-window btn btn-primary btn-sm">
+                        <a title="Add Item" href="@Url.Action("Create", new { id = Model.ClientId })" class="dialog-window btn btn-primary btn-sm">
                             <i class="fa fa-plus-circle"></i>
                             @Resources.Resource.Button_Add
                         </a>
@@ -48,43 +59,14 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
-        <div class="card">
-            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
-                        @Html.DisplayFor(model => model.SubTotal)
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Iva)</strong>
-                        @Html.DisplayFor(model => model.Iva)
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Total)</strong>
-                        @Html.DisplayFor(model => model.Total)
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<p></p>
-
-<div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
         <div>
             <div class="card">
                 <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo1</h4>
                 <div class="card-body">
                     <p></p>
-                    @if (Model.EstimateDetails.Count == 0)
+                    @if (Model.Orthodontics.Count == 0)
                     {
                         <h5>No Hay Item Creados</h5>
                     }
@@ -93,17 +75,14 @@
                         <table class="table table-striped">
                             <thead class="thead-light">
                                 <tr class="table-secondary">
+                                    @*<th>
+                            Visita
+                        </th>*@
                                     <th>
-                                        Diente
+                                        Fecha
                                     </th>
                                     <th>
-                                        Tratamiento
-                                    </th>
-                                    <th>
-                                        Unitario
-                                    </th>
-                                    <th>
-                                        Cantidad
+                                        Detalle
                                     </th>
                                     <th>
                                         Total
@@ -115,20 +94,17 @@
                                     int registros = 0;
                                 }
                             </thead>
-                            @foreach (var item in Model.EstimateDetails.ToList())
+                            @foreach (var item in Model.Orthodontics.OrderByDescending(o => o.Ortodoncia).ToList())
                             {
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Diente)
+                                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Ortodoncia)
+                        </td>*@
+                                    <td style="width:108px;">
+                                        @Html.DisplayFor(modelItem => item.Date)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Tratamiento)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Unitario)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Cantidad)
+                                        @Html.DisplayFor(modelItem => item.Detalle)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Total)
@@ -136,32 +112,37 @@
                                     @{
                                         registros += +1;
                                     }
-                                    <td>
-
-                                        <a title="Editar" href="@Url.Action("EditEstimate", new { id = item.EstimateDetailId })" class="dialog-window btn btn-warning btn-sm">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-
-                                        <a title="Borrar" href="@Url.Action("DeleteEstimateDetail", new { id = item.EstimateDetailId })" class="btn btn-danger btn-sm" onclick="return confirm('Desea Eliminar este Registro?')">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                    <td style="width:100px;">
+                                        @if (item.Cerrado == false)
+                                        {
+                                            <a title="Editar" href="@Url.Action("Visit", new { id = item.OrthodonticId })" class="btn btn-outline-warning btn-sm">
+                                                <i class="fa fa-pencil-alt"></i>
+                                            </a>
+                                            if (item.Total == 0)
+                                            {
+                                                <a title="Borrar" href="@Url.Action("DeleteOrthodon", new { id = item.OrthodonticId })" class="btn btn-outline-danger btn-sm" onclick="return confirm('Desea Eliminar este Registro?')">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            }
+                                        }
+                                        @if (item.Cerrado == true)
+                                        {
+                                            <a title="Detail" href="@Url.Action("Visit", new { id = item.OrthodonticId })" class="btn btn-outline-info btn-sm">
+                                                <i class="fa fa-clipboard-list"></i>
+                                            </a>
+                                        }
                                     </td>
                                 </tr>
                             }
-                            <tr>
-                                <td align="right">
-                                    <strong>Registros: @registros</strong>
-                                </td>
-                            </tr>
                         </table>
-
+                        <hr/>
+                        <strong>Registros: @registros</strong>
                     }
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="AddEstimate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog">
         <div class="modal-content">

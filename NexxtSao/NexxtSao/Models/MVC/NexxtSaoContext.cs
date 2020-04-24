@@ -65,5 +65,11 @@
         public DbSet<PayDentist> PayDentists { get; set; }
 
         public DbSet<PayDentistDetail> PayDentistDetails { get; set; }
+
+        public DbSet<EvolutionDetails> EvolutionDetails { get; set; }
+
+        public DbSet<Orthodontic> Orthodontics { get; set; }
+
+        public DbSet<OrthodonticDetail> OrthodonticDetails { get; set; }
     }
 }

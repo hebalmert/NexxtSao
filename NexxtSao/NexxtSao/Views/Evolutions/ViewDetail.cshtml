@@ -1,0 +1,64 @@
+﻿@model NexxtSao.Models.MVC.EvolutionDetails
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewEdit;
+}
+<p></p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.ViewDetail</h4>
+            <div class="card-body">
+                <div class="form-row">
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Estimate.Estimado)</strong>
+                        @Html.DisplayFor(model => model.Estimate.Estimado)
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                        @Html.DisplayFor(model => model.Date)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Dentist.Odontologo)</strong>
+                        @Html.DisplayFor(model => model.Dentist.Odontologo)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.EstimateDetail.Tratamiento)</strong>
+                        @Html.DisplayFor(model => model.EstimateDetail.Tratamiento)
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Detalle)</strong>
+                        @Html.DisplayFor(model => model.Detalle)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Abono)</strong>
+                        @Html.DisplayFor(model => model.Abono)
+                    </div>
+                </div>
+                <hr />
+                <p>
+                    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  { id = Model.Estimate.ClientId})'">
+                        <i class="fa fa-backspace"></i>
+                        @Resources.Resource.ButtonBack
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

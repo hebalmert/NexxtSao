@@ -59,8 +59,23 @@
                             <div class="dropdown-divider"></div>
                             @Html.ActionLink("Especialidad Odontologos", "Index", "DentistSpecialties", new { }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Odontologos", "Index", "Dentists", new { }, new { @class = "dropdown-item" })
-                            <div class="dropdown-divider"></div>                            
-                            @Html.ActionLink("Proveedor", "Index", "Providers", new { }, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
+
+                @if (User.IsInRole("User"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Odontologia
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.ActionLink("Pacientes", "Index", "Clients", new { }, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Evolucion", "Index", "Evolutions", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Cobro Directo", "Index", "DirectPayments", new { }, new { @class = "dropdown-item" })
+                            <div class="dropdown-divider"></div>
+                            @Html.ActionLink("Ortodoncia", "Index", "Orthodontics", new { }, new { @class = "dropdown-item" })
                         </div>
                     </li>
                 }
@@ -72,11 +87,7 @@
                             Administrativo
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @Html.ActionLink("Pacientes", "Index", "Clients", new { }, new { @class = "dropdown-item" })
-                            <div class="dropdown-divider"></div>
-                            @Html.ActionLink("Cobro Directo", "Index", "DirectPayments", new { }, new { @class = "dropdown-item" })
                             @Html.ActionLink("Pagos Pendientes", "Index", "PaymentsGenerals", new { }, new { @class = "dropdown-item" })
-                            <div class="dropdown-divider"></div>
                             @Html.ActionLink("Pago Odontologos", "Index", "PayDentists", new { }, new { @class = "dropdown-item" })
                         </div>
                     </li>

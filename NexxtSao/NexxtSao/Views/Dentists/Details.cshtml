@@ -98,12 +98,12 @@
                             @Resources.Resource.ButtonEdit
                         </button>
 
-                        @*<button type="submit" class="dialog-window btn btn-warning btn-sm" onclick="location.href = '@Url.Action("AddPercentage", "Dentists", new { id = Model.DentistId, co= Model.CompanyId })'">
-                                <i class="fa fa-pencil-alt"></i>
-                                @Resources.Resource.Button_Add
-                            </button>*@
+                        <a title="Editar" href="@Url.Action("AddPercentage", new { id = Model.DentistId, co = Model.CompanyId })" class="dialog-window btn btn-primary btn-sm">
+                            <i class="fa fa-plus-circle"></i>
+                            @Resources.Resource.DentistPercentage_IndexView_Titulo1
+                        </a>
 
-                        @Html.ActionLink(@Resources.Resource.DentistPercentage_IndexView_Titulo1, "AddPercentage", "Dentists", new { id = Model.DentistId, co = Model.CompanyId }, new { @class = "dialog-window btn btn-secondary btn-sm" })
+                        @*@Html.ActionLink(@Resources.Resource.DentistPercentage_IndexView_Titulo1, "AddPercentage", "Dentists", new { id = Model.DentistId, co = Model.CompanyId }, new { @class = "dialog-window btn btn-secondary btn-sm" })*@
                     </p>
                 </div>
             </div>
@@ -151,21 +151,17 @@
                             @{
                                 registros += +1;
                             }
-                            <td>
-                                @*<button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
-                                            '@Url.Action("EditPercentage", new { id = item.DentistPercentageId})'">
-                                        <i class="fa fa-pencil-alt"></i>
-                                    </button>*@
-                                @Html.ActionLink(@Resources.Resource.ButtonEdit, "EditPercentage", "Dentists", new { id = item.DentistPercentageId }, new { @class = "dialog-window btn btn-warning btn-sm" })
+                        <td>
 
-                                @*<button title="Borrar" class=" btn btn-danger btn-sm" onclick="location.href =
-                                             '@Url.Action("DeletePercentage", new { id = item.DentistPercentageId})'">
-                                        <i class="fa fa-trash"></i>
-                                    </button>*@
+                            <a title="Editar" href="@Url.Action("EditPercentage", new { id = item.DentistPercentageId })" class="dialog-window btn btn-warning btn-sm">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
 
-                                @Html.ActionLink(@Resources.Resource.ButtonDelete, "DeletePercentage", "Dentists", new { id = item.DentistPercentageId }, new { @class = "dialog-window btn btn-danger btn-sm" })
+                            <a title="Borrar" href="@Url.Action("DeletePercentage", new { id = item.DentistPercentageId })" class="dialog-window btn btn-danger btn-sm">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
 
-                            </td>
+                        </td>
                         </tr>
                     }
                     <tr>

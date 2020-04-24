@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = @Resources.Resource.ViewCreate;
 }
-
+<p></p>
 <h2>@Resources.Resource.ViewCreate</h2>
 <p></p>
 
@@ -126,11 +126,14 @@
     <div class="form-row">
         <div class="col-md-6 mb-2">
             <div class="col-md-offset-2 col-md-10">
-                <button type="button" class="btn btn-success btn-sm" onclick="location.href ='@Url.Action("Index", new {})'">
-                    <span class="glyphicon glyphicon-chevron-left"></span> @Resources.Resource.ButtonBack
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  { id = Model.ClientId})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
                 </button>
+
                 <button type="submit" class="btn btn-primary btn-sm">
-                    <span class="glyphicon glyphicon-floppy-disk"></span> @Resources.Resource.ButtonSave
+                    <i class="fa fa-save"></i>
+                    @Resources.Resource.ButtonSave
                 </button>
             </div>
         </div>

@@ -1,0 +1,250 @@
+﻿@model NexxtSao.Models.MVC.Orthodontic
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+<p></p>
+@*<h2>@Resources.Resource.ViewDetail</h2>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Ortodoncia)</strong>
+                        @Html.DisplayFor(model => model.Ortodoncia)
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                        @Html.DisplayFor(model => model.Date)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Client.Cliente)</strong>
+                        @Html.DisplayFor(model => model.Client.Cliente)
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Dentist.Odontologo)</strong>
+                        @Html.DisplayFor(model => model.Dentist.Odontologo)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-1">
+                        <strong>@Html.DisplayNameFor(model => model.Detalle)</strong>
+                        @Html.DisplayFor(model => model.Detalle)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
+                        @Html.DisplayFor(model => model.SubTotal)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Iva)</strong>
+                        @Html.DisplayFor(model => model.Iva)
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Total)</strong>
+                        @Html.DisplayFor(model => model.Total)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  { id = Model.ClientId})'">
+                            <i class="fa fa-backspace"></i>
+                            @Resources.Resource.ButtonBack
+                        </button>
+                        @if (Model.Cerrado == false)
+                        {
+                            <a title="Edit" href="@Url.Action("Edit", new { id = Model.OrthodonticId })" class="dialog-window btn btn-warning btn-sm">
+                                <i class="fa fa-pencil-alt"></i>
+                                @Resources.Resource.ButtonEdit
+                            </a>
+
+                            <a title="Add Item" href="@Url.Action("AddOrthodontic", new { id = Model.OrthodonticId, de = Model.DentistId })" class="dialog-window btn btn-primary btn-sm">
+                                <i class="fa fa-plus-circle"></i>
+                                @Resources.Resource.Button_Add
+                            </a>
+
+                            <a title="Cerrar" href="@Url.Action("CloseOrthodontic", new { id = Model.OrthodonticId })" class="btn btn-danger btn-sm" onclick="return confirm('Seguro Desea Cerrar la Consulta de Ortodoncia?')">
+                                <i class="fa fa-lock"></i>
+                                @Resources.Resource.Button_Close
+                            </a>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo1</h4>
+            <div class="card-body">
+                <p></p>
+                @if (Model.OrthodonticDetails.Count == 0)
+                {
+                    <h5>No Hay Item Creados</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr class="table-secondary">
+                                <th>
+                                    Diente
+                                </th>
+                                <th>
+                                    Tratamiento
+                                </th>
+                                <th>
+                                    Unitario
+                                </th>
+                                <th>
+                                    Cantidad
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                            @{
+                                int registros = 0;
+                            }
+                        </thead>
+                        @foreach (var item in Model.OrthodonticDetails.ToList())
+                        {
+                            <tr>
+                                <td style="width:75px;">
+                                    @Html.DisplayFor(modelItem => item.Diente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tratamiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Unitario)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cantidad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                                </td>
+                                @{
+                                    registros += +1;
+                                }
+                            <td>
+                                @if (Model.Cerrado == false)
+                                {
+                                    <a title="Editar" href="@Url.Action("EditOrthodontic", new { id = item.OrthodonticDetailId })" class="dialog-window btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+
+                                    <a title="Borrar" href="@Url.Action("DeleteOrthodonDetail", new { id = item.OrthodonticDetailId })" class="btn btn-danger btn-sm" onclick="return confirm('Desea Eliminar este Registro?')">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                }
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td align="right">
+                                <strong>Registros: @registros</strong>
+                            </td>
+                        </tr>
+                    </table>
+
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div>
+            
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AddOrthodontic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="EditEstimate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#AddOrthodontic .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#AddOrthodontic').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#AddOrthodontic .te').html(data);
+                        $('#AddOrthodontic').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#EditEstimate .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#EditEstimate').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#EditEstimate .te').html(data);
+                        $('#EditEstimate').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+}

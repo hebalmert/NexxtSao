@@ -1,4 +1,4 @@
-﻿@model NexxtSao.Models.MVC.EstimateDetailAdd
+﻿@model NexxtSao.Models.MVC.OrthodonticDeatilAdd
 
 @{
     ViewBag.Title = @Resources.Resource.ViewCreate;
@@ -16,13 +16,29 @@
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.CompanyId)
-    @Html.HiddenFor(model => model.EstimateId)
+    @Html.HiddenFor(model => model.OrthodonticId)
 
     <div class="form-group">
         @Html.LabelFor(model => model.TreatmentCategoryId, htmlAttributes: new { @class = "control-label col-md-10" })
         <div class="col-md-10">
             @Html.DropDownList("TreatmentCategoryId", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.TreatmentCategoryId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DentistId, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
+            @Html.DropDownList("DentistId", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.DentistId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TasaProfesional, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TasaProfesional, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TasaProfesional, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -76,7 +92,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Estimates", new  { id = Model.EstimateId})'">
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Visit", new  { id = Model.OrthodonticId})'">
                 <i class="fa fa-backspace"></i>
                 @Resources.Resource.ButtonBack
             </button>
@@ -91,8 +107,9 @@
 }
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function () {
+
             $("#TreatmentCategoryId").change(function ()
             {
                 $("#TreatmentId").empty();
@@ -108,6 +125,24 @@
                              + data.TreatmentId + '">'
                              + data.Servicio + '</option>');
                         });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+
+            $("#TreatmentCategoryId").change(function () {
+                $("#TasaProfesional").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetPorcentaje")',
+                    dataType: 'json',
+                    data: { dentistId: $("#DentistId").val(), categoryId: $("#TreatmentCategoryId").val() },
+                    success: function (data)
+                    {
+                        $("#TasaProfesional").val(data);
                     },
                     error: function (ex) {
                         alert('Error de Lectura de Relacion' + ex);
@@ -161,5 +196,25 @@
             })
 
         });
-    </script>
-
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#DentistId").change(function () {
+                $("#Porcentaje").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetPorcentaje")',
+                    dataType: 'json',
+                    data: { dentistId: $("#DentistId").val(), estimatedetailId: $("#EstimateDetailId").val() },
+                    success: function (data)
+                    {
+                        $("#Porcentaje").val(data);
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+</script>

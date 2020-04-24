@@ -8,20 +8,20 @@ using System.Web;
 
 namespace NexxtSao.Models.MVC
 {
-    public class Estimate
+    public class Orthodontic
     {
         [Key]
-        public int EstimateId { get; set; }
+        public int OrthodonticId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Index("Estimate_ClientId_Company_Index", 1, IsUnique = true)]
+        //[Index("Estimate_ClientId_Company_Index", 1, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Estimate_Model_Company")]
         public int CompanyId { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Display(ResourceType = typeof(Resource), Name = "Estimate_Model_Estimado")]
-        public int Estimado { get; set; }
+        [Display(ResourceType = typeof(Resource), Name = "Register_Model_Ortodoncia")]
+        public int Ortodoncia { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [DataType(DataType.Date)]
@@ -31,9 +31,19 @@ namespace NexxtSao.Models.MVC
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Index("Estimate_ClientId_Company_Index", 2, IsUnique = true)]
+        //[Index("Estimate_ClientId_Company_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Estimate_Model_Client")]
         public int ClientId { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [Display(ResourceType = typeof(Resource), Name = "DirectPayment_Model_Profesional")]
+        public int DentistId { get; set; }
+
+        [MaxLength(512, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [DataType(DataType.MultilineText)]
+        [Display(ResourceType = typeof(Resource), Name = "PayDentist_Model_Detalle")]
+        public string Detalle { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)] //Currency es formato de Moneda del pais IP
@@ -54,14 +64,15 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Estimate_Model_Encabezado")]
         public int HeadTextId { get; set; }
 
+        public bool Cerrado { get; set; }
+
         public virtual Company Company { get; set; }
 
         public virtual Client Client { get; set; }
 
-        public virtual ICollection<EstimateDetail> EstimateDetails { get; set; }
+        public  virtual Dentist Dentist { get; set; }
 
-        public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
+        public virtual ICollection<OrthodonticDetail> OrthodonticDetails { get; set; }
 
-        public virtual ICollection<EvolutionDetails> EvolutionDetails { get; set; }
     }
 }

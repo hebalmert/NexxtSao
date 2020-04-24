@@ -84,7 +84,7 @@ namespace NexxtSao.Controllers.MVC
             var payDentists = db.PayDentists.Where(c => c.CompanyId == user.CompanyId)
                 .Include(p => p.Dentist);
 
-            return View(payDentists.OrderBy(o=> o.Dentist.Odontologo).ToList());
+            return View(payDentists.OrderByDescending(o=> o.Dentist.Odontologo).ToList());
         }
 
         // GET: PayDentists/Details/5

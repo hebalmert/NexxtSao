@@ -70,6 +70,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cerrar.
+        /// </summary>
+        public static string Button_Close {
+            get {
+                return ResourceManager.GetString("Button_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editar Presupuesto.
         /// </summary>
         public static string Button_Estimate_Edit {
@@ -1429,6 +1438,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Presupuesto.
+        /// </summary>
+        public static string EstimateDetail_IndeView_Titulo2 {
+            get {
+                return ResourceManager.GetString("EstimateDetail_IndeView_Titulo2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Abono.
         /// </summary>
         public static string EstimateDetail_Model_Abono {
@@ -1452,6 +1470,15 @@ namespace Resources {
         public static string EstimateDetail_Model_Category {
             get {
                 return ResourceManager.GetString("EstimateDetail_Model_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diente.
+        /// </summary>
+        public static string EstimateDetail_Model_Diente {
+            get {
+                return ResourceManager.GetString("EstimateDetail_Model_Diente", resourceCulture);
             }
         }
         
@@ -1506,6 +1533,24 @@ namespace Resources {
         public static string EstimateDetail_Model_Unitario {
             get {
                 return ResourceManager.GetString("EstimateDetail_Model_Unitario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle Evolucion.
+        /// </summary>
+        public static string Evolucion_Detail_Evolucion {
+            get {
+                return ResourceManager.GetString("Evolucion_Detail_Evolucion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evolucion.
+        /// </summary>
+        public static string Evolution_ViewIndex_Titulo1 {
+            get {
+                return ResourceManager.GetString("Evolution_ViewIndex_Titulo1", resourceCulture);
             }
         }
         
@@ -1690,6 +1735,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ortodoncia.
+        /// </summary>
+        public static string Orthodoncia_IndexView_Titulo1 {
+            get {
+                return ResourceManager.GetString("Orthodoncia_IndexView_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paciente Detalle.
+        /// </summary>
+        public static string Orthodoncia_Paciente {
+            get {
+                return ResourceManager.GetString("Orthodoncia_Paciente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pago Odontologo.
         /// </summary>
         public static string PayDentist_IndexView_Titulo1 {
@@ -1848,6 +1911,15 @@ namespace Resources {
         public static string Register_Model_NotaPago {
             get {
                 return ResourceManager.GetString("Register_Model_NotaPago", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ortodoncia.
+        /// </summary>
+        public static string Register_Model_Ortodoncia {
+            get {
+                return ResourceManager.GetString("Register_Model_Ortodoncia", resourceCulture);
             }
         }
         

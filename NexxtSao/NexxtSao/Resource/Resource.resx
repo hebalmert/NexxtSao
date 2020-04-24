@@ -153,6 +153,9 @@
   <data name="Button_Add" xml:space="preserve">
     <value>Add Item</value>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
   <data name="Button_Estimate_Edit" xml:space="preserve">
     <value>Editar Presupuesto</value>
   </data>
@@ -546,6 +549,9 @@
   <data name="EstimateDetail_IndeView_Titulo1" xml:space="preserve">
     <value>Detalle Presupuesto</value>
   </data>
+  <data name="EstimateDetail_IndeView_Titulo2" xml:space="preserve">
+    <value>Presupuesto</value>
+  </data>
   <data name="EstimateDetail_Model_Abono" xml:space="preserve">
     <value>Abono</value>
   </data>
@@ -554,6 +560,9 @@
   </data>
   <data name="EstimateDetail_Model_Category" xml:space="preserve">
     <value>Categoria</value>
+  </data>
+  <data name="EstimateDetail_Model_Diente" xml:space="preserve">
+    <value>Diente</value>
   </data>
   <data name="EstimateDetail_Model_EstemateId" xml:space="preserve">
     <value>Estimado</value>
@@ -599,6 +608,12 @@
   </data>
   <data name="Estimate_Model_Total" xml:space="preserve">
     <value>Total</value>
+  </data>
+  <data name="Evolucion_Detail_Evolucion" xml:space="preserve">
+    <value>Detalle Evolucion</value>
+  </data>
+  <data name="Evolution_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Evolucion</value>
   </data>
   <data name="HeadText_IndexViewTitulo1" xml:space="preserve">
     <value>Encabezado</value>
@@ -660,6 +675,12 @@
   <data name="Msg_Required" xml:space="preserve">
     <value>El Campo {0} es Requerido</value>
   </data>
+  <data name="Orthodoncia_IndexView_Titulo1" xml:space="preserve">
+    <value>Ortodoncia</value>
+  </data>
+  <data name="Orthodoncia_Paciente" xml:space="preserve">
+    <value>Paciente Detalle</value>
+  </data>
   <data name="PayDentistDetail_IndexView_Titulo1" xml:space="preserve">
     <value>Pagos Odontologos</value>
   </data>
@@ -713,6 +734,9 @@
   </data>
   <data name="Register_Model_NotaPago" xml:space="preserve">
     <value>Nota Pago</value>
+  </data>
+  <data name="Register_Model_Ortodoncia" xml:space="preserve">
+    <value>Ortodoncia</value>
   </data>
   <data name="Register_ViewIndex_Titulo1" xml:space="preserve">
     <value>Consecutivo</value>

@@ -1,36 +1,41 @@
-﻿@model NexxtSao.Models.MVC.EstimateDetailAdd
+﻿@model NexxtSao.Models.MVC.OrthodonticDeatilAdd
 
 @{
     ViewBag.Title = @Resources.Resource.ViewCreate;
 }
 <p></p>
-@*<h2>@Resources.Resource.ViewCreate</h2>*@
+<h2>@Resources.Resource.ViewEdit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @*<h4>@Resources.Resource.Estimate_IndexView_Titulo1</h4>*@
-    @*<hr />*@
+    @*<h4>@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+        <hr />*@
 <div class="form-horizontal">
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.CompanyId)
-    @Html.HiddenFor(model => model.EstimateId)
+    @Html.HiddenFor(model => model.OrthodonticId)
+    @Html.HiddenFor(model => model.OrthodonticDetailId)
+    @Html.HiddenFor(model => model.TreatmentCategoryId)
+    @Html.HiddenFor(model => model.TreatmentId)
+    @Html.HiddenFor(model => model.Tasa)
+
 
     <div class="form-group">
-        @Html.LabelFor(model => model.TreatmentCategoryId, htmlAttributes: new { @class = "control-label col-md-10" })
+        @Html.LabelFor(model => model.Categoria, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("TreatmentCategoryId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TreatmentCategoryId, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Categoria, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Categoria, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.TreatmentId, htmlAttributes: new { @class = "control-label col-md-10" })
+        @Html.LabelFor(model => model.tratamiento, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("TreatmentId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TreatmentId, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.tratamiento, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tratamiento, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -76,7 +81,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Estimates", new  { id = Model.EstimateId})'">
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Visit", new  { id = Model.OrthodonticId})'">
                 <i class="fa fa-backspace"></i>
                 @Resources.Resource.ButtonBack
             </button>
@@ -90,9 +95,14 @@
 </div>
 }
 
-
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
+
+            //$('#TreatmentCategoryId').attr("readonly", "readonly");
+            //$("#TreatmentCategoryId").removeAttr("readonly");
+            //$('#TreatmentId').attr("readonly", "readonly");
+            //$("#TreatmentId").removeAttr("readonly");
+
             $("#TreatmentCategoryId").change(function ()
             {
                 $("#TreatmentId").empty();
@@ -161,5 +171,4 @@
             })
 
         });
-    </script>
-
+</script>

@@ -1,0 +1,95 @@
+﻿@model NexxtSao.Models.MVC.Orthodontic
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewCreate;
+}
+<p></p>
+<h2>@Resources.Resource.ViewCreate</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+    <hr />
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.ClientId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ortodoncia, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ortodoncia, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ortodoncia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DentistId, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.DropDownList("DentistId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DentistId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.SubTotal, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SubTotal, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubTotal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.Iva, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Iva, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Iva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  { id = Model.ClientId})'">
+                    <i class="fa fa-backspace"></i>
+                    @Resources.Resource.ButtonBack
+                </button>
+
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i>
+                    @Resources.Resource.ButtonSave
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

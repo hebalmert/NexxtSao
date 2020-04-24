@@ -109,5 +109,11 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<PayDentist> PayDentists { get; set; }
 
         public virtual ICollection<PayDentistDetail> PayDentistDetails { get; set; }
+
+        public virtual ICollection<EvolutionDetails> EvolutionDetails { get; set; }
+
+        public virtual ICollection<Orthodontic> Orthodontics { get; set; }
+
+      
     }
 }

@@ -1,0 +1,311 @@
+﻿@model NexxtSao.Models.MVC.Estimate
+
+@{
+    ViewBag.Title = @Resources.Resource.ViewDetail;
+}
+<p></p>
+@*<h2>@Resources.Resource.ViewDetail</h2>*@
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <p></p>
+        <div>
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo2</h4>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <strong>@Html.DisplayNameFor(model => model.Estimado)</strong>
+                            @Html.DisplayFor(model => model.Estimado)
+                        </div>
+
+                        <div class="col-md-6 mb-2">
+                            <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                            @Html.DisplayFor(model => model.Date)
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-1">
+                            <strong>@Html.DisplayNameFor(model => model.Client.Cliente)</strong>
+                            @Html.DisplayFor(model => model.Client.Cliente)
+                        </div>
+                    </div>
+
+
+                    <p></p>
+                    @if (Model.EstimateDetails.Count == 0)
+                    {
+                        <h5>No Hay Item Creados</h5>
+                    }
+                    else
+                    {
+                        <table class="table table-striped">
+                            <thead class="thead-light">
+                                <tr class="table-secondary">
+                                    <th>
+                                        Diente
+                                    </th>
+                                    <th>
+                                        Tratamiento
+                                    </th>
+                                    <th>
+                                        Saldo
+                                    </th>
+                                    <th>
+                                        Total
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                @{
+                                    int registros = 0;
+                                }
+                            </thead>
+                            @foreach (var item in Model.EstimateDetails.ToList())
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Diente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tratamiento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Saldo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Total)
+                                    </td>
+                                    @{
+                                        registros += +1;
+                                    }
+                                    <td>
+                                        @if (item.Saldo > 0)
+                                        {
+                                            <a title="Add" href="@Url.Action("AddComment", new { idEstimate = item.EstimateId, idEstimateDetail = item.EstimateDetailId, idDiente = item.Diente, idsaldo = item.Saldo, idcliente = Model.ClientId, idTratamiento = item.Tratamiento })" class="dialog-window btn btn-outline-primary btn-sm">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            @*<tr>
+                                    <td align="right">
+                                        <strong>Registros: @registros</strong>
+                                    </td>
+                                </tr>*@
+                        </table>
+
+                    }
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-md-10 mb-2">
+                            <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
+                            @Html.DisplayFor(model => model.SubTotal)
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <strong>@Html.DisplayNameFor(model => model.Iva)</strong>
+                            @Html.DisplayFor(model => model.Iva)
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <strong>@Html.DisplayNameFor(model => model.Total)</strong>
+                            @Html.DisplayFor(model => model.Total)
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-row">
+                        <div class="col-md-6 mb-2">
+                            <p>
+                                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  { clienteid = Model.ClientId})'">
+                                    <i class="fa fa-backspace"></i>
+                                    @Resources.Resource.ButtonBack
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <div class="col-md-6">
+        <p></p>
+        <div>
+            <div class="card">
+                <h4 class="card-header">@Resources.Resource.Evolucion_Detail_Evolucion</h4>
+                <div class="card-body">
+                    <p></p>
+                    @if (Model.EvolutionDetails.Count == 0)
+                    {
+                        <h5>No Hay Item Detalles</h5>
+                    }
+                    else
+                    {
+                        <table class="table table-striped">
+                            <thead class="thead-light">
+                                <tr class="table-secondary">
+                                    <th>
+                                        Fecha
+                                    </th>
+                                    <th>
+                                        Diente
+                                    </th>
+                                    <th>
+                                        Detalle
+                                    </th>
+                                    <th>
+                                        Unitario
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                @{
+                                    int registros = 0;
+                                }
+                            </thead>
+                            @foreach (var item in Model.EvolutionDetails.OrderByDescending(c => c.Date).ToList())
+                            {
+                                <tr>
+                                    <td style="width:108px;">
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Diente)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Detalle)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Abono)
+                                    </td>
+                                    @{
+                                        registros += +1;
+                                    }
+                                    <td>
+                                        <a title="Detail" href="@Url.Action("ViewDetail", new { id = item.EvolutionDetailsId})" class="dialog-window btn btn-outline-info btn-sm">
+                                            <i class="fa fa-clipboard-list"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <hr/>
+                        <strong>Registros: @registros</strong>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="AddEstimate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="EditEstimate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ViewDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title"></h2>
+            </div>
+            <div class="modal-body"><div class="te">Please wait...</div></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#AddEstimate .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#AddEstimate').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#AddEstimate .te').html(data);
+                        $('#AddEstimate').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#EditEstimate .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#EditEstimate').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#EditEstimate .te').html(data);
+                        $('#EditEstimate').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", "a.dialog-window", null, function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var title = $link.text();
+                $('#ViewDetail .modal-title').html(title);
+                var url = $(this).attr('href');
+                if (url.indexOf('#') == 0) {
+                    $('#ViewDetail').modal('show');
+                }
+                else {
+                    $.get(url, function (data) {
+                        $('#ViewDetail .te').html(data);
+                        $('#ViewDetail').modal();
+                    }).success(function () { $('input:text:visible:first').focus(); });
+
+                }
+            });
+        });
+    </script>
+}
