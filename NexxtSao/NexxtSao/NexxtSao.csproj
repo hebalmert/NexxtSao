@@ -205,6 +205,8 @@
     <Compile Include="Controllers\MVC\HeadTextsController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
     <Compile Include="Controllers\MVC\IdentificationsController.cs" />
+    <Compile Include="Controllers\MVC\ImgOrthodonsController.cs" />
+    <Compile Include="Controllers\MVC\ImgPanoramicsController.cs" />
     <Compile Include="Controllers\MVC\LevelPricesController.cs" />
     <Compile Include="Controllers\MVC\ManageController.cs" />
     <Compile Include="Controllers\MVC\OrthodonticsController.cs" />
@@ -238,6 +240,8 @@
     <Compile Include="Models\MVC\HeadText.cs" />
     <Compile Include="Models\MVC\Identification.cs" />
     <Compile Include="Models\MVC\IdentityModels.cs" />
+    <Compile Include="Models\MVC\ImgOrthodon.cs" />
+    <Compile Include="Models\MVC\ImgPanoramic.cs" />
     <Compile Include="Models\MVC\LevelPrice.cs" />
     <Compile Include="Models\MVC\ManageViewModels.cs" />
     <Compile Include="Models\MVC\NexxtSaoContext.cs" />
@@ -570,10 +574,22 @@
     <Content Include="Views\Orthodontics\Edit.cshtml" />
     <Content Include="Views\Orthodontics\EditOrthodontic.cshtml" />
     <Content Include="Views\Evolutions\ViewDetail.cshtml" />
+    <Content Include="Views\ImgPanoramics\Create.cshtml" />
+    <Content Include="Views\ImgPanoramics\Delete.cshtml" />
+    <Content Include="Views\ImgPanoramics\Details.cshtml" />
+    <Content Include="Views\ImgPanoramics\Edit.cshtml" />
+    <Content Include="Views\ImgPanoramics\Index.cshtml" />
+    <Content Include="Views\ImgOrthodons\Create.cshtml" />
+    <Content Include="Views\ImgOrthodons\Delete.cshtml" />
+    <Content Include="Views\ImgOrthodons\Details.cshtml" />
+    <Content Include="Views\ImgOrthodons\Edit.cshtml" />
+    <Content Include="Views\ImgOrthodons\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Logos\" />
+    <Folder Include="Content\OrthoPano\" />
+    <Folder Include="Content\OrthoPhoto\" />
     <Folder Include="Content\Patients\" />
     <Folder Include="Content\Users\" />
     <Folder Include="Controllers\API\" />

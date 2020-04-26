@@ -71,5 +71,9 @@
         public DbSet<Orthodontic> Orthodontics { get; set; }
 
         public DbSet<OrthodonticDetail> OrthodonticDetails { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSao.Models.MVC.ImgPanoramic> ImgPanoramics { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSao.Models.MVC.ImgOrthodon> ImgOrthodons { get; set; }
     }
 }

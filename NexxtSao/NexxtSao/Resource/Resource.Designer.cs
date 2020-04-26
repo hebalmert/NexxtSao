@@ -1735,6 +1735,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Detalle Consulta.
+        /// </summary>
+        public static string Orthodoncia_DetalleConsulta {
+            get {
+                return ResourceManager.GetString("Orthodoncia_DetalleConsulta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fotos.
+        /// </summary>
+        public static string Orthodoncia_Fotos {
+            get {
+                return ResourceManager.GetString("Orthodoncia_Fotos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ortodoncia.
         /// </summary>
         public static string Orthodoncia_IndexView_Titulo1 {
@@ -1749,6 +1767,15 @@ namespace Resources {
         public static string Orthodoncia_Paciente {
             get {
                 return ResourceManager.GetString("Orthodoncia_Paciente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Panoramicas.
+        /// </summary>
+        public static string Orthodoncia_Panoramica {
+            get {
+                return ResourceManager.GetString("Orthodoncia_Panoramica", resourceCulture);
             }
         }
         

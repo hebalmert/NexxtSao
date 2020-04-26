@@ -672,11 +672,20 @@
   <data name="Msg_Required" xml:space="preserve">
     <value>The Field {0} is Required</value>
   </data>
+  <data name="Orthodoncia_DetalleConsulta" xml:space="preserve">
+    <value>Visit Detail</value>
+  </data>
+  <data name="Orthodoncia_Fotos" xml:space="preserve">
+    <value>Photos</value>
+  </data>
   <data name="Orthodoncia_IndexView_Titulo1" xml:space="preserve">
     <value>Orthodontic</value>
   </data>
   <data name="Orthodoncia_Paciente" xml:space="preserve">
     <value>Patients Details</value>
+  </data>
+  <data name="Orthodoncia_Panoramica" xml:space="preserve">
+    <value>Panoramic X-ray</value>
   </data>
   <data name="PayDentistDetail_IndexView_Titulo1" xml:space="preserve">
     <value>Dentist Payments</value>

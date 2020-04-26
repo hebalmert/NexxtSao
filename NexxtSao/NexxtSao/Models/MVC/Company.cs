@@ -114,6 +114,9 @@ namespace NexxtSao.Models.MVC
 
         public virtual ICollection<Orthodontic> Orthodontics { get; set; }
 
-      
+        public virtual ICollection<ImgPanoramic> ImgPanoramics { get; set; }
+
+        public virtual ICollection<ImgOrthodon> ImgOrthodons { get; set; }
+
     }
 }

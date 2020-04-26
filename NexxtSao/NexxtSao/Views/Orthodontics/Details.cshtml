@@ -58,12 +58,112 @@
                 </div>
             </div>
         </div>
+
+        <p></p>
+
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Orthodoncia_Panoramica</h4>
+            <div class="card-body">
+
+                @if (Model.ImgPanoramics.Count == 0)
+                {
+                    <h5>No Panoramicas</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+
+                        </thead>
+                        @foreach (var item in Model.ImgPanoramics.OrderByDescending(d => d.Date).ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Photo))
+                                    {
+                                        <img src="@Url.Content(item.Photo)" alt="Image" style="width:50px;height:50px;max-width: 100%; height: auto;" />
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    <a title="Add Item" href="@Url.Action("Details", "ImgPanoramics", new { id = item.ImgPanoramicId })" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-clipboard-list"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <a title="Add Item" href="@Url.Action("Create", "ImgPanoramics", new { idcliente = Model.ClientId })" class="btn btn-primary btn-sm">
+                            <i class="fa fa-x-ray"></i>
+                            @Resources.Resource.Button_Add
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p></p>
+
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Orthodoncia_Fotos</h4>
+            <div class="card-body">
+
+                @if (Model.ImgOrthodons.Count == 0)
+                {
+                    <h5>No Photos</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+
+                        </thead>
+                        @foreach (var item in Model.ImgOrthodons.OrderByDescending(d => d.Date).ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Photo))
+                                    {
+                                        <img src="@Url.Content(item.Photo)" alt="Image" style="width:50px;height:50px;" />
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    <a title="Add Item" href="@Url.Action("Details", "ImgOrthodons", new { id = item.ImgOrthodonId })" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-clipboard-list"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <a title="Add Item" href="@Url.Action("Create", "ImgOrthodons", new { idcliente = Model.ClientId })" class="btn btn-primary btn-sm">
+                            <i class="fa fa-camera"></i>
+                            @Resources.Resource.Button_Add
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="col-md-8">
         <div>
             <div class="card">
-                <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo1</h4>
+                <h4 class="card-header">@Resources.Resource.Orthodoncia_DetalleConsulta</h4>
                 <div class="card-body">
                     <p></p>
                     @if (Model.Orthodontics.Count == 0)
@@ -76,8 +176,8 @@
                             <thead class="thead-light">
                                 <tr class="table-secondary">
                                     @*<th>
-                            Visita
-                        </th>*@
+                                            Visita
+                                        </th>*@
                                     <th>
                                         Fecha
                                     </th>
@@ -98,8 +198,8 @@
                             {
                                 <tr>
                                     @*<td>
-                            @Html.DisplayFor(modelItem => item.Ortodoncia)
-                        </td>*@
+                                            @Html.DisplayFor(modelItem => item.Ortodoncia)
+                                        </td>*@
                                     <td style="width:108px;">
                                         @Html.DisplayFor(modelItem => item.Date)
                                     </td>
@@ -135,7 +235,7 @@
                                 </tr>
                             }
                         </table>
-                        <hr/>
+                        <hr />
                         <strong>Registros: @registros</strong>
                     }
                 </div>
