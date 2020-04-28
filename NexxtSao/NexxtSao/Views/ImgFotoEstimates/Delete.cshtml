@@ -1,0 +1,77 @@
+﻿@model NexxtSao.Models.MVC.ImgFotoEstimate
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<p></p>
+
+<h2>@Resources.Resource.ViewDelete</h2>
+
+<h3>@Resources.Resource.MsgDelete</h3>
+
+<p></p>
+
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="form-row">
+            <div class="col-md-12 mb-1">
+                @*<strong> @Html.DisplayNameFor(model => model.Photo)</strong>*@
+                <p></p>
+                @if (!string.IsNullOrEmpty(Model.Photo))
+                {
+                    <img src="@Url.Content(Model.Photo)" alt="Image" style="width:900px; height:800px;max-width: 100%; height: auto;" />
+                }
+            </div>
+        </div>
+
+        <p></p>
+
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Orthodoncia_Panoramica</h4>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col-md-4 mb-2">
+                        <strong>@Html.DisplayNameFor(model => model.Date)</strong>
+                        @Html.DisplayFor(model => model.Date)
+                    </div>
+
+                    <div class="col-md-4 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Client.Cliente)</strong>
+                        @Html.DisplayFor(model => model.Client.Cliente)
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-12 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Detalle)</strong>
+                        @Html.DisplayFor(model => model.Detalle)
+                    </div>
+                </div>
+                <p></p>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Evolutions", new { id = Model.ClientId })'">
+                                    <i class="fa fa-backspace"></i>
+                                    @Resources.Resource.ButtonBack
+                                </button>
+
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                    @Resources.Resource.ButtonDelete
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -38,5 +38,28 @@ namespace NexxtSao.Classes
             }
 
         }
+
+        public static bool DeletePhoto(string foto)
+        {           
+            if (foto == null || string.IsNullOrEmpty(foto))
+            {
+                return false;
+            }
+
+            try
+            {
+                string path = string.Empty;
+                path = Path.Combine(HttpContext.Current.Server.MapPath(foto));
+                File.Delete(path);
+
+                return true;
+            }
+            catch
+            {
+
+                return false;
+            }
+
+        }
     }
 }

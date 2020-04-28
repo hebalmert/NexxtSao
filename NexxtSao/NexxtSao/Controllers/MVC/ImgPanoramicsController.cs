@@ -201,13 +201,32 @@ namespace NexxtSao.Controllers.MVC
         public ActionResult DeleteConfirmed(int id)
         {
             var imgPanoramic = db.ImgPanoramics.Find(id);
+            var foto = string.Empty;
+            foto = imgPanoramic.Photo;
             try
-            {                
-                db.ImgPanoramics.Remove(imgPanoramic);
-                db.SaveChanges();
+            {
+                if (foto != null || string.IsNullOrEmpty(foto))
+                {
+                    var response = FilesHelper.DeletePhoto(foto);
+                    if (response == true)
+                    {
+                        db.ImgPanoramics.Remove(imgPanoramic);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        var ex = new Exception();
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                        return View(imgPanoramic);
+                    }
+                }
+                else 
+                {
+                    db.ImgPanoramics.Remove(imgPanoramic);
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Details", "Orthodontics", new { id = imgPanoramic.ClientId });
-
             }
             catch (Exception ex)
             {

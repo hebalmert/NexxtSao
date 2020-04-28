@@ -1,0 +1,69 @@
+﻿@model NexxtSao.Models.MVC.ImgPanoramicEstimate
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "ImgPanoramicEstimates", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>ImgPanoramic</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ImgPanoramicEstimateId)
+    @Html.HiddenFor(model => model.CompanyId)
+    @Html.HiddenFor(model => model.EstimateId)
+    @Html.HiddenFor(model => model.ClientId)
+    @Html.HiddenFor(model => model.Photo)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @readonly = "True", @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="btn btn-default btn-file">
+                    @Html.TextBoxFor(modelo => modelo.PhotoFile, new { type = "file" })
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  { id = Model.ImgPanoramicEstimateId})'">
+                <i class="fa fa-backspace"></i>
+                @Resources.Resource.ButtonBack
+            </button>
+
+            <button type="submit" class="btn btn-primary btn-sm">
+                <i class="fa fa-save"></i>
+                @Resources.Resource.ButtonSave
+            </button>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

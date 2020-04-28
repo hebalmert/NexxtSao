@@ -130,5 +130,11 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<ImgPanoramic> ImgPanoramics { get; set; }
 
         public virtual ICollection<ImgOrthodon> ImgOrthodons { get; set; }
+
+        public virtual ICollection<ImgPanoramicEstimate> ImgPanoramicEstimates { get; set; }
+
+        public virtual ICollection<ImgPeripicalEstimate> ImgPeripicalEstimates { get; set; }
+
+        public virtual ICollection<ImgFotoEstimate> ImgFotoEstimates { get; set; }
     }
 }

@@ -205,8 +205,11 @@
     <Compile Include="Controllers\MVC\HeadTextsController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
     <Compile Include="Controllers\MVC\IdentificationsController.cs" />
+    <Compile Include="Controllers\MVC\ImgFotoEstimatesController.cs" />
     <Compile Include="Controllers\MVC\ImgOrthodonsController.cs" />
+    <Compile Include="Controllers\MVC\ImgPanoramicEstimatesController.cs" />
     <Compile Include="Controllers\MVC\ImgPanoramicsController.cs" />
+    <Compile Include="Controllers\MVC\ImgPeripicalEstimatesController.cs" />
     <Compile Include="Controllers\MVC\LevelPricesController.cs" />
     <Compile Include="Controllers\MVC\ManageController.cs" />
     <Compile Include="Controllers\MVC\OrthodonticsController.cs" />
@@ -240,8 +243,11 @@
     <Compile Include="Models\MVC\HeadText.cs" />
     <Compile Include="Models\MVC\Identification.cs" />
     <Compile Include="Models\MVC\IdentityModels.cs" />
+    <Compile Include="Models\MVC\ImgFotoEstimate.cs" />
     <Compile Include="Models\MVC\ImgOrthodon.cs" />
     <Compile Include="Models\MVC\ImgPanoramic.cs" />
+    <Compile Include="Models\MVC\ImgPanoramicEstimate.cs" />
+    <Compile Include="Models\MVC\ImgPeripicalEstimate.cs" />
     <Compile Include="Models\MVC\LevelPrice.cs" />
     <Compile Include="Models\MVC\ManageViewModels.cs" />
     <Compile Include="Models\MVC\NexxtSaoContext.cs" />
@@ -584,9 +590,27 @@
     <Content Include="Views\ImgOrthodons\Details.cshtml" />
     <Content Include="Views\ImgOrthodons\Edit.cshtml" />
     <Content Include="Views\ImgOrthodons\Index.cshtml" />
+    <Content Include="Views\ImgPanoramicEstimates\Create.cshtml" />
+    <Content Include="Views\ImgPanoramicEstimates\Delete.cshtml" />
+    <Content Include="Views\ImgPanoramicEstimates\Details.cshtml" />
+    <Content Include="Views\ImgPanoramicEstimates\Edit.cshtml" />
+    <Content Include="Views\ImgPanoramicEstimates\Index.cshtml" />
+    <Content Include="Views\ImgPeripicalEstimates\Create.cshtml" />
+    <Content Include="Views\ImgPeripicalEstimates\Delete.cshtml" />
+    <Content Include="Views\ImgPeripicalEstimates\Details.cshtml" />
+    <Content Include="Views\ImgPeripicalEstimates\Edit.cshtml" />
+    <Content Include="Views\ImgPeripicalEstimates\Index.cshtml" />
+    <Content Include="Views\ImgFotoEstimates\Create.cshtml" />
+    <Content Include="Views\ImgFotoEstimates\Delete.cshtml" />
+    <Content Include="Views\ImgFotoEstimates\Details.cshtml" />
+    <Content Include="Views\ImgFotoEstimates\Edit.cshtml" />
+    <Content Include="Views\ImgFotoEstimates\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\EvolutionFoto\" />
+    <Folder Include="Content\EvolutionPano\" />
+    <Folder Include="Content\EvolutionPeri\" />
     <Folder Include="Content\Logos\" />
     <Folder Include="Content\OrthoPano\" />
     <Folder Include="Content\OrthoPhoto\" />

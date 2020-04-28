@@ -63,5 +63,11 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<EstimateDetailAdd> EstimateDetailAdds { get; set; }
 
         public virtual ICollection<EvolutionDetails> EvolutionDetails { get; set; }
+
+        public virtual ICollection<ImgPanoramicEstimate> ImgPanoramicEstimates { get; set; }
+
+        public virtual ICollection<ImgPeripicalEstimate> ImgPeripicalEstimates { get; set; }
+
+        public virtual ICollection<ImgFotoEstimate> ImgFotoEstimates { get; set; }
     }
 }

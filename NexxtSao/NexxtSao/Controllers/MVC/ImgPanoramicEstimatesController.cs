@@ -14,42 +14,37 @@ namespace NexxtSao.Controllers.MVC
 {
     [Authorize(Roles = "User")]
 
-    public class ImgOrthodonsController : Controller
+    public class ImgPanoramicEstimatesController : Controller
     {
         private NexxtSaoContext db = new NexxtSaoContext();
 
-        // GET: ImgOrthodons
-        public ActionResult Index(int? idcliente)
+        // GET: ImgPanoramicEstimates
+        public ActionResult Index()
         {
-            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            var imgPanoramicEstimates = db.ImgPanoramicEstimates
+                .Include(i => i.Client)
+                .Include(i => i.Estimate);
 
-            var imgOrthodons = db.ImgOrthodons.Where(c => c.CompanyId == user.CompanyId && c.ClientId == idcliente)
-                .Include(i => i.Client);
-
-            return View(imgOrthodons.ToList());
+            return View(imgPanoramicEstimates.ToList());
         }
 
-        // GET: ImgOrthodons/Details/5
+        // GET: ImgPanoramicEstimates/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var imgOrthodon = db.ImgOrthodons.Find(id);
-            if (imgOrthodon == null)
+            var imgPanoramicEstimate = db.ImgPanoramicEstimates.Find(id);
+            if (imgPanoramicEstimate == null)
             {
                 return HttpNotFound();
             }
-            return View(imgOrthodon);
+            return View(imgPanoramicEstimate);
         }
 
-        // GET: ImgOrthodons/Create
-        public ActionResult Create(int idcliente)
+        // GET: ImgPanoramicEstimates/Create
+        public ActionResult Create(int idcliente, int idestimate)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -57,46 +52,49 @@ namespace NexxtSao.Controllers.MVC
                 return RedirectToAction("Index", "Home");
             }
 
-            var imgorthodon = new ImgOrthodon
+            var imgpanoramicestimate = new ImgPanoramicEstimate
             {
                 CompanyId = user.CompanyId,
+                EstimateId = idestimate,
                 ClientId = idcliente,
                 Date = DateTime.UtcNow
             };
 
-            return View(imgorthodon);
+            return View(imgpanoramicestimate);
         }
 
-        // POST: ImgOrthodons/Create
+        // POST: ImgPanoramicEstimates/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ImgOrthodon imgOrthodon)
+        public ActionResult Create(ImgPanoramicEstimate imgPanoramicEstimate)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.ImgOrthodons.Add(imgOrthodon);
+                    db.ImgPanoramicEstimates.Add(imgPanoramicEstimate);
                     db.SaveChanges();
 
-                    if (imgOrthodon.PhotoFile != null)
+                    if (imgPanoramicEstimate.PhotoFile != null)
                     {
-                        var folder = "~/Content/OrthoPhoto";
-                        var file = string.Format("{0}.jpg", imgOrthodon.ImgOrthodonId);
-                        var response = FilesHelper.UploadPhoto(imgOrthodon.PhotoFile, folder, file);
+                        var folder = "~/Content/EvolutionPano";
+                        var file = string.Format("{0}.jpg", imgPanoramicEstimate.ImgPanoramicEstimateId);
+                        var response = FilesHelper.UploadPhoto(imgPanoramicEstimate.PhotoFile, folder, file);
 
                         if (response)
                         {
                             var pic = string.Format("{0}/{1}", folder, file);
-                            imgOrthodon.Photo = pic;
-                            db.Entry(imgOrthodon).State = EntityState.Modified;
+                            imgPanoramicEstimate.Photo = pic;
+                            db.Entry(imgPanoramicEstimate).State = EntityState.Modified;
                             db.SaveChanges();
                         }
                     }
 
-                    return RedirectToAction("Details", new { id = imgOrthodon.ImgOrthodonId });
+
+                    return RedirectToAction("Details", new { id = imgPanoramicEstimate.ImgPanoramicEstimateId });
+
                 }
                 catch (Exception ex)
                 {
@@ -113,53 +111,54 @@ namespace NexxtSao.Controllers.MVC
                 }
             }
 
-            return View(imgOrthodon);
+            return View(imgPanoramicEstimate);
         }
 
-        // GET: ImgOrthodons/Edit/5
+        // GET: ImgPanoramicEstimates/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var imgOrthodon = db.ImgOrthodons.Find(id);
-            if (imgOrthodon == null)
+            var imgPanoramicEstimate = db.ImgPanoramicEstimates.Find(id);
+            if (imgPanoramicEstimate == null)
             {
                 return HttpNotFound();
             }
 
-            return View(imgOrthodon);
+            return View(imgPanoramicEstimate);
         }
 
-        // POST: ImgOrthodons/Edit/5
+        // POST: ImgPanoramicEstimates/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ImgOrthodon imgOrthodon)
+        public ActionResult Edit(ImgPanoramicEstimate imgPanoramicEstimate)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (imgOrthodon.PhotoFile != null)
+                    if (imgPanoramicEstimate.PhotoFile != null)
                     {
                         var pic = string.Empty;
-                        var folder = "~/Content/OrthoPhoto";
-                        var file = string.Format("{0}.jpg", imgOrthodon.ImgOrthodonId);
-                        var response = FilesHelper.UploadPhoto(imgOrthodon.PhotoFile, folder, file);
+                        var folder = "~/Content/EvolutionPano";
+                        var file = string.Format("{0}.jpg", imgPanoramicEstimate.ImgPanoramicEstimateId);
+                        var response = FilesHelper.UploadPhoto(imgPanoramicEstimate.PhotoFile, folder, file);
 
                         if (response)
                         {
                             pic = string.Format("{0}/{1}", folder, file);
-                            imgOrthodon.Photo = pic;
+                            imgPanoramicEstimate.Photo = pic;
                         }
                     }
 
-                    db.Entry(imgOrthodon).State = EntityState.Modified;
+                    db.Entry(imgPanoramicEstimate).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Details", new { id = imgOrthodon.ImgOrthodonId });
+
+                    return RedirectToAction("Details", new { id = imgPanoramicEstimate.ImgPanoramicEstimateId });
                 }
                 catch (Exception ex)
                 {
@@ -176,32 +175,32 @@ namespace NexxtSao.Controllers.MVC
                 }
             }
 
-            return View(imgOrthodon);
+            return View(imgPanoramicEstimate);
         }
 
-        // GET: ImgOrthodons/Delete/5
+        // GET: ImgPanoramicEstimates/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var imgOrthodon = db.ImgOrthodons.Find(id);
-            if (imgOrthodon == null)
+            var imgPanoramicEstimate = db.ImgPanoramicEstimates.Find(id);
+            if (imgPanoramicEstimate == null)
             {
                 return HttpNotFound();
             }
-            return View(imgOrthodon);
+            return View(imgPanoramicEstimate);
         }
 
-        // POST: ImgOrthodons/Delete/5
+        // POST: ImgPanoramicEstimates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var imgOrthodons = db.ImgOrthodons.Find(id);
+            var imgPanoramicEstimate = db.ImgPanoramicEstimates.Find(id);
             var foto = string.Empty;
-            foto = imgOrthodons.Photo;
+            foto = imgPanoramicEstimate.Photo;
             try
             {
                 if (foto != null || string.IsNullOrEmpty(foto))
@@ -209,23 +208,23 @@ namespace NexxtSao.Controllers.MVC
                     var response = FilesHelper.DeletePhoto(foto);
                     if (response == true)
                     {
-                        db.ImgOrthodons.Remove(imgOrthodons);
+                        db.ImgPanoramicEstimates.Remove(imgPanoramicEstimate);
                         db.SaveChanges();
                     }
                     else
                     {
                         var ex = new Exception();
                         ModelState.AddModelError(string.Empty, ex.Message);
-                        return View(imgOrthodons);
+                        return View(imgPanoramicEstimate);
                     }
                 }
                 else
                 {
-                    db.ImgOrthodons.Remove(imgOrthodons);
+                    db.ImgPanoramicEstimates.Remove(imgPanoramicEstimate);
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Details", "Orthodontics", new { id = imgOrthodons.ClientId });
+                return RedirectToAction("Details", "Evolutions", new { id = imgPanoramicEstimate.ClientId });
             }
             catch (Exception ex)
             {
@@ -240,7 +239,7 @@ namespace NexxtSao.Controllers.MVC
                     ModelState.AddModelError(string.Empty, ex.Message);
                 }
             }
-            return View(imgOrthodons);
+            return View(imgPanoramicEstimate);
         }
 
         protected override void Dispose(bool disposing)
