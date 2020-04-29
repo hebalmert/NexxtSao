@@ -1609,6 +1609,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fotos.
+        /// </summary>
+        public static string ImgFotoEstimate_Titulo1 {
+            get {
+                return ResourceManager.GetString("ImgFotoEstimate_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periapicales.
+        /// </summary>
+        public static string ImgPeriapicalesEstimate_Titulo1 {
+            get {
+                return ResourceManager.GetString("ImgPeriapicalesEstimate_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nivel Precio.
         /// </summary>
         public static string LevelPrice_Modal_NivelPrecio {

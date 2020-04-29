@@ -630,6 +630,12 @@
   <data name="Identification_Model_TipoDocumento" xml:space="preserve">
     <value>Tipo Codumento</value>
   </data>
+  <data name="ImgFotoEstimate_Titulo1" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="ImgPeriapicalesEstimate_Titulo1" xml:space="preserve">
+    <value>Periapical</value>
+  </data>
   <data name="LevelPrice_Modal_NivelPrecio" xml:space="preserve">
     <value>Level Price</value>
   </data>

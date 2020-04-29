@@ -51,7 +51,7 @@
                 <div class="form-row">
                     <p>
                         <a title="Add Item" href="@Url.Action("Create", "ImgPanoramicEstimates", new { idcliente = Model.ClientId, idestimate = Model.EstimateId })" class="btn btn-primary btn-sm">
-                            <i class="fa fa-x-ray"></i>
+                            <i class="fa fa-teeth-open"></i>
                             @Resources.Resource.Button_Add
                         </a>
                     </p>
@@ -62,7 +62,7 @@
         <p></p>
 
         <div class="card">
-            <h4 class="card-header">@Resources.Resource.Orthodoncia_Panoramica</h4>
+            <h4 class="card-header">@Resources.Resource.ImgPeriapicalesEstimate_Titulo1</h4>
             <div class="card-body">
 
                 @if (Model.ImgPeripicalEstimates.Count == 0)
@@ -101,7 +101,7 @@
                 <div class="form-row">
                     <p>
                         <a title="Add Item" href="@Url.Action("Create", "ImgPeripicalEstimates", new { idcliente = Model.ClientId, idestimate = Model.EstimateId })" class="btn btn-primary btn-sm">
-                            <i class="fa fa-x-ray"></i>
+                            <i class="fa fa-tooth"></i>
                             @Resources.Resource.Button_Add
                         </a>
                     </p>
@@ -112,7 +112,7 @@
         <p></p>
 
         <div class="card">
-            <h4 class="card-header">@Resources.Resource.Orthodoncia_Panoramica</h4>
+            <h4 class="card-header">@Resources.Resource.ImgFotoEstimate_Titulo1</h4>
             <div class="card-body">
 
                 @if (Model.ImgFotoEstimates.Count == 0)
@@ -151,7 +151,7 @@
                 <div class="form-row">
                     <p>
                         <a title="Add Item" href="@Url.Action("Create", "ImgFotoEstimates", new { idcliente = Model.ClientId, idestimate = Model.EstimateId })" class="btn btn-primary btn-sm">
-                            <i class="fa fa-x-ray"></i>
+                            <i class="fa fa-camera"></i>
                             @Resources.Resource.Button_Add
                         </a>
                     </p>
@@ -184,7 +184,11 @@
                         @Html.DisplayFor(model => model.Client.Cliente)
                     </div>
                 </div>
-
+                @{
+                    int registros1 = 0;
+                    double saldo1 = 0;
+                    double total1 = 0;
+                }
 
                 <p></p>
                 @if (Model.EstimateDetails.Count == 0)
@@ -211,9 +215,7 @@
                                 <th>
                                 </th>
                             </tr>
-                            @{
-                                int registros = 0;
-                            }
+
                         </thead>
                         @foreach (var item in Model.EstimateDetails.ToList())
                         {
@@ -224,14 +226,16 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Tratamiento)
                                 </td>
-                                <td>
+                                <td align="right">
                                     @Html.DisplayFor(modelItem => item.Saldo)
                                 </td>
-                                <td>
+                                <td align="right">
                                     @Html.DisplayFor(modelItem => item.Total)
                                 </td>
                                 @{
-                                    registros += +1;
+                                    registros1 += +1;
+                                    saldo1 += item.Saldo;
+                                    total1 += item.Total;
                                 }
                                 <td>
                                     @if (item.Saldo > 0)
@@ -243,34 +247,37 @@
                                 </td>
                             </tr>
                         }
-                        @*<tr>
-                                <td align="right">
-                                    <strong>Registros: @registros</strong>
-                                </td>
-                            </tr>*@
+                    <tr>
+                        <td>
+                        </td>
+                        <td align="right">
+                            <strong>Registros: @registros1</strong>
+                        </td>
+                        <td align="right">
+                            <strong>@string.Format("{0:c}", saldo1) </strong>
+                        </td>
+                        <td align="right">
+                            <strong>@string.Format("{0:c}", total1) </strong>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
                     </table>
 
                 }
                 <hr />
-                <div class="form-row">
-                    <div class="col-md-10 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
-                        @Html.DisplayFor(model => model.SubTotal)
-                    </div>
-                </div>
                 @*<div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.sal)</strong>
-                        @Html.DisplayFor(model => model.Iva)
-                    </div>
-                </div>*@
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Total)</strong>
-                        @Html.DisplayFor(model => model.Total)
-                    </div>
-                </div>
-                <hr />
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.sal)</strong>
+                @Html.DisplayFor(model => model.Iva)
+            </div>
+        </div>*@
+                @*<div class="form-row">
+            <div class="col-md-6 mb-2">
+                <strong>@Html.DisplayNameFor(model => model.Total)</strong>
+                @Html.DisplayFor(model => model.Total)
+            </div>
+        </div>*@
                 <div class="form-row">
                     <div class="col-md-6 mb-2">
                         <p>

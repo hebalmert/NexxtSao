@@ -1,10 +1,10 @@
 ﻿@model NexxtSao.Models.MVC.ImgPeripicalEstimate
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = @Resources.Resource.ViewCreate;
 }
-
-<h2>Create</h2>
+<p></p>
+    <h2>@Resources.Resource.ViewCreate</h2>
 
 
 @using (Html.BeginForm("Create", "ImgPeripicalEstimates", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>ImgPhoto</h4>
+        <h4>@Resources.Resource.ImgPeriapicalesEstimate_Titulo1</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CompanyId)
@@ -45,7 +45,7 @@
                 @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <hr/>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Evolutions", new  { id = Model.ClientId})'">

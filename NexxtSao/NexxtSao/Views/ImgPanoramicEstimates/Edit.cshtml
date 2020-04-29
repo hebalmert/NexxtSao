@@ -1,10 +1,10 @@
 ﻿@model NexxtSao.Models.MVC.ImgPanoramicEstimate
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = @Resources.Resource.ViewEdit;
 }
-
-<h2>Edit</h2>
+<p></p>
+<h2>@Resources.Resource.ViewEdit</h2>
 
 
 @using (Html.BeginForm("Edit", "ImgPanoramicEstimates", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>ImgPanoramic</h4>
+    <h4>@Resources.Resource.Orthodoncia_Panoramica</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.ImgPanoramicEstimateId)
@@ -47,7 +47,7 @@
             @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <hr/>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", new  { id = Model.ImgPanoramicEstimateId})'">
