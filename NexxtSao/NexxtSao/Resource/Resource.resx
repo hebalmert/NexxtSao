@@ -609,6 +609,36 @@
   <data name="Estimate_Model_Total" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="Event_Model_Cliente" xml:space="preserve">
+    <value>Paciente</value>
+  </data>
+  <data name="Event_Model_Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Event_Model_Compania" xml:space="preserve">
+    <value>Compañia</value>
+  </data>
+  <data name="Event_Model_DateEnd" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="Event_Model_DateStart" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="Event_Model_Description" xml:space="preserve">
+    <value>Detalle</value>
+  </data>
+  <data name="Event_Model_FullDay" xml:space="preserve">
+    <value>Dia Completo</value>
+  </data>
+  <data name="Event_Model_Motivo" xml:space="preserve">
+    <value>Motivo</value>
+  </data>
+  <data name="Event_Model_Professional" xml:space="preserve">
+    <value>Odontologo</value>
+  </data>
+  <data name="Event_ViewIndex_Titulo1" xml:space="preserve">
+    <value>Agenda</value>
+  </data>
   <data name="Evolucion_Detail_Evolucion" xml:space="preserve">
     <value>Detalle Evolucion</value>
   </data>

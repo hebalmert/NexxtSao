@@ -1537,6 +1537,96 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paciente.
+        /// </summary>
+        public static string Event_Model_Cliente {
+            get {
+                return ResourceManager.GetString("Event_Model_Cliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Event_Model_Color {
+            get {
+                return ResourceManager.GetString("Event_Model_Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compañia.
+        /// </summary>
+        public static string Event_Model_Compania {
+            get {
+                return ResourceManager.GetString("Event_Model_Compania", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fin.
+        /// </summary>
+        public static string Event_Model_DateEnd {
+            get {
+                return ResourceManager.GetString("Event_Model_DateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inicio.
+        /// </summary>
+        public static string Event_Model_DateStart {
+            get {
+                return ResourceManager.GetString("Event_Model_DateStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string Event_Model_Description {
+            get {
+                return ResourceManager.GetString("Event_Model_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dia Completo.
+        /// </summary>
+        public static string Event_Model_FullDay {
+            get {
+                return ResourceManager.GetString("Event_Model_FullDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Motivo.
+        /// </summary>
+        public static string Event_Model_Motivo {
+            get {
+                return ResourceManager.GetString("Event_Model_Motivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odontologo.
+        /// </summary>
+        public static string Event_Model_Professional {
+            get {
+                return ResourceManager.GetString("Event_Model_Professional", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agenda.
+        /// </summary>
+        public static string Event_ViewIndex_Titulo1 {
+            get {
+                return ResourceManager.GetString("Event_ViewIndex_Titulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detalle Evolucion.
         /// </summary>
         public static string Evolucion_Detail_Evolucion {

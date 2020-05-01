@@ -193,6 +193,7 @@
     <Compile Include="Classes\MailHelper.cs" />
     <Compile Include="Classes\UsersHelper.cs" />
     <Compile Include="Controllers\MVC\AccountController.cs" />
+    <Compile Include="Controllers\MVC\CalendarController.cs" />
     <Compile Include="Controllers\MVC\CitiesController.cs" />
     <Compile Include="Controllers\MVC\ClientsController.cs" />
     <Compile Include="Controllers\MVC\CompaniesController.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Controllers\MVC\DentistSpecialtiesController.cs" />
     <Compile Include="Controllers\MVC\DirectPaymentsController.cs" />
     <Compile Include="Controllers\MVC\EstimatesController.cs" />
+    <Compile Include="Controllers\MVC\EventsController.cs" />
     <Compile Include="Controllers\MVC\EvolutionsController.cs" />
     <Compile Include="Controllers\MVC\HeadTextsController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
@@ -238,6 +240,7 @@
     <Compile Include="Models\MVC\Estimate.cs" />
     <Compile Include="Models\MVC\EstimateDetail.cs" />
     <Compile Include="Models\MVC\EstimateDetailAdd.cs" />
+    <Compile Include="Models\MVC\Event.cs" />
     <Compile Include="Models\MVC\EvolutionDetailAdd.cs" />
     <Compile Include="Models\MVC\EvolutionDetails.cs" />
     <Compile Include="Models\MVC\HeadText.cs" />
@@ -250,6 +253,7 @@
     <Compile Include="Models\MVC\ImgPeripicalEstimate.cs" />
     <Compile Include="Models\MVC\LevelPrice.cs" />
     <Compile Include="Models\MVC\ManageViewModels.cs" />
+    <Compile Include="Models\MVC\ModelCalendar.cs" />
     <Compile Include="Models\MVC\NexxtSaoContext.cs" />
     <Compile Include="Models\MVC\Orthodontic.cs" />
     <Compile Include="Models\MVC\OrthodonticDeatilAdd.cs" />
@@ -288,6 +292,8 @@
     <Content Include="Content\ImgCarrusel\banner1.svg" />
     <Content Include="Content\ImgCarrusel\banner2.svg" />
     <Content Include="Content\ImgCarrusel\banner3.svg" />
+    <Content Include="Content\jquery.datetimepicker.css" />
+    <Content Include="Scripts\Build\jquery.datetimepicker.js" />
     <Content Include="Content\JquerySearch\jquery-1.12.4.js" />
     <Content Include="Content\JquerySearch\jquery-ui.css" />
     <Content Include="Content\JquerySearch\jquery-ui.js" />
@@ -309,6 +315,10 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Build\jquery.datetimepicker.full.js" />
+    <Content Include="Scripts\Build\jquery.datetimepicker.full.min.js" />
+    <Content Include="Scripts\Build\jquery.datetimepicker.min.css" />
+    <Content Include="Scripts\Build\jquery.datetimepicker.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -328,17 +338,20 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="webfonts\fa-brands-400.svg" />
-    <Content Include="webfonts\fa-regular-400.svg" />
-    <Content Include="webfonts\fa-solid-900.svg" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.5.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.0.js" />
+    <Content Include="Scripts\jquery-3.5.0.min.js" />
+    <Content Include="Scripts\jquery-3.5.0.slim.js" />
+    <Content Include="Scripts\jquery-3.5.0.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
+    <Content Include="Content\datetimepicker.jquery.json" />
+    <Content Include="Scripts\jquery-3.5.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.0.min.map" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -605,6 +618,12 @@
     <Content Include="Views\ImgFotoEstimates\Details.cshtml" />
     <Content Include="Views\ImgFotoEstimates\Edit.cshtml" />
     <Content Include="Views\ImgFotoEstimates\Index.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Calendar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -621,8 +640,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

@@ -155,6 +155,18 @@ namespace NexxtSao.Classes
             return nivelprecio.OrderBy(o => o.NivelPrecio).ToList();
         }
 
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        //Tiempo Horario para Guardar con formato la fecha
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        public static TimeZoneInfo GetTimeZone()
+        {
+            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-3, 0, 0), "Colombia", "Colombia");
+
+            return tz;
+        }
+        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::.
+
+
         public void Dispose()
         {
             throw new NotImplementedException();
