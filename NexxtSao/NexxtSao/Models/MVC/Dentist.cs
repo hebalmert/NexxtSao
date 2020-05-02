@@ -26,6 +26,20 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_Date")]
         public DateTime Date { get; set; }
 
+        [DataType(DataType.ImageUrl)]
+        [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_Photo")]
+        public string Photo { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_FirstName")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_LastName")]
+        public string LastName { get; set; }
+
         [MaxLength(100, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Index("Dentist_FullNname_Company_Index", 2, IsUnique = true)]
         [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_Dentist")]
@@ -72,6 +86,12 @@ namespace NexxtSao.Models.MVC
         public int DentistSpecialtyId { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
+        [MaxLength(256, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [DataType(DataType.MultilineText)]
+        [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_Comentario")]
+        public string Comentario { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_City")]
         public int CityId { get; set; }
@@ -83,6 +103,9 @@ namespace NexxtSao.Models.MVC
 
         [Display(ResourceType = typeof(Resource), Name = "Dentist_Model_Active")]
         public bool Activo { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase PhotoFile { get; set; }
 
         public virtual Company Company { get; set; }
 

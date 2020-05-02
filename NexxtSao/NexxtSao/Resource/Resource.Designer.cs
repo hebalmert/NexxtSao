@@ -781,6 +781,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comentario.
+        /// </summary>
+        public static string Dentist_Model_Comentario {
+            get {
+                return ResourceManager.GetString("Dentist_Model_Comentario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compañia.
         /// </summary>
         public static string Dentist_Model_Company {
@@ -817,6 +826,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string Dentist_Model_FirstName {
+            get {
+                return ResourceManager.GetString("Dentist_Model_FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido.
+        /// </summary>
+        public static string Dentist_Model_LastName {
+            get {
+                return ResourceManager.GetString("Dentist_Model_LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Celular.
         /// </summary>
         public static string Dentist_Model_Movil {
@@ -831,6 +858,15 @@ namespace Resources {
         public static string Dentist_Model_Phone {
             get {
                 return ResourceManager.GetString("Dentist_Model_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foto.
+        /// </summary>
+        public static string Dentist_Model_Photo {
+            get {
+                return ResourceManager.GetString("Dentist_Model_Photo", resourceCulture);
             }
         }
         

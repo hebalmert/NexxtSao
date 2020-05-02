@@ -14,6 +14,17 @@
             <h4 class="card-header">@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
             <div class="card-body">
                 <div class="form-row">
+                    <div class="col-md-6 mb-1">
+                        @*<strong> @Html.DisplayNameFor(model => model.Photo)</strong>*@
+                        <p></p>
+                        @if (!string.IsNullOrEmpty(Model.Photo))
+                        {
+                            <img class="rounded-circle" src="@Url.Content(Model.Photo)" alt="Image" style="width:100px; height:100px;max-width: 100%; height: auto;" />
+                        }
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
                     <div class="col-md-6 mb-2">
                         <strong> @Html.DisplayNameFor(model => model.Date)</strong>
                         @Html.DisplayFor(model => model.Date)
@@ -32,13 +43,13 @@
                 </div>
                 <div class="form-row">
                     @*<div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
-                        @Html.DisplayFor(model => model.Identification.TipoDocumento)
-                    </div>*@
+                <strong>@Html.DisplayNameFor(model => model.Identification.TipoDocumento)</strong>
+                @Html.DisplayFor(model => model.Identification.TipoDocumento)
+            </div>*@
 
                     <div class="col-md-12 mb-2">
                         <strong> @Html.DisplayNameFor(model => model.IdentificationNumber)</strong>
-                        @Html.DisplayFor(model => model.Identification.TipoDocumento): 
+                        @Html.DisplayFor(model => model.Identification.TipoDocumento):
                         @Html.DisplayFor(model => model.IdentificationNumber)
                     </div>
                 </div>
@@ -47,6 +58,13 @@
                     <div class="col-md-6 mb-2">
                         <strong> @Html.DisplayNameFor(model => model.UserName)</strong>
                         @Html.DisplayFor(model => model.UserName)
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
+                    <div class="col-md-10 mb-2">
+                        <strong> @Html.DisplayNameFor(model => model.Comentario)</strong>
+                        @Html.DisplayFor(model => model.Comentario)
                     </div>
                 </div>
                 <hr />

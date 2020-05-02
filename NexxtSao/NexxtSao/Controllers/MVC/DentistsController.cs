@@ -268,8 +268,41 @@ namespace NexxtSao.Controllers.MVC
             {
                 try
                 {
+                    dentist.Odontologo = dentist.FirstName + " " + dentist.LastName;
+
                     db.Dentists.Add(dentist);
                     db.SaveChanges();
+                    UsersHelper.CreateUserASP(dentist.UserName, "Dentist");
+
+                    if (dentist.PhotoFile != null)
+                    {
+                        var folder = "~/Content/Dentist";
+                        var file = string.Format("{0}.jpg", dentist.DentistId);
+                        var response = FilesHelper.UploadPhoto(dentist.PhotoFile, folder, file);
+
+                        if (response)
+                        {
+                            var pic = string.Format("{0}/{1}", folder, file);
+                            dentist.Photo = pic;
+                            db.Entry(dentist).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                    }
+
+                    var usuario = new User
+                    {
+                        UserName = dentist.UserName,
+                        FirstName = dentist.FirstName,
+                        LastName = dentist.LastName,
+                        Phone = dentist.Phone,
+                        Address = dentist.Address,
+                        Puesto = "Dentist",
+                        CompanyId = dentist.CompanyId
+                    };
+                    db.Users.Add(usuario);
+                    db.SaveChanges();
+                    db.Dispose();
+
                     return RedirectToAction("Details", new { id = dentist.DentistId});
                 }
                 catch (Exception ex)
@@ -326,7 +359,112 @@ namespace NexxtSao.Controllers.MVC
             {
                 try
                 {
+                    dentist.Odontologo = dentist.FirstName + " " + dentist.LastName;
                     db.Entry(dentist).State = EntityState.Modified;
+
+                    //Se verifica si la foto cambio para actualizarla
+                    if (dentist.PhotoFile != null)
+                    {
+                        var pic = string.Empty;
+                        var folder = "~/Content/Dentist";
+                        var file = string.Format("{0}.jpg", dentist.DentistId);
+                        var response = FilesHelper.UploadPhoto(dentist.PhotoFile, folder, file);
+
+                        if (response)
+                        {
+                            pic = string.Format("{0}/{1}", folder, file);
+                            dentist.Photo = pic;
+                        }
+                    }
+                    //Fin Foto
+
+                    if (dentist.Activo == true)
+                    {
+                        var db2 = new NexxtSaoContext();
+                        var currentTech = db2.Dentists.Find(dentist.DentistId);
+                        if (currentTech.UserName != dentist.UserName)
+                        {
+                            var db3 = new NexxtSaoContext();
+                            var usuarios = db3.Users.Where(c => c.UserName == currentTech.UserName && c.FirstName == currentTech.FirstName && c.LastName == currentTech.LastName).FirstOrDefault();
+                            if (usuarios != null)
+                            {
+                                usuarios.UserName = dentist.UserName;
+                                db3.Entry(usuarios).State = EntityState.Modified;
+                                db3.SaveChanges();
+                                db3.Dispose();
+                            }
+                            else
+                            {
+                                var db4 = new NexxtSaoContext();
+                                var usuario = new User
+                                {
+                                    UserName = dentist.UserName,
+                                    FirstName = dentist.FirstName,
+                                    LastName = dentist.LastName,
+                                    Phone = dentist.Phone,
+                                    Address = dentist.Address,
+                                    Puesto = "Dentist",
+                                    CompanyId = dentist.CompanyId
+                                };
+                                db4.Users.Add(usuario);
+                                db4.SaveChanges();
+                                db4.Dispose();
+                                UsersHelper.CreateUserASP(dentist.UserName, "Dentist");
+                            }
+                            UsersHelper.UpdateUserName(currentTech.UserName, dentist.UserName);
+                        }
+                        else
+                        {
+                            var db3 = new NexxtSaoContext();
+                            var usuarios = db3.Users.Where(c => c.UserName == currentTech.UserName && c.FirstName == currentTech.FirstName && c.LastName == currentTech.LastName).FirstOrDefault();
+                            if (usuarios != null)
+                            {
+                                usuarios.UserName = dentist.UserName;
+                                db3.Entry(usuarios).State = EntityState.Modified;
+                                db3.SaveChanges();
+                                db3.Dispose();
+                            }
+                            else
+                            {
+                                var db4 = new NexxtSaoContext();
+                                var usuario = new User
+                                {
+                                    UserName = dentist.UserName,
+                                    FirstName = dentist.FirstName,
+                                    LastName = dentist.LastName,
+                                    Phone = dentist.Phone,
+                                    Address = dentist.Address,
+                                    Puesto = "Dentist",
+                                    CompanyId = dentist.CompanyId
+                                };
+                                db4.Users.Add(usuario);
+                                db4.SaveChanges();
+                                db4.Dispose();
+                                UsersHelper.CreateUserASP(dentist.UserName, "Dentist");
+                            }
+                            UsersHelper.UpdateUserName(currentTech.UserName, dentist.UserName);
+                        }
+                    }
+
+                    if (dentist.Activo == false)
+                    {
+                        var db5 = new NexxtSaoContext();
+                        var currentTech2 = db5.Dentists.Find(dentist.DentistId);
+
+                        var db6 = new NexxtSaoContext();
+                        var usuarios = db6.Users.Where(c => c.UserName == currentTech2.UserName && c.FirstName == currentTech2.FirstName && c.LastName == currentTech2.LastName).FirstOrDefault();
+                        if (usuarios != null)
+                        {
+                            db6.Users.Remove(usuarios);
+                            db6.SaveChanges();
+                            db6.Dispose();
+                        }
+                        UsersHelper.DeleteUser(dentist.UserName);
+                        //UsersHelper.UpdateUserName(currentTech2.UserName, technical.UserName);
+
+                        db5.Dispose();
+                    }
+
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -374,10 +512,30 @@ namespace NexxtSao.Controllers.MVC
         public ActionResult DeleteConfirmed(int id)
         {
             var dentist = db.Dentists.Find(id);
-            db.Dentists.Remove(dentist);
+            var foto = string.Empty;
+            foto = dentist.Photo;
             try
             {
-                db.SaveChanges();
+                if (foto != null || string.IsNullOrEmpty(foto))
+                {
+                    var response = FilesHelper.DeletePhoto(foto);
+                    if (response == true)
+                    {
+                        db.Dentists.Remove(dentist);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        var ex = new Exception();
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                        return View(dentist);
+                    }
+                }
+                else
+                {
+                    db.Dentists.Remove(dentist);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch (Exception ex)

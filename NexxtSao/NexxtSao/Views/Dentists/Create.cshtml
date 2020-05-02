@@ -7,10 +7,10 @@
 <h2>@Resources.Resource.ViewCreate</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Dentists", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-<h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+    <h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
     <hr />
     <div class="form-row">
 
@@ -26,10 +26,13 @@
         </div>
 
         <div class="col-md-4 mb-2">
-            @Html.LabelFor(model => model.Odontologo, htmlAttributes: new { @class = "control-label col-md-10" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Odontologo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Odontologo, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <span class="btn btn-default btn-file">
+                        @Html.TextBoxFor(modelo => modelo.PhotoFile, new { type = "file" })
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -47,6 +50,22 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdentificationNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdentificationNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-4 mb-2">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-4 mb-2">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -84,6 +103,14 @@
             <div class="col-md-10">
                 @Html.DropDownList("DentistSpecialtyId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DentistSpecialtyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -146,4 +173,29 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#CityId").change(function () {
+                $("#ZoneId").empty();
+                $("#ZoneId").append('<option value="0">[Seleccione Zona...]</option>');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetZone")',
+                    dataType: 'json',
+                    data: { cityId: $("#CityId").val() },
+                    success: function (data) {
+                        $.each(data, function (i, data) {
+                            $("#ZoneId").append('<option value="'
+                             + data.ZoneId + '">'
+                             + data.Zona + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Error de Lectura de Relacion' + ex);
+                    }
+                });
+                return false;
+            })
+        });
+    </script>
 }

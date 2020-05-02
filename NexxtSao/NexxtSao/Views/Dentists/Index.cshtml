@@ -50,13 +50,13 @@
     <thead class="thead-light">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Photo)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Odontologo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().DentistSpecialty.Especialidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Movil)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().Activo)
@@ -66,36 +66,39 @@
     </thead>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Odontologo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DentistSpecialty.Especialidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Movil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Activo)
-            </td>
-            <td>
-                <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+<tr>
+    <td>
+        @if (!string.IsNullOrEmpty(item.Photo))
+        {
+            <img class="rounded-circle" src="@Url.Content(item.Photo)" alt="Image" style="width:50px;height:50px;max-width: 100%; height: auto;" />
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Odontologo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DentistSpecialty.Especialidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Activo)
+    </td>
+    <td>
+        <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
                    '@Url.Action("Edit", new { id = item.DentistId})'">
-                    <i class="fa fa-pencil-alt"></i>
-                </button>
+            <i class="fa fa-pencil-alt"></i>
+        </button>
 
-                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+        <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
                    '@Url.Action("Details", new { id = item.DentistId})'">
-                    <i class="fa fa-clipboard-list"></i>
-                </button>
+            <i class="fa fa-clipboard-list"></i>
+        </button>
 
-                <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+        <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
                     '@Url.Action("Delete", new { id = item.DentistId})'">
-                    <i class="fa fa-trash"></i>
-                </button>
-            </td>
-        </tr>
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+</tr>
     }
 
 </table>

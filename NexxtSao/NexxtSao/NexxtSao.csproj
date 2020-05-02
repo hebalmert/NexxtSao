@@ -627,6 +627,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Dentist\" />
     <Folder Include="Content\EvolutionFoto\" />
     <Folder Include="Content\EvolutionPano\" />
     <Folder Include="Content\EvolutionPeri\" />

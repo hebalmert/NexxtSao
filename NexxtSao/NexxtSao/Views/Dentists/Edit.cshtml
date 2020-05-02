@@ -7,15 +7,16 @@
 <h2>@Resources.Resource.ViewEdit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Dentists", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-<h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
+    <h4>@Resources.Resource.Dentist_ViewIndex_Titulo1</h4>
     <hr />
     <div class="form-row">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.DentistId)
         @Html.HiddenFor(model => model.CompanyId)
+        @Html.HiddenFor(model => model.Photo)
 
         <div class="col-md-4 mb-2">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -26,10 +27,27 @@
         </div>
 
         <div class="col-md-4 mb-2">
-            @Html.LabelFor(model => model.Odontologo, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <span class="btn btn-default btn-file">
+                        @Html.TextBoxFor(modelo => modelo.PhotoFile, new { type = "file" })
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-10" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Odontologo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Odontologo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-10" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -84,6 +102,14 @@
             <div class="col-md-10">
                 @Html.DropDownList("DentistSpecialtyId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DentistSpecialtyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-2">
+            @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
