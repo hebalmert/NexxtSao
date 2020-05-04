@@ -13,7 +13,7 @@ using PagedList;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Dentist")]
 
     public class ClientsController : Controller
     {

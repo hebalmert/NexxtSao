@@ -12,7 +12,7 @@ using NexxtSao.Models.MVC;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Dentist")]
 
     public class EstimatesController : Controller
     {
@@ -94,6 +94,7 @@ namespace NexxtSao.Controllers.MVC
                 Categoria = estimatedetall.TreatmentCategory.CategoriaTratamiento,
                 tratamiento = estimatedetall.Treatment.Servicio,
                 TreatmentId = estimatedetall.TreatmentId,
+                Diente = estimatedetall.Diente,
                 Tasa = estimatedetall.Tasa,
                 Unitario = estimatedetall.Unitario,
                 Cantidad = estimatedetall.Cantidad,
@@ -125,6 +126,7 @@ namespace NexxtSao.Controllers.MVC
                     var currenCantidad = currenDetails.Cantidad;
                     var currenAbono = currenDetails.Abono;
                     var currenSaldo = currenDetails.Saldo;
+                    var currentdiente = estimatedetailadd.Diente;
 
                     if (estimatedetailadd.Total < currenDetails.Abono)
                     {
@@ -135,6 +137,7 @@ namespace NexxtSao.Controllers.MVC
                     var Ntotal = estimatedetailadd.Total;
                     var Nsaldo = Ntotal - currenAbono;
 
+                    currenDetails.Diente = currentdiente;
                     currenDetails.Cantidad = estimatedetailadd.Cantidad;
                     currenDetails.Total = estimatedetailadd.Total;
                     currenDetails.Abono = currenAbono;

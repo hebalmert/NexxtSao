@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]  // [Authorize(Roles = "User, Profe")] para usarse por dos perfiles de usuarios
+    [Authorize(Roles = "User, Dentist")]  // [Authorize(Roles = "User, Profe")] para usarse por dos perfiles de usuarios
 
 
     public class CalendarController : Controller

@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Dentist")]
 
     public class EvolutionsController : Controller
     {
@@ -236,10 +236,11 @@ namespace NexxtSao.Controllers.MVC
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             var estimate = db.Estimates.Where(c=> c.ClientId == id).FirstOrDefault();
             if (estimate == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Details", "Clients", new { id = id});
             }
             return View(estimate);
         }

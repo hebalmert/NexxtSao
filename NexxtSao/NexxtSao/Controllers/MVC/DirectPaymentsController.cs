@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Dentist")]
 
     public class DirectPaymentsController : Controller
     {

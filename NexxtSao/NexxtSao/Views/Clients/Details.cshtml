@@ -12,6 +12,17 @@
             <h4 class="card-header">@Resources.Resource.Client_IndeView_titulo1</h4>
             <div class="card-body">
                 <div class="form-row">
+                    <div class="col-md-6 mb-1">
+                        @*<strong> @Html.DisplayNameFor(model => model.Photo)</strong>*@
+                        <p></p>
+                        @if (!string.IsNullOrEmpty(Model.Photo))
+                        {
+                            <img class="rounded-circle" src="@Url.Content(Model.Photo)" alt="Image" style="width:100px; height:100px;max-width: 100%; height: auto;" />
+                        }
+                    </div>
+                </div>
+                <hr />
+                <div class="form-row">
                     <div class="col-md-6 mb-2">
                         <strong> @Html.DisplayNameFor(model => model.Date)</strong>
                         @Html.DisplayFor(model => model.Date)
