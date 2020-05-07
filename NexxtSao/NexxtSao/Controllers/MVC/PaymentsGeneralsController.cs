@@ -25,7 +25,7 @@ namespace NexxtSao.Controllers.MVC
                 return RedirectToAction("Index", "Home");
             }
 
-            if (DentistId != 0 || DentistId != null)
+            if (DentistId != 0)
             {
                 var directGenerals = db.PaymentsGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false && c.DentistId == DentistId)
                     .Include(d => d.Client)
@@ -35,7 +35,7 @@ namespace NexxtSao.Controllers.MVC
             }
             else
             {
-                var directGenerals = db.PaymentsGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false && c.Client.Cliente == "rt445fff45345")
+                var directGenerals = db.PaymentsGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false)
                     .Include(d => d.Client)
                     .Include(d => d.Dentist);
                 ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(user.CompanyId), "DentistId", "Odontologo");

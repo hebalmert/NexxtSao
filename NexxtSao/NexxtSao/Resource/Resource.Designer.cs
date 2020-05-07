@@ -196,6 +196,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Organiza las Citas de todos los Odontologos y permite que cada Odontologo pueda entrar a Revisar o Ingresar nuevas Citas. .
+        /// </summary>
+        public static string CardCitas_Texto {
+            get {
+                return ResourceManager.GetString("CardCitas_Texto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recibe los Pagos de tratamientos y realiza el pago Odontologos por Tratamiento realizado, todo segun sus procentajes..
+        /// </summary>
+        public static string CardCobros_Texto {
+            get {
+                return ResourceManager.GetString("CardCobros_Texto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registra los Odontologos y asigna Porcentaje por Categoria, podran varias sus porcentajes segun el tratamiento..
+        /// </summary>
+        public static string CardOdontologos_Texto {
+            get {
+                return ResourceManager.GetString("CardOdontologos_Texto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Categoria Tratamiento.
         /// </summary>
         public static string CategoryTreatments_Model_Category {
@@ -1708,6 +1735,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Agenda de Cita.
+        /// </summary>
+        public static string Home_Card1_Agenda {
+            get {
+                return ResourceManager.GetString("Home_Card1_Agenda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odontologos.
+        /// </summary>
+        public static string Home_Card2_Odontolo {
+            get {
+                return ResourceManager.GetString("Home_Card2_Odontolo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cobros y Pagos.
+        /// </summary>
+        public static string Home_Card3_Pagos {
+            get {
+                return ResourceManager.GetString("Home_Card3_Pagos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tipo Documento.
         /// </summary>
         public static string Identification_IndexView_Titulo1 {
@@ -1875,6 +1929,15 @@ namespace Resources {
         public static string MsgDelete {
             get {
                 return ResourceManager.GetString("MsgDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Software para odontologos SAO.
+        /// </summary>
+        public static string NombreSoftware {
+            get {
+                return ResourceManager.GetString("NombreSoftware", resourceCulture);
             }
         }
         

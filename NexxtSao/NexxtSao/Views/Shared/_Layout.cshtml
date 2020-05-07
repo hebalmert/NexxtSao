@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="~/Content/all.min.css" rel="stylesheet" />
     <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
-    <link href="~/Content/regular.min.css" rel="stylesheet" />
-    <link href="~/Content/solid.min.css" rel="stylesheet" />
-    <link href="~/Content/svg-with-js.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
 
     <title>@ViewBag.Title - NexxtSao</title>
     @Styles.Render("~/Content/css")
@@ -17,7 +18,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         @Html.ActionLink("NexxtSao", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        @*<a class="navbar-brand" href="#">Navbar</a>*@
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,6 +29,7 @@
                 <li class="nav-item active">
                     @Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "nav-link" })
                 </li>
+
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="nav-item dropdown">
@@ -63,7 +65,7 @@
                     </li>
                 }
 
-                @if (User.IsInRole("User") | User.IsInRole("Dentist"))
+                @if (User.IsInRole("User"))
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +77,7 @@
                     </li>
                 }
 
-                @if (User.IsInRole("User") | User.IsInRole("Dentist"))
+                @if (User.IsInRole("User"))
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -120,8 +122,10 @@
                         </div>
                     </li>
                 }
+                <li class="nav-item active">
+                    @Html.Partial("_LoginPartial")
+                </li>
             </ul>
-            @Html.Partial("_LoginPartial")
         </div>
     </nav>
     <div class="container body-content">
@@ -134,6 +138,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", false)
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

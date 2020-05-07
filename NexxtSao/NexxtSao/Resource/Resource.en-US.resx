@@ -162,6 +162,15 @@
   <data name="Button_Estimate_New" xml:space="preserve">
     <value>Estimate</value>
   </data>
+  <data name="CardCitas_Texto" xml:space="preserve">
+    <value>Organize the Appointments of all Dentists and allow each Dentist to enter to Review or Enter new Appointments.</value>
+  </data>
+  <data name="CardCobros_Texto" xml:space="preserve">
+    <value>Receive Payments for treatments and pay Dentists for Treatment performed, all according to established procedures.</value>
+  </data>
+  <data name="CardOdontologos_Texto" xml:space="preserve">
+    <value>Register the Dentists of your office and assign his Percentage by Category, so that their percentages may vary according to the treatment to be performed.</value>
+  </data>
   <data name="CategoryTreatments_Model_Categoria" xml:space="preserve">
     <value>Treatments Category</value>
   </data>
@@ -663,6 +672,15 @@
   <data name="HeadText_Model_Texto" xml:space="preserve">
     <value>Header Text</value>
   </data>
+  <data name="Home_Card1_Agenda" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="Home_Card2_Odontolo" xml:space="preserve">
+    <value>Dentist</value>
+  </data>
+  <data name="Home_Card3_Pagos" xml:space="preserve">
+    <value>Payments</value>
+  </data>
   <data name="Identification_IndexView_Titulo1" xml:space="preserve">
     <value>Tipo Documento</value>
   </data>
@@ -719,6 +737,9 @@
   </data>
   <data name="Msg_Required" xml:space="preserve">
     <value>The Field {0} is Required</value>
+  </data>
+  <data name="NombreSoftware" xml:space="preserve">
+    <value>SAO dental software</value>
   </data>
   <data name="Orthodoncia_DetalleConsulta" xml:space="preserve">
     <value>Visit Detail</value>

@@ -1,31 +1,142 @@
-﻿@{
+﻿@model NexxtSao.Models.MVC.User
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<style>
+    .jumbotron1 {
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("../Content/ImgCarrusel/banner1.svg");
+        background-size: 100%, 100%;
+        color: white;
+    }
+
+    .jumbotron2 {
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("../Content/ImgCarrusel/banner2.svg");
+        background-size: 100%, 100%;
+        color: white;
+    }
+
+    .jumbotron3 {
+        background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url("../Content/ImgCarrusel/banner3.svg");
+        background-size: 100%, 100%;
+        color: white;
+    }
+</style>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="jumbotron jumbotron-fluid jumbotron1">
+                <div class="container">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                    {
+                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                    }
+                    @if (Model != null)
+                    {<h1 class="display-4"><strong>@Html.DisplayFor(model => model.Company.Name)</strong></h1>
+                    <p class="lead">@Resources.Resource.NombreSoftware</p>
+                }
+                else
+                {<h1 class="display-4"><strong>Infoplanet-Team</strong></h1>}
+
+                    @if (Model == null)
+                    {
+                        <p class="lead">@Resources.Resource.NombreSoftware</p>}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="jumbotron jumbotron-fluid jumbotron2">
+                <div class="container">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                    {
+                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                    }
+                    @if (Model != null)
+                    {<h1 class="display-4"><strong>@Html.DisplayFor(model => model.Company.Name)</strong></h1>
+                    <p class="lead">@Resources.Resource.NombreSoftware</p>
+                }
+                else
+                {<h1 class="display-4"><strong>Infoplanet-Team</strong></h1>}
+
+                    @if (Model == null)
+                    {
+                        <p class="lead">@Resources.Resource.NombreSoftware</p>}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="jumbotron jumbotron-fluid jumbotron3">
+                <div class="container">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.Company.Logo))
+                    {
+                        <img src="@Url.Content(Model.Company.Logo)" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;" />
+                    }
+                    @if (Model != null)
+                    {<h1 class="display-4"><strong>@Html.DisplayFor(model => model.Company.Name)</strong></h1>
+                    <p class="lead">@Resources.Resource.NombreSoftware</p>
+                }
+                else
+                {<h1 class="display-4"><strong>Infoplanet-Team</strong></h1>}
+
+                    @if (Model == null)
+                    {
+                        <p class="lead">@Resources.Resource.NombreSoftware</p>}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/ImgAgenda1.gif" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Resources.Resource.Home_Card1_Agenda</h5>
+                <p class="card-text">@Resources.Resource.CardCitas_Texto</p>
+                @if (Model != null)
+                {
+                    <a href="@Url.Action("Index", "Calendar", new { })" class="btn btn-outline-info btn-sm">Agenda</a>
+                }
+            </div>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/ImgDentist1.gif" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Resources.Resource.Home_Card2_Odontolo</h5>
+                <p class="card-text">@Resources.Resource.CardOdontologos_Texto</p>
+                @if (Model != null)
+                {
+                    <a href="@Url.Action("Index", "Dentists", new { })" class="btn btn-outline-info btn-sm">Odontologos</a>
+                }
+            </div>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-sm-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; text-align:justify">
+            <div style="text-align:center">
+                <img src="~/Content/ImgHomePage/ImgPagos1.gif" class="card-img-top" alt="Image" style="width:100px;height:100px;max-width: 100%; height: auto;">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Resources.Resource.Home_Card3_Pagos</h5>
+                <p class="card-text">@Resources.Resource.CardCobros_Texto</p>
+                @if (Model != null)
+                {
+                    <a href="@Url.Action("Index", "PaymentsGenerals", new { })" class="btn btn-outline-info btn-sm">Pago Pendiente</a>
+                }
+            </div>
+        </div>
+
     </div>
 </div>

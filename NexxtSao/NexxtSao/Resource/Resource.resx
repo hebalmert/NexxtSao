@@ -162,6 +162,15 @@
   <data name="Button_Estimate_New" xml:space="preserve">
     <value>Presupuesto</value>
   </data>
+  <data name="CardCitas_Texto" xml:space="preserve">
+    <value>Organiza las Citas de todos los Odontologos y permite que cada Odontologo pueda entrar a Revisar o Ingresar nuevas Citas. </value>
+  </data>
+  <data name="CardCobros_Texto" xml:space="preserve">
+    <value>Recibe los Pagos de tratamientos y realiza el pago Odontologos por Tratamiento realizado, todo segun sus procentajes.</value>
+  </data>
+  <data name="CardOdontologos_Texto" xml:space="preserve">
+    <value>Registra los Odontologos y asigna Porcentaje por Categoria, podran varias sus porcentajes segun el tratamiento.</value>
+  </data>
   <data name="CategoryTreatments_Model_Category" xml:space="preserve">
     <value>Categoria Tratamiento</value>
   </data>
@@ -666,6 +675,15 @@
   <data name="HeadText_Model_Texto" xml:space="preserve">
     <value>Texto Encabezado</value>
   </data>
+  <data name="Home_Card1_Agenda" xml:space="preserve">
+    <value>Agenda de Cita</value>
+  </data>
+  <data name="Home_Card2_Odontolo" xml:space="preserve">
+    <value>Odontologos</value>
+  </data>
+  <data name="Home_Card3_Pagos" xml:space="preserve">
+    <value>Cobros y Pagos</value>
+  </data>
   <data name="Identification_IndexView_Titulo1" xml:space="preserve">
     <value>Tipo Documento</value>
   </data>
@@ -722,6 +740,9 @@
   </data>
   <data name="Msg_Required" xml:space="preserve">
     <value>El Campo {0} es Requerido</value>
+  </data>
+  <data name="NombreSoftware" xml:space="preserve">
+    <value>Software para odontologos SAO</value>
   </data>
   <data name="Orthodoncia_DetalleConsulta" xml:space="preserve">
     <value>Detalle Consulta</value>
