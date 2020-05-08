@@ -140,3 +140,48 @@
 
     </div>
 </div>
+@if (Model == null)
+{
+    <div class="card text-center">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Para Aquirir nuestro Software</h5>
+            <p class="card-text">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <img src="~/Content/ImgHomePage/ImgMercadoPago.gif" class="card-img-top" alt="Image" style="width:293px;height:82px;max-width: 100%; height: auto;">
+                        <hr />
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <img src="~/Content/ImgHomePage/ImgPayPal.gif" class="card-img-top" alt="Image" style="width:293px;height:82px;max-width: 100%; height: auto;">
+                        <hr />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <a mp-mode="dftl" href="https://www.mercadopago.com.co/checkout/v1/redirect?pref_id=134964291-ad23bbd8-d5ed-4954-8554-ab161e497f70" name="MP-payButton" class='orange-ar-s-rn-none'>Pagar</a>
+                        <script type="text/javascript">
+                            (function () { function $MPC_load() { window.$MPC_loaded !== true && (function () { var s = document.createElement("script"); s.type = "text/javascript"; s.async = true; s.src = document.location.protocol + "//secure.mlstatic.com/mptools/render.js"; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); window.$MPC_loaded = true; })(); } window.$MPC_loaded !== true ? (window.attachEvent ? window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null; })();
+                        </script>
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="MK4MJQSZWVEGW">
+                            <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet.">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </div>
+                </div>
+            </p>
+            @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+    </div>
+}
