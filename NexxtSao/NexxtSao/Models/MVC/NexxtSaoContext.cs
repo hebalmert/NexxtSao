@@ -83,5 +83,9 @@
         public System.Data.Entity.DbSet<NexxtSao.Models.MVC.ImgFotoEstimate> ImgFotoEstimates { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSao.Models.MVC.Event> Events { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSao.Models.MVC.Color> Colors { get; set; }
+
+        public System.Data.Entity.DbSet<NexxtSao.Models.MVC.Hour> Hours { get; set; }
     }
 }

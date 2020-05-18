@@ -125,5 +125,6 @@ namespace NexxtSao.Models.MVC
         public virtual ICollection<ImgFotoEstimate> ImgFotoEstimates { get; set; }
 
         public virtual ICollection<Event> Events { get; set; }
+
     }
 }

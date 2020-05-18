@@ -7,15 +7,27 @@ using System.Web;
 
 namespace NexxtSao.Models.MVC
 {
-    public class Event
+    public class EventPrint
     {
         [Key]
-        public int EventId { get; set; }
+        public int EventPrintId { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Compania")]
-        public int CompanyId { get; set; }
+        [MaxLength(100, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Professional")]
+        public string Compania { get; set; }
+
+        [MaxLength(25, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Professional")]
+        public string Rif { get; set; }
+
+        [DataType(DataType.ImageUrl)]
+        [Display(ResourceType = typeof(Resource), Name = "Company_Model_Logo")]
+        public string Logo { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
+        public DateTime Fecha { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
@@ -26,16 +38,10 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Professional")]
         public string Odontologo { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Cliente")]
-        public int ClientId { get; set; }
-
         [MaxLength(50, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Cliente")]
         public string Cliente { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [MaxLength(100, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Motivo")]
         public string Subject { get; set; }
@@ -45,33 +51,28 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Description")]
         public string Description { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
         public DateTime Start { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
         [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Hora")]
         public int HourId { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Color")]
-        public int ColorId { get; set; }
+        [MaxLength(10, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Motivo")]
+        public string Hora { get; set; }
 
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Asistencia")]
-        public bool Asistencia { get; set; }
+        [MaxLength(100, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [DataType(DataType.MultilineText)]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Description")]
+        public string TipoDocumento { get; set; }
 
-        public virtual Company Company { get; set; }
+        [MaxLength(100, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
+        [DataType(DataType.MultilineText)]
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Description")]
+        public string HeadText { get; set; }
 
-        public virtual Dentist Dentist { get; set; }
-
-        public virtual Client Client { get; set; }
-
-        public virtual Color Color { get; set; }
-
-        public virtual Hour Hour { get; set; }
     }
 }

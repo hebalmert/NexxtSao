@@ -1,93 +1,301 @@
 ﻿@model IEnumerable<NexxtSao.Models.MVC.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @Resources.Resource.Event_ViewIndex_Titulo1;
 }
+<p></p>
 
-<h2>Index</h2>
+<h2> @Resources.Resource.Event_ViewIndex_Titulo1</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Client.Photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dentist.Odontologo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Odontologo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Start)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.End)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThemeColor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsFullDay)
-        </th>
-        <th></th>
-    </tr>
+<p></p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            @*<div class="card-header"><strong>Consulta de Citas</strong></div>*@
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Events", FormMethod.Get))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            @*<label>Start</label>*@
+                            <div class='input-group' style="width:220px">
+                                <input type="date" name="fecha" id="txtStart2" class="form-control" placeholder="Date" />
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text fa fa-calendar-alt form-control"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-2">
+                            @*<label>Profesional</label>*@
+                            <div class="form-group">
+                                <input type="text" name="txt_search2" id="txt_search2" class="form-control" placeholder="Dentist" />
+                                <input type="hidden" id="item_list2" name="dentistaid" /><br />
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-search"></i>
+                                        @Resources.Resource.ButtonSearch
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            @*<div class="card-header"><strong>Nueva Consulta</strong></div>*@
+            <div class="card-body">
+                @using (Html.BeginForm("Create", "Events", FormMethod.Get))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-12 mb-1">
+                            @*<label>Paciente</label>*@
+                            <div class="form-horizontal">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="text" name="txt_search" id="txt_search" class="form-control" placeholder="Paciente nueva Cita" />
+                                        <input type="hidden" id="item_list" name="clienteId" /><br />
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-plus"></i>
+                                                @Resources.Resource.ButtonNew
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dentist.Odontologo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Odontologo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Start)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.End)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThemeColor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsFullDay)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
-        </td>
-    </tr>
+<p></p>
+
+<div class="card">
+    <!-- Default panel contents -->
+    @*<div class="card-header"><strong>Citas Agendadas</strong></div>*@
+    @*<div class="panel-body">
+            <p>...</p>
+        </div>*@
+    <div class="table-responsive-sm">
+        <table class="table table-striped">
+            <thead>
+                <tr style="background:lightgrey">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hour)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Start)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cliente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Subject)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Odontologo)    
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @{
+                        switch (item.ColorId)
+                        {
+                            case 1:
+                                <td>
+                                    <strong style="color : red">@Html.DisplayFor(modelItem => item.Hour.Hora)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : red">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Start))</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : red">@Html.DisplayFor(modelItem => item.Cliente)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : red">@Html.DisplayFor(modelItem => item.Subject)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : red">@Html.DisplayFor(modelItem => item.Dentist.LastName)</strong>
+                                </td>
+                                break;
+                            case 2:
+                                <td>
+                                    <strong style="color : blue">@Html.DisplayFor(modelItem => item.Hour.Hora)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : blue">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Start))</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : blue">@Html.DisplayFor(modelItem => item.Cliente)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : blue">@Html.DisplayFor(modelItem => item.Subject)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : blue">@Html.DisplayFor(modelItem => item.Dentist.LastName)</strong>
+                                </td>
+                                break;
+                            case 3:
+                                <td>
+                                    <strong style="color : black">@Html.DisplayFor(modelItem => item.Hour.Hora)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : black">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Start))</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : black">@Html.DisplayFor(modelItem => item.Cliente)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : black"> @Html.DisplayFor(modelItem => item.Subject)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : black">@Html.DisplayFor(modelItem => item.Dentist.LastName)</strong>
+                                </td>
+                                break;
+                            case 4:
+                                <td>
+                                    <strong style="color : green">@Html.DisplayFor(modelItem => item.Hour.Hora)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : green">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Start))</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : green">@Html.DisplayFor(modelItem => item.Cliente)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : green">@Html.DisplayFor(modelItem => item.Subject)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : green">@Html.DisplayFor(modelItem => item.Dentist.LastName)</strong>
+                                </td>
+                                break;
+                            case 5:
+                                <td>
+                                    <strong style="color : orange">@Html.DisplayFor(modelItem => item.Hour.Hora)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : orange">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Start))</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : orange">@Html.DisplayFor(modelItem => item.Cliente)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : orange">@Html.DisplayFor(modelItem => item.Subject)</strong>
+                                </td>
+                                <td>
+                                    <strong style="color : orange">@Html.DisplayFor(modelItem => item.Dentist.LastName)</strong>
+                                </td>
+                                break;
+                        }
+                    }
+
+                <td>
+                    <a title="@Resources.Resource.ButtonDetail" href="@Url.Action("Details", new { id = item.EventId})" class="btn btn-info btn-sm">
+                        <i class="fa fa-clipboard-list"></i>
+                    </a>
+
+                    @if (item.Asistencia == false)
+                    {
+
+                        <a title="@Resources.Resource.ButtonPrint" href="@Url.Action("PrintDate", new { id = item.EventId})" class="btn btn-outline-secondary btn-sm">
+                            <i class="fa fa-print"></i>
+                        </a>
+
+                        <a title="@Resources.Resource.ButtonDelete" href="@Url.Action("Delete", new { id = item.EventId})" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        </a>
+
+                        <a title="Asistio" href="@Url.Action("Asistio", new { id = item.EventId })" class="btn btn-success btn-sm" onclick="return confirm('Desea Anular esta Nota Cobro?')">
+                            <i class="fa fa-check"></i>
+                        </a>
+                    }
+                </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+<link href="~/Content/JquerySearch/jquery-ui.css" rel="stylesheet" />
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Content/JquerySearch/jquery-1.12.4.js"></script>
+    <script src="~/Content/JquerySearch/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txt_search").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Events/Search/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#item_list").val(i.item.val);
+                },
+                minLength: 1
+            });
+
+            $("#txt_search2").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Events/Search2/',
+                        data: "{ 'prefix2': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#item_list2").val(i.item.val);
+                },
+                minLength: 1
+            });
+
+        });
+    </script>
+
 }
-
-</table>

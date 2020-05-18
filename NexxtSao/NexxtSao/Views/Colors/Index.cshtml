@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NexxtSao.Models.MVC.Color>
+
+@{
+    ViewBag.Title = @Resources.Resource.Color_Model_IndexTitulo1;
+}
+
+    <h2>@Resources.Resource.Color_Model_IndexTitulo1</h2>
+
+    <p>
+        <button title="" class="btn btn-primary btn-sm" onclick="location.href = '@Url.Action("Create", new { })'">
+            <i class="fa fa-plus"></i>
+            @Resources.Resource.ButtonNew
+        </button>
+    </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ColorDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ColorDate)
+            </td>
+            <td>
+                <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =
+                   '@Url.Action("Edit", new { id = item.ColorId})'">
+                    <i class="fa fa-pencil-alt"></i>
+                </button>
+
+                <button title="Detalle" class="btn btn-info btn-sm" onclick="location.href =
+                   '@Url.Action("Details", new { id = item.ColorId})'">
+                    <i class="fa fa-clipboard-list"></i>
+                </button>
+
+                <button title="Borrar" class="btn btn-danger btn-sm" onclick="location.href =
+                   '@Url.Action("Delete", new { id = item.ColorId})'">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

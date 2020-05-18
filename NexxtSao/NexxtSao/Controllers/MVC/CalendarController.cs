@@ -57,11 +57,11 @@ namespace NexxtSao.Controllers.MVC
                         v.ClientId = e.ClientId;
                         v.Cliente = clientes.Cliente;
                         v.Subject = e.Subject;
-                        v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone());
-                        v.End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone());
-                        v.Description = e.Description;
-                        v.IsFullDay = e.IsFullDay;
-                        v.ThemeColor = e.ThemeColor;
+                        //v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone());
+                        //v.End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone());
+                        //v.Description = e.Description;
+                        //v.IsFullDay = e.IsFullDay;
+                        //v.ThemeColor = e.ThemeColor;
                     }
                 }
                 else
@@ -80,11 +80,11 @@ namespace NexxtSao.Controllers.MVC
                         ClientId = e.ClientId,
                         Cliente = clientes.Cliente,
                         Subject = e.Subject,
-                        Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone()),
-                        End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone()),
-                        Description = e.Description,
-                        IsFullDay = e.IsFullDay,
-                        ThemeColor = e.ThemeColor,
+                        //Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone()),
+                        //End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone()),
+                        //Description = e.Description,
+                        //IsFullDay = e.IsFullDay,
+                        //ThemeColor = e.ThemeColor,
                     };
                     db.Events.Add(nuevoEvento);
                 }

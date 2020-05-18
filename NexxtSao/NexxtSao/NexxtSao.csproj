@@ -196,6 +196,7 @@
     <Compile Include="Controllers\MVC\CalendarController.cs" />
     <Compile Include="Controllers\MVC\CitiesController.cs" />
     <Compile Include="Controllers\MVC\ClientsController.cs" />
+    <Compile Include="Controllers\MVC\ColorsController.cs" />
     <Compile Include="Controllers\MVC\CompaniesController.cs" />
     <Compile Include="Controllers\MVC\CountriesController.cs" />
     <Compile Include="Controllers\MVC\DentistsController.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Controllers\MVC\EvolutionsController.cs" />
     <Compile Include="Controllers\MVC\HeadTextsController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
+    <Compile Include="Controllers\MVC\HoursController.cs" />
     <Compile Include="Controllers\MVC\IdentificationsController.cs" />
     <Compile Include="Controllers\MVC\ImgFotoEstimatesController.cs" />
     <Compile Include="Controllers\MVC\ImgOrthodonsController.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="Models\MVC\City.cs" />
     <Compile Include="Models\MVC\Client.cs" />
     <Compile Include="Models\MVC\ClientHistory.cs" />
+    <Compile Include="Models\MVC\Color.cs" />
     <Compile Include="Models\MVC\Company.cs" />
     <Compile Include="Models\MVC\Country.cs" />
     <Compile Include="Models\MVC\Dentist.cs" />
@@ -241,9 +244,11 @@
     <Compile Include="Models\MVC\EstimateDetail.cs" />
     <Compile Include="Models\MVC\EstimateDetailAdd.cs" />
     <Compile Include="Models\MVC\Event.cs" />
+    <Compile Include="Models\MVC\EventPrint.cs" />
     <Compile Include="Models\MVC\EvolutionDetailAdd.cs" />
     <Compile Include="Models\MVC\EvolutionDetails.cs" />
     <Compile Include="Models\MVC\HeadText.cs" />
+    <Compile Include="Models\MVC\Hour.cs" />
     <Compile Include="Models\MVC\Identification.cs" />
     <Compile Include="Models\MVC\IdentityModels.cs" />
     <Compile Include="Models\MVC\ImgFotoEstimate.cs" />
@@ -630,6 +635,17 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
+    <Content Include="Views\Colors\Create.cshtml" />
+    <Content Include="Views\Colors\Delete.cshtml" />
+    <Content Include="Views\Colors\Details.cshtml" />
+    <Content Include="Views\Colors\Edit.cshtml" />
+    <Content Include="Views\Colors\Index.cshtml" />
+    <Content Include="Views\Hours\Create.cshtml" />
+    <Content Include="Views\Hours\Delete.cshtml" />
+    <Content Include="Views\Hours\Details.cshtml" />
+    <Content Include="Views\Hours\Edit.cshtml" />
+    <Content Include="Views\Hours\Index.cshtml" />
+    <Content Include="Views\Events\PrintDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,84 @@
+﻿@model NexxtSao.Models.MVC.EventPrint
+
+@{
+    ViewBag.Title = "Ticket Cita";
+}
+
+@Html.HiddenFor(model => model.DentistId)
+
+<div id="dvmismatch">
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <table class="table table-borderless">
+                    <tr>
+                        <td width="150">
+                            @if (Model != null && !string.IsNullOrEmpty(Model.Logo))
+                            {
+                                <img src="@Url.Content(Model.Logo)" alt="Image" style="width:80px;height:80px;max-width: 100%; height: auto;" />
+                            }
+                        </td>
+                        <th class="text-sm-center">
+                            <small>@Model.Compania</small>
+                            <small>@Model.TipoDocumento:@Model.Rif</small>
+                        </th>
+                    <tr />
+                </table>
+                <table class="table table-borderless">
+                    <tr class="text-center">
+                        <th>
+                            <small>@Model.HeadText</small>
+                        </th>
+                    <tr />
+                </table>
+                <hr />
+                <small>Ticket de Cita - </small>
+                <small> @Html.DisplayFor(model => model.Fecha)</small>
+                <hr />
+                <small><strong>@Html.DisplayNameFor(model => model.Odontologo)</strong></small>
+                <p>
+                    <small><strong>@Html.DisplayFor(model => model.Odontologo)</strong></small>
+                </p>
+                <small><strong>@Html.DisplayNameFor(model => model.Cliente)</strong></small>
+                <p>
+                    <small><strong>@Html.DisplayFor(model => model.Cliente)</strong></small>
+                </p>
+                <p>
+                    <small><strong>@Html.DisplayNameFor(model => model.Fecha):</strong></small>
+                    <small><strong>@Html.DisplayFor(model => model.Start)</strong></small>
+                </p>
+                <small>@Html.DisplayNameFor(model => model.Description):</small>
+                <small>@Html.DisplayFor(model => model.Description)</small>
+                <hr />
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+
+<p></p>
+<p>
+    @Html.ActionLink("Volver", "Index", new { fecha = Model.Start, dentistaid = Model.DentistId }, new { @class = "btn btn-success btn-sm" }) |
+    @Html.ActionLink("Print", "PrintDate", new { }, new { @class = "btn btn-primary btn-sm", onclick = "printContent()" })
+
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        function printContent() {
+            var divContents = $("#dvmismatch").html();
+            var printWindow = window.open('', '', 'height=400,width=300');
+            printWindow.document.write('<html><head><title>DIV Contents</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+            q('.print default').trigger('click');
+        }
+    </script>
+
+}

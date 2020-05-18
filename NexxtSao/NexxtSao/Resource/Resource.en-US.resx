@@ -312,6 +312,12 @@
   <data name="Client_Model_Zone" xml:space="preserve">
     <value>Zone</value>
   </data>
+  <data name="Color_Model_ColorDate" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Color_Model_IndexTitulo1" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="ComboSelect" xml:space="preserve">
     <value>[Select Item...]</value>
   </data>
@@ -627,6 +633,9 @@
   <data name="Estimate_Model_Total" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="Event_Model_Asistencia" xml:space="preserve">
+    <value>Check</value>
+  </data>
   <data name="Event_Model_Cliente" xml:space="preserve">
     <value>Patient</value>
   </data>
@@ -637,16 +646,19 @@
     <value>Company</value>
   </data>
   <data name="Event_Model_DateEnd" xml:space="preserve">
-    <value>End</value>
+    <value>Date</value>
   </data>
   <data name="Event_Model_DateStart" xml:space="preserve">
-    <value>Start</value>
+    <value>Date</value>
   </data>
   <data name="Event_Model_Description" xml:space="preserve">
     <value>Details</value>
   </data>
   <data name="Event_Model_FullDay" xml:space="preserve">
     <value>Full Day</value>
+  </data>
+  <data name="Event_Model_Hora" xml:space="preserve">
+    <value>Time</value>
   </data>
   <data name="Event_Model_Motivo" xml:space="preserve">
     <value>Subject</value>
@@ -680,6 +692,15 @@
   </data>
   <data name="Home_Card3_Pagos" xml:space="preserve">
     <value>Payments</value>
+  </data>
+  <data name="Hora_Model_Horas" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Hora_Model_IndexTitulo1" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Hora_Model_Orden" xml:space="preserve">
+    <value>Order</value>
   </data>
   <data name="Identification_IndexView_Titulo1" xml:space="preserve">
     <value>Tipo Documento</value>

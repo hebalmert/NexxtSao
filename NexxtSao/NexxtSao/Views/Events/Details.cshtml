@@ -1,39 +1,16 @@
 ﻿@model NexxtSao.Models.MVC.Event
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Resources.Resource.ViewDetail;
 }
+<p></p>
 
-<h2>Details</h2>
+<h2> @Resources.Resource.ViewDetail</h2>
 
 <div>
-    <h4>Event</h4>
+    <h4>@Resources.Resource.Event_ViewIndex_Titulo1</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Client.Photo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.Photo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Company.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Company.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Dentist.Odontologo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Dentist.Odontologo)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Odontologo)
         </dt>
@@ -43,11 +20,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cliente)
+            @Html.DisplayNameFor(model => model.Client.Cliente)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cliente)
+            @Html.DisplayFor(model => model.Client.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+
+        <dd>
+            @Convert.ToString(string.Format("{0:dd/MM/yyyy}", Model.Start))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hour.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hour.Hora)
         </dd>
 
         <dt>
@@ -66,41 +59,18 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Start)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Start)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.End)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.End)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThemeColor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThemeColor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsFullDay)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsFullDay)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EventId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Index", new  { fecha = Model.Start, dentistaid = Model.DentistId})'">
+        <i class="fa fa-backspace"></i>
+        @Resources.Resource.ButtonBack
+    </button>
+    @if (Model.Asistencia == false)
+    {
+        <button type="submit" class="btn btn-warning btn-sm" onclick="location.href = '@Url.Action("Edit", new { id = Model.EventId })'">
+            <i class="fa fa-pencil-alt"></i>
+            @Resources.Resource.ButtonEdit
+        </button>
+    }
 </p>

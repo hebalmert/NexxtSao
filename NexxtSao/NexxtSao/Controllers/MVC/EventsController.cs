@@ -12,14 +12,108 @@ using NexxtSao.Models.MVC;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Dentist")]
 
     public class EventsController : Controller
     {
         private NexxtSaoContext db = new NexxtSaoContext();
 
+
+        // GET: Events/Delete/5
+        public ActionResult PrintDate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var evento = db.Events.Where(r => r.EventId == id).FirstOrDefault();
+
+            if (evento == null)
+            {
+                return HttpNotFound();
+            }
+            var docu = db.Identifications.Where(i => i.CompanyId == evento.CompanyId).FirstOrDefault();
+            var header = db.HeadTexts.Where(i => i.CompanyId == evento.CompanyId).FirstOrDefault();
+            var imagen = db.Companies.Where(i => i.CompanyId == evento.CompanyId).FirstOrDefault();
+
+            var printview = new EventPrint
+            {
+                Fecha = DateTime.UtcNow,
+                DentistId = evento.DentistId,
+                Odontologo = evento.Odontologo,
+                Cliente = evento.Cliente,
+                Hora = evento.Hour.Hora,
+                Start = evento.Start,
+                Subject = evento.Subject,
+                Description = evento.Description,
+                TipoDocumento = docu.TipoDocumento,
+                HeadText = header.TextoEncabezado,
+                Logo = imagen.Logo,
+                Compania = imagen.Name,
+                Rif = imagen.Rif
+            };
+
+            return View(printview);
+        }
+
+        // GET: Events/Delete/5
+        public ActionResult Asistio(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var evento = db.Events.Find(id);
+            if (evento == null)
+            {
+                return HttpNotFound();
+            }
+            evento.Asistencia = true;
+            db.Entry(evento).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", new { fecha = evento.Start, dentistaid = evento.DentistId });
+        }
+
+        [HttpPost]
+        public JsonResult Search2(string Prefix2)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var profesionales = (from dent in db.Dentists
+                                 where dent.Odontologo.StartsWith(Prefix2) && dent.CompanyId == user.CompanyId
+                                 select new
+                                 {
+                                     label = dent.Odontologo,
+                                     val = dent.DentistId
+                                 }).ToList();
+
+            return Json(profesionales);
+
+        }
+
+        [HttpPost]
+        public JsonResult Search(string Prefix)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+
+            var clientes = (from client in db.Clients
+                            where client.Cliente.StartsWith(Prefix) && client.CompanyId == user.CompanyId
+                            select new
+                            {
+                                label = client.Cliente,
+                                val = client.ClientId
+                            }).ToList();
+
+            return Json(clientes);
+
+        }
+
         // GET: Events
-        public ActionResult Index()
+        public ActionResult Index(DateTime? fecha, int? dentistaid)
         {
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
@@ -27,11 +121,23 @@ namespace NexxtSao.Controllers.MVC
                 return RedirectToAction("Index", "Home");
             }
 
-            var events = db.Events.Where(c => c.CompanyId == user.CompanyId)
-                .Include(e => e.Client)
-                .Include(e => e.Dentist);
+            if (fecha !=null && dentistaid != 0 && dentistaid != null)
+            {
+                var events = db.Events.Where(c => c.CompanyId == user.CompanyId && c.Start == fecha && c.DentistId == dentistaid)
+                    .Include(e => e.Client)
+                    .Include(e => e.Dentist);
 
-            return View(events.ToList());
+                return View(events.OrderBy(o=> o.Hour.Orden).ToList());
+            }
+            else
+            {
+
+                var events = db.Events.Where(c => c.CompanyId == user.CompanyId && c.DentistId == 0)
+                    .Include(e => e.Client)
+                    .Include(e => e.Dentist);
+
+                return View(events.OrderBy(o => o.Hour.Orden).ToList());
+            }
         }
 
         // GET: Events/Details/5
@@ -46,29 +152,37 @@ namespace NexxtSao.Controllers.MVC
             {
                 return HttpNotFound();
             }
+
             return View(evento);
         }
 
         // GET: Events/Create
-        public ActionResult Create()
+        public ActionResult Create(int? clienteId)
         {
+            if (clienteId == null)
+            {
+                return RedirectToAction("Index");
+            }
+            
             var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-
+            var nombrecliente = db.Clients.Find(clienteId);
             var evento = new Event 
             { 
                 CompanyId = user.CompanyId,
+                ClientId = nombrecliente.ClientId,
+                Cliente = nombrecliente.Cliente,
                 Start = DateTime.UtcNow,
-                End = DateTime.UtcNow
             };
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClient(user.CompanyId), "ClientId", "Cliente");
             ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(user.CompanyId), "DentistId", "Odontologo");
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora");
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate");
 
-            return View();
+            return View(evento);
         }
 
         // POST: Events/Create
@@ -78,13 +192,17 @@ namespace NexxtSao.Controllers.MVC
         [ValidateAntiForgeryToken]
         public ActionResult Create(Event evento)
         {
+            var odontologo = db.Dentists.Find(evento.DentistId);
+            evento.Odontologo = odontologo.Odontologo;
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     db.Events.Add(evento);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+
+                    return RedirectToAction("Index", new { fecha = evento.Start, dentistaid = evento.DentistId });
                 }
                 catch (Exception ex)
                 {
@@ -101,8 +219,9 @@ namespace NexxtSao.Controllers.MVC
                 }
             }
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClient(evento.CompanyId), "ClientId", "Cliente");
-            ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo");
+            ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo", evento.DentistId);
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
@@ -120,8 +239,9 @@ namespace NexxtSao.Controllers.MVC
                 return HttpNotFound();
             }
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClient(evento.CompanyId), "ClientId", "Cliente");
-            ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo");
+            ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo", evento.DentistId);
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
@@ -133,13 +253,17 @@ namespace NexxtSao.Controllers.MVC
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Event evento)
         {
+            var odontologos = db.Dentists.Find(evento.DentistId);
+            evento.Odontologo = odontologos.Odontologo;
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     db.Entry(evento).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+
+                    return RedirectToAction("Index", new { fecha = evento.Start, dentistaid = evento.DentistId });
                 }
                 catch (Exception ex)
                 {
@@ -156,8 +280,9 @@ namespace NexxtSao.Controllers.MVC
                 }
             }
 
-            ViewBag.ClientId = new SelectList(ComboHelper.GetClient(evento.CompanyId), "ClientId", "Cliente");
-            ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo");
+            ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo", evento.DentistId);
+            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
@@ -187,7 +312,8 @@ namespace NexxtSao.Controllers.MVC
             {
                 db.Events.Remove(evento);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index", new { fecha = evento.Start, dentistaid = evento.DentistId });
             }
             catch (Exception ex)
             {

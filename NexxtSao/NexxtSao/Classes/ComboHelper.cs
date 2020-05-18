@@ -155,6 +155,31 @@ namespace NexxtSao.Classes
             return nivelprecio.OrderBy(o => o.NivelPrecio).ToList();
         }
 
+        //Combos de impuestos
+        public static List<Color> GetColor()
+        {
+            var colores = db.Colors.ToList();
+            colores.Add(new Color
+            {
+                ColorId = 0,
+                ColorDate = @Resources.Resource.ComboSelect,
+            });
+            return colores.OrderBy(d => d.ColorDate).ToList();
+        }
+
+        //Combos de impuestos
+        public static List<Hour> GetHora()
+        {
+            var horas = db.Hours.ToList();
+            horas.Add(new Hour
+            {
+                HourId = 0,
+                Hora = @Resources.Resource.ComboSelect,
+            });
+            return horas.OrderBy(d => d.Orden).ToList();
+        }
+
+
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         //Tiempo Horario para Guardar con formato la fecha
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

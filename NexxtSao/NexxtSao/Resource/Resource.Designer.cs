@@ -646,6 +646,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color_Model_ColorDate {
+            get {
+                return ResourceManager.GetString("Color_Model_ColorDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color_Model_IndexTitulo1 {
+            get {
+                return ResourceManager.GetString("Color_Model_IndexTitulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Seleccione Item...].
         /// </summary>
         public static string ComboSelect {
@@ -1600,6 +1618,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Asistio.
+        /// </summary>
+        public static string Event_Model_Asistencia {
+            get {
+                return ResourceManager.GetString("Event_Model_Asistencia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paciente.
         /// </summary>
         public static string Event_Model_Cliente {
@@ -1627,7 +1654,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fin.
+        ///   Looks up a localized string similar to Fecha.
         /// </summary>
         public static string Event_Model_DateEnd {
             get {
@@ -1636,7 +1663,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inicio.
+        ///   Looks up a localized string similar to Fecha.
         /// </summary>
         public static string Event_Model_DateStart {
             get {
@@ -1659,6 +1686,15 @@ namespace Resources {
         public static string Event_Model_FullDay {
             get {
                 return ResourceManager.GetString("Event_Model_FullDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hora.
+        /// </summary>
+        public static string Event_Model_Hora {
+            get {
+                return ResourceManager.GetString("Event_Model_Hora", resourceCulture);
             }
         }
         
@@ -1758,6 +1794,33 @@ namespace Resources {
         public static string Home_Card3_Pagos {
             get {
                 return ResourceManager.GetString("Home_Card3_Pagos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hora.
+        /// </summary>
+        public static string Hora_Model_Horas {
+            get {
+                return ResourceManager.GetString("Hora_Model_Horas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hora.
+        /// </summary>
+        public static string Hora_Model_IndexTitulo1 {
+            get {
+                return ResourceManager.GetString("Hora_Model_IndexTitulo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orden.
+        /// </summary>
+        public static string Hora_Model_Orden {
+            get {
+                return ResourceManager.GetString("Hora_Model_Orden", resourceCulture);
             }
         }
         
