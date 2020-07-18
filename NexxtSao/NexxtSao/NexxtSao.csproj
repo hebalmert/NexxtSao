@@ -239,6 +239,7 @@
     <Compile Include="Models\MVC\Dentist.cs" />
     <Compile Include="Models\MVC\DentistPercentage.cs" />
     <Compile Include="Models\MVC\DentistSpecialty.cs" />
+    <Compile Include="Models\MVC\Diagram.cs" />
     <Compile Include="Models\MVC\DirectPayment.cs" />
     <Compile Include="Models\MVC\Estimate.cs" />
     <Compile Include="Models\MVC\EstimateDetail.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="Models\MVC\ManageViewModels.cs" />
     <Compile Include="Models\MVC\ModelCalendar.cs" />
     <Compile Include="Models\MVC\NexxtSaoContext.cs" />
+    <Compile Include="Models\MVC\Odontodiagrama.cs" />
     <Compile Include="Models\MVC\Orthodontic.cs" />
     <Compile Include="Models\MVC\OrthodonticDeatilAdd.cs" />
     <Compile Include="Models\MVC\OrthodonticDetail.cs" />
@@ -293,7 +295,7 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
-    <Content Include="Content\Imagen\3.jpg" />
+    <Content Include="Content\Imagen\NexxtLink.png" />
     <Content Include="Content\ImgCarrusel\banner1.svg" />
     <Content Include="Content\ImgCarrusel\banner2.svg" />
     <Content Include="Content\ImgCarrusel\banner3.svg" />
@@ -646,6 +648,12 @@
     <Content Include="Views\Hours\Edit.cshtml" />
     <Content Include="Views\Hours\Index.cshtml" />
     <Content Include="Views\Events\PrintDate.cshtml" />
+    <Content Include="Views\Clients\CreateOdontodiagrama.cshtml" />
+    <Content Include="Views\Clients\OdontodoView.cshtml" />
+    <Content Include="Views\Estimates\CreateOdontodiagrama.cshtml" />
+    <Content Include="Views\Estimates\OdontodoView.cshtml" />
+    <Content Include="Views\Evolutions\OdontodoView.cshtml" />
+    <Content Include="Views\Evolutions\CreateOdontodiagrama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

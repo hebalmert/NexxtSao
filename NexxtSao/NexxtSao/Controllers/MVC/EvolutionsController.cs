@@ -1,4 +1,5 @@
-﻿using NexxtSao.Classes;
+﻿using Newtonsoft.Json.Linq;
+using NexxtSao.Classes;
 using NexxtSao.Models;
 using NexxtSao.Models.MVC;
 using PagedList;
@@ -245,6 +246,7 @@ namespace NexxtSao.Controllers.MVC
             return View(estimate);
         }
 
+
         public JsonResult GetPorcentaje(int dentistId, int estimatedetailId)
         {
             db.Configuration.ProxyCreationEnabled = false;
@@ -260,6 +262,216 @@ namespace NexxtSao.Controllers.MVC
                 double rate = 0;
                 return Json(rate);
             }
+        }
+
+
+        // GET: Users/Details/id/Odontodiagrama/Create
+        public ActionResult CreateOdontodiagrama(int id, int idestimate)
+        {
+            var cliente = db.Clients.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            var viewDiagrama = new Odontodiagrama
+            {
+                ClientId = cliente.ClientId,
+                EstimateId = idestimate
+            };
+            return View(viewDiagrama);
+        }
+
+
+        // POST: Users/Odontodiagrama/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public ActionResult CreateOdontodiagrama(int id, String data)
+        {
+            var db1 = new NexxtSaoContext();
+            var Iestimate = db.Estimates.Where(c => c.ClientId == id).FirstOrDefault();
+            int userId = id;
+            int odontoDiagramaId = 0;
+            string description = "";
+            // Crear Odontodiagrama
+            var odontoDiagrama = new Odontodiagrama
+            {
+                ClientId = userId,
+                EstimateId = Iestimate.EstimateId,
+                DateEntry = DateTime.Today
+            };
+            db1.Odontodiagramas.Add(odontoDiagrama);
+            try
+            {
+                db1.SaveChanges();
+                // Guardar el ID
+                odontoDiagramaId = odontoDiagrama.OdontodiagramaId;
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null &&
+                        ex.InnerException.InnerException != null &&
+                        ex.InnerException.InnerException.Message.Contains("_Index")
+                     )
+                {
+                    ModelState.AddModelError(string.Empty, "Existe un registro con el mismo valor.");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+                return View();
+            }
+            // Parsear Data para poderla recorrer como un JSON
+            JArray jsonPreservar = JArray.Parse(data);
+            foreach (JObject jsonOperaciones in jsonPreservar.Children<JObject>())
+            {
+                double tooth = 0;
+                string color = "";
+                //Aqui para poder identificar las propiedades y sus valores
+                foreach (JProperty jsonOPropiedades in jsonOperaciones.Properties())
+                {
+                    string propiedad = jsonOPropiedades.Name;
+                    if (propiedad.Equals("id"))
+                    {
+                        tooth = Convert.ToDouble(jsonOPropiedades.Value);
+                    }
+                    if (propiedad.Equals("color"))
+                    {
+                        color = Convert.ToString(jsonOPropiedades.Value);
+                    }
+                    if (propiedad.Equals("description"))
+                    {
+                        description = Convert.ToString(jsonOPropiedades.Value);
+                    }
+                }
+                // Verificar que los valores no sean nulos para guardar registro en modelo Diagrama
+                if (odontoDiagramaId != 0 && tooth != 0 && color != "")
+                {
+                    var diagrama = new Diagram
+                    {
+                        OdontodiagramaId = odontoDiagramaId,
+                        ToothNumber = tooth,
+                        Color = color,
+                        Active = true
+                    };
+                    db.Diagrams.Add(diagrama);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.InnerException != null &&
+                                ex.InnerException.InnerException != null &&
+                                ex.InnerException.InnerException.Message.Contains("_Index")
+                             )
+                        {
+                            ModelState.AddModelError(string.Empty, "Existe un registro con el mismo valor.");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, ex.Message);
+                        }
+                        return View();
+                    }
+                }
+            }
+            if (description != "")
+            {
+                odontoDiagrama.Description = description;
+                db1.Entry(odontoDiagrama).State = EntityState.Modified;
+                try
+                {
+                    db1.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null &&
+                            ex.InnerException.InnerException != null &&
+                            ex.InnerException.InnerException.Message.Contains("_Index")
+                         )
+                    {
+                        ModelState.AddModelError(string.Empty, "Existe un registro con el mismo valor.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                    return View();
+                }
+            }
+            return View();
+        }
+
+
+        // GET: Load Odontodigrama data and Diagram view (empty)
+        public ActionResult OdontodoView(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var odontodiagrama = db.Odontodiagramas.Find(id);
+            if (odontodiagrama == null)
+            {
+                return HttpNotFound();
+            }
+            return View(odontodiagrama);
+        }
+
+
+        // GET: Send Json Data to fill diagrams
+        public ActionResult TheethJson(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var odontodiagrama = db.Odontodiagramas.Find(id);
+            if (odontodiagrama == null)
+            {
+                return HttpNotFound();
+            }
+            var diagramas = db.Diagrams
+                .Where(d => d.OdontodiagramaId == id)
+                .Select(w => new JsonType()
+                {
+                    ToothNumber = w.ToothNumber,
+                    Color = w.Color
+                }).ToList<JsonType>(); ;
+            return Json(diagramas,
+                JsonRequestBehavior.AllowGet);
+        }
+
+
+        public class JsonType
+        {
+            public double ToothNumber { get; set; }
+            public string Color { get; set; }
+            public JsonType() { }
+        }
+
+
+        // POST: Borra Ondontodiagrama y los diagramas a los que pertenezca
+        [HttpPost]
+        public ActionResult OdontodoView(int id)
+        {
+            var Idiagram = db.Diagrams.Where(c => c.OdontodiagramaId == id).ToList();
+            if (Idiagram.Count != 0)
+            {
+                foreach (var item in Idiagram)
+                {
+                    db.Diagrams.Remove(item);
+                }
+                db.SaveChanges();
+            }
+
+            var odontodiagrama = db.Odontodiagramas.Find(id);
+            db.Odontodiagramas.Remove(odontodiagrama);
+            db.SaveChanges();
+
+            return View();
         }
 
         protected override void Dispose(bool disposing)

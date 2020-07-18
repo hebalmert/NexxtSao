@@ -1861,6 +1861,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Odontograma.
+        /// </summary>
+        public static string ImgOdontogramaEstimate {
+            get {
+                return ResourceManager.GetString("ImgOdontogramaEstimate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Periapicales.
         /// </summary>
         public static string ImgPeriapicalesEstimate_Titulo1 {

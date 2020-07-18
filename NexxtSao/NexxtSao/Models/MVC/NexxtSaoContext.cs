@@ -87,5 +87,9 @@
         public System.Data.Entity.DbSet<NexxtSao.Models.MVC.Color> Colors { get; set; }
 
         public System.Data.Entity.DbSet<NexxtSao.Models.MVC.Hour> Hours { get; set; }
+
+        public DbSet<Odontodiagrama> Odontodiagramas { get; set; }
+
+        public DbSet<Diagram> Diagrams { get; set; }
     }
 }

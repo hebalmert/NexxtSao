@@ -717,6 +717,9 @@
   <data name="ImgFotoEstimate_Titulo1" xml:space="preserve">
     <value>Fotos</value>
   </data>
+  <data name="ImgOdontogramaEstimate" xml:space="preserve">
+    <value>Odontograma</value>
+  </data>
   <data name="ImgPeriapicalesEstimate_Titulo1" xml:space="preserve">
     <value>Periapicales</value>
   </data>

@@ -3,44 +3,227 @@
 @{
     ViewBag.Title = @Resources.Resource.ViewDetail;
 }
+<br />
 <p></p>
 @*<h2>@Resources.Resource.ViewDetail</h2>*@
 
 <div class="row">
-    <div class="col-md-5">
+    @*<div class="col-md-4">
         <div class="card">
-            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+            <h4 class="card-header">@Resources.Resource.ImgFotoEstimate_Titulo1</h4>
             <div class="card-body">
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong> @Html.DisplayNameFor(model => model.Date)</strong>
-                        @Html.DisplayFor(model => model.Date)
-                    </div>
 
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Estimado)</strong>
-                        @Html.DisplayFor(model => model.Estimado)
-                    </div>
-                </div>
-                <div class="form-row">
+                @if (Model.ImgFotoEstimates.Count == 0)
+                {
+                    <h5>No Odontograma</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
 
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12 mb-1">
-                        <strong>@Html.DisplayNameFor(model => model.Client.Cliente)</strong>
-                        @Html.DisplayFor(model => model.Client.Cliente)
-                    </div>
-                </div>
+                        </thead>
+                        @foreach (var item in Model.Odontodiagramas.OrderByDescending(d => d.DateEntry).ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateEntry)
+                                </td>
+                                <td>
+                                    <a title="Add Item" href="@Url.Action("OdontodoView", "Estimates", new { id = item.OdontodiagramaId })" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-clipboard-list"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
                 <hr />
                 <div class="form-row">
                     <p>
-                        <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Clients", new  { id = Model.ClientId})'">
-                            <i class="fa fa-backspace"></i>
-                            @Resources.Resource.ButtonBack
-                        </button>
+                        <a title="Add Item" href="@Url.Action("CreateOdontodiagrama", "Estimates", new { id = Model.ClientId, idestimate = Model.EstimateId })" class="btn btn-primary btn-sm">
+                            <i class="fa fa-camera"></i>
+                            @Resources.Resource.Button_Add
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div class="col-md-8">
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-row">
+                            <div class="col-md-5 mb-2">
+                                <strong> @Html.DisplayNameFor(model => model.Date)</strong>
+                                @Html.DisplayFor(model => model.Date)
+                            </div>
 
-                        <a title="Add Item" href="@Url.Action("AddEstimate", new { id = Model.EstimateId })" class="dialog-window btn btn-primary btn-sm">
-                            <i class="fa fa-plus-circle"></i>
+                            <div class="col-md-5 mb-2">
+                                <strong>@Html.DisplayNameFor(model => model.Estimado)</strong>
+                                @Html.DisplayFor(model => model.Estimado)
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-1">
+                                <strong>@Html.DisplayNameFor(model => model.Client.Cliente)</strong>
+                                @Html.DisplayFor(model => model.Client.Cliente)
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-row">
+                            <p>
+                                <button type="button" class="btn btn-success btn-sm" onclick="location.href = '@Url.Action("Details", "Clients", new  { id = Model.ClientId})'">
+                                    <i class="fa fa-backspace"></i>
+                                    @Resources.Resource.ButtonBack
+                                </button>
+
+                                <a title="Add Item" href="@Url.Action("AddEstimate", new { id = Model.EstimateId })" class="dialog-window btn btn-primary btn-sm">
+                                    <i class="fa fa-plus-circle"></i>
+                                    @Resources.Resource.Button_Add
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-10 mb-1">
+                            <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
+                            @Html.DisplayFor(model => model.SubTotal)
+                        </div>
+                        <div class="col-md-10 mb-1">
+                            <strong>@Html.DisplayNameFor(model => model.Iva)</strong>
+                            @Html.DisplayFor(model => model.Iva)
+                        </div>
+                        <div class="col-md-10 mb-1">
+                            <strong>@Html.DisplayNameFor(model => model.Total)</strong>
+                            @Html.DisplayFor(model => model.Total)
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo1</h4>
+            <div class="card-body">
+                <p></p>
+                @if (Model.EstimateDetails.Count == 0)
+                {
+                    <h5>No Hay Item Creados</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr class="table-secondary">
+                                <th>
+                                    Diente
+                                </th>
+                                <th>
+                                    Tratamiento
+                                </th>
+                                <th>
+                                    Unitario
+                                </th>
+                                <th>
+                                    Cantidad
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                            @{
+                                int registros = 0;
+                            }
+                        </thead>
+                        @foreach (var item in Model.EstimateDetails.ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Diente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tratamiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Unitario)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cantidad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Total)
+                                </td>
+                                @{
+                                    registros += +1;
+                                }
+                                <td>
+
+                                    <a title="Editar" href="@Url.Action("EditEstimate", new { id = item.EstimateDetailId })" class="dialog-window btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+
+                                    <a title="Borrar" href="@Url.Action("DeleteEstimateDetail", new { id = item.EstimateDetailId })" class="btn btn-danger btn-sm" onclick="return confirm('Desea Eliminar este Registro?')">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td align="right">
+                                <strong>Registros: @registros</strong>
+                            </td>
+                        </tr>
+                    </table>
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.ImgOdontogramaEstimate</h4>
+            <div class="card-body">
+
+                @if (Model.ImgFotoEstimates.Count == 0)
+                {
+                <h5>No @Resources.Resource.ImgOdontogramaEstimate</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+
+                        </thead>
+                        @foreach (var item in Model.Odontodiagramas.OrderByDescending(d => d.DateEntry).ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateEntry)
+                                </td>
+                                <td>
+                                    <a title="Add Item" href="@Url.Action("OdontodoView", "Estimates", new { id = item.OdontodiagramaId })" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-clipboard-list"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <a title="Add Item" href="@Url.Action("CreateOdontodiagrama", "Estimates", new { id = Model.ClientId, idestimate = Model.EstimateId })" class="btn btn-primary btn-sm">
+                            <i class="fa fa-teeth-open"></i>
                             @Resources.Resource.Button_Add
                         </a>
                     </p>
@@ -48,119 +231,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
-        <div class="card">
-            <h4 class="card-header">@Resources.Resource.Estimate_IndexView_Titulo1</h4>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.SubTotal)</strong>
-                        @Html.DisplayFor(model => model.SubTotal)
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Iva)</strong>
-                        @Html.DisplayFor(model => model.Iva)
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-6 mb-2">
-                        <strong>@Html.DisplayNameFor(model => model.Total)</strong>
-                        @Html.DisplayFor(model => model.Total)
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
-<p></p>
-
-<div class="row">
-    <div class="col-md-10">
-        <div>
-            <div class="card">
-                <h4 class="card-header">@Resources.Resource.EstimateDetail_IndeView_Titulo1</h4>
-                <div class="card-body">
-                    <p></p>
-                    @if (Model.EstimateDetails.Count == 0)
-                    {
-                        <h5>No Hay Item Creados</h5>
-                    }
-                    else
-                    {
-                        <table class="table table-striped">
-                            <thead class="thead-light">
-                                <tr class="table-secondary">
-                                    <th>
-                                        Diente
-                                    </th>
-                                    <th>
-                                        Tratamiento
-                                    </th>
-                                    <th>
-                                        Unitario
-                                    </th>
-                                    <th>
-                                        Cantidad
-                                    </th>
-                                    <th>
-                                        Total
-                                    </th>
-                                    <th>
-                                    </th>
-                                </tr>
-                                @{
-                                    int registros = 0;
-                                }
-                            </thead>
-                            @foreach (var item in Model.EstimateDetails.ToList())
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Diente)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Tratamiento)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Unitario)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Cantidad)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Total)
-                                    </td>
-                                    @{
-                                        registros += +1;
-                                    }
-                                    <td>
-
-                                        <a title="Editar" href="@Url.Action("EditEstimate", new { id = item.EstimateDetailId })" class="dialog-window btn btn-warning btn-sm">
-                                            <i class="fa fa-pencil-alt"></i>
-                                        </a>
-
-                                        <a title="Borrar" href="@Url.Action("DeleteEstimateDetail", new { id = item.EstimateDetailId })" class="btn btn-danger btn-sm" onclick="return confirm('Desea Eliminar este Registro?')">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            }
-                            <tr>
-                                <td align="right">
-                                    <strong>Registros: @registros</strong>
-                                </td>
-                            </tr>
-                        </table>
-
-                    }
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="AddEstimate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog">

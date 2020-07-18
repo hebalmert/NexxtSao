@@ -158,6 +158,49 @@
                 </div>
             </div>
         </div>
+
+        <p></p>
+
+        <div class="card">
+            <h4 class="card-header">@Resources.Resource.ImgOdontogramaEstimate</h4>
+            <div class="card-body">
+
+                @if (Model.ImgFotoEstimates.Count == 0)
+                {
+                    <h5>No @Resources.Resource.ImgOdontogramaEstimate</h5>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+
+                        </thead>
+                        @foreach (var item in Model.Odontodiagramas.OrderByDescending(d => d.DateEntry).ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateEntry)
+                                </td>
+                                <td>
+                                    <a title="Add Item" href="@Url.Action("OdontodoView", "Evolutions", new { id = item.OdontodiagramaId })" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-clipboard-list"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                <hr />
+                <div class="form-row">
+                    <p>
+                        <a title="Add Item" href="@Url.Action("CreateOdontodiagrama", "Evolutions", new { id = Model.ClientId, idestimate = Model.EstimateId })" class="btn btn-primary btn-sm">
+                            <i class="fa fa-teeth-open"></i>
+                            @Resources.Resource.Button_Add
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <p></p>

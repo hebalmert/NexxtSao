@@ -20,14 +20,27 @@ namespace NexxtSao.Controllers
 
             if (user != null)
             {
-                var companyUp = db.Companies.Find(user.CompanyId);
+                var db2 = new NexxtSaoContext();
+                var companyUp = db2.Companies.Find(user.CompanyId);
                 bool comActivo = companyUp.Activo;
+                db2.Dispose();
 
-                if (comActivo == false)
+                DateTime hoy = DateTime.Today;
+                DateTime current = companyUp.DateHasta;
+                if (comActivo == false)   //Verificacion de la Comañia si esta activa o no
                 {
                     AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-                    return RedirectToAction("Index", "Home");
-                    //return RedirectToAction("Login", "Account");
+                    ModelState.AddModelError("Error", "La Cuenta Caduco o esta Bloqueada !!!");
+
+                    return RedirectToAction("Login", "Account");
+                }
+
+                if (current <= hoy)  //Verificacion de la compañia si la Fecha esta Vencida
+                {
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                    ModelState.AddModelError("Error", "La Cuenta Caduco o esta Bloqueada !!!");
+
+                    return RedirectToAction("Login", "Account");
                 }
             }
 
