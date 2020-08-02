@@ -12,12 +12,14 @@ using NexxtSao.Models.MVC;
 
 namespace NexxtSao.Controllers.MVC
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Dentist")]
 
     public class TreatmentsController : Controller
     {
         private NexxtSaoContext db = new NexxtSaoContext();
 
+
+        [Authorize(Roles = "User, Dentist")]
         // GET: Treatments
         public ActionResult Index()
         {
@@ -33,6 +35,7 @@ namespace NexxtSao.Controllers.MVC
             return View(treatments.OrderByDescending(o=> o.TreatmentCategory.CategoriaTratamiento).ThenByDescending(o=> o.Servicio).ToList());
         }
 
+        [Authorize(Roles = "User, Dentist")]
         // GET: Treatments/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,6 +51,7 @@ namespace NexxtSao.Controllers.MVC
             return View(treatment);
         }
 
+        [Authorize(Roles = "User")]
         // GET: Treatments/Create
         public ActionResult Create()
         {
@@ -68,6 +72,7 @@ namespace NexxtSao.Controllers.MVC
             return View(tratamiento);
         }
 
+        [Authorize(Roles = "User")]
         // POST: Treatments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -103,6 +108,7 @@ namespace NexxtSao.Controllers.MVC
             return View(treatment);
         }
 
+        [Authorize(Roles = "User")]
         // GET: Treatments/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -121,6 +127,7 @@ namespace NexxtSao.Controllers.MVC
             return View(treatment);
         }
 
+        [Authorize(Roles = "User")]
         // POST: Treatments/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -156,6 +163,7 @@ namespace NexxtSao.Controllers.MVC
             return View(treatment);
         }
 
+        [Authorize(Roles = "User")]
         // GET: Treatments/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -171,6 +179,7 @@ namespace NexxtSao.Controllers.MVC
             return View(treatment);
         }
 
+        [Authorize(Roles = "User")]
         // POST: Treatments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

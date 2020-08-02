@@ -272,6 +272,7 @@ namespace NexxtSao.Controllers.MVC
 
                     db.Dentists.Add(dentist);
                     db.SaveChanges();
+
                     UsersHelper.CreateUserASP(dentist.UserName, "Dentist");
 
                     if (dentist.PhotoFile != null)
@@ -294,7 +295,7 @@ namespace NexxtSao.Controllers.MVC
                         UserName = dentist.UserName,
                         FirstName = dentist.FirstName,
                         LastName = dentist.LastName,
-                        Phone = dentist.Phone,
+                        Phone = dentist.Movil,
                         Address = dentist.Address,
                         Puesto = "Dentist",
                         CompanyId = dentist.CompanyId
@@ -401,7 +402,7 @@ namespace NexxtSao.Controllers.MVC
                                     UserName = dentist.UserName,
                                     FirstName = dentist.FirstName,
                                     LastName = dentist.LastName,
-                                    Phone = dentist.Phone,
+                                    Phone = dentist.Movil,
                                     Address = dentist.Address,
                                     Puesto = "Dentist",
                                     CompanyId = dentist.CompanyId
@@ -432,7 +433,7 @@ namespace NexxtSao.Controllers.MVC
                                     UserName = dentist.UserName,
                                     FirstName = dentist.FirstName,
                                     LastName = dentist.LastName,
-                                    Phone = dentist.Phone,
+                                    Phone = dentist.Movil,
                                     Address = dentist.Address,
                                     Puesto = "Dentist",
                                     CompanyId = dentist.CompanyId

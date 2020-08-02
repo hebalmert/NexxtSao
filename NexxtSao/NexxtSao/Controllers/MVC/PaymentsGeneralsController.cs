@@ -12,6 +12,8 @@ using NexxtSao.Models.MVC;
 
 namespace NexxtSao.Controllers.MVC
 {
+    [Authorize(Roles = "User, Dentist")]
+
     public class PaymentsGeneralsController : Controller
     {
         private NexxtSaoContext db = new NexxtSaoContext();
@@ -30,7 +32,8 @@ namespace NexxtSao.Controllers.MVC
                 var directGenerals = db.PaymentsGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false && c.DentistId == DentistId)
                     .Include(d => d.Client)
                     .Include(d => d.Dentist);
-                ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(user.CompanyId), "DentistId", "Odontologo");
+                ViewBag.DentistId = new SelectList(ComboHelper.GetDentistActive(user.CompanyId), "DentistId", "Odontologo");
+
                 return View(directGenerals.OrderByDescending(t => t.Date).ToList());
             }
             else
@@ -38,7 +41,8 @@ namespace NexxtSao.Controllers.MVC
                 var directGenerals = db.PaymentsGenerals.Where(c => c.CompanyId == user.CompanyId && c.Facturado == false)
                     .Include(d => d.Client)
                     .Include(d => d.Dentist);
-                ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(user.CompanyId), "DentistId", "Odontologo");
+                ViewBag.DentistId = new SelectList(ComboHelper.GetDentistActive(user.CompanyId), "DentistId", "Odontologo");
+
                 return View(directGenerals.OrderByDescending(t => t.Date).ToList());
             }
         }

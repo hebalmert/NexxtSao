@@ -132,6 +132,18 @@ namespace NexxtSao.Classes
         }
 
         //Combos de Tipo de Dentistas
+        public static List<Dentist> GetDentistActive(int companyid)
+        {
+            var odontologo = db.Dentists.Where(c => c.CompanyId == companyid && c.Activo == true).ToList();
+            odontologo.Add(new Dentist
+            {
+                DentistId = 0,
+                Odontologo = @Resources.Resource.ComboSelect,
+            });
+            return odontologo.OrderBy(d => d.Odontologo).ToList();
+        }
+
+        //Combos de Tipo de Dentistas
         public static List<Client> GetClient(int companyid)
         {
             var pacientes = db.Clients.Where(c => c.CompanyId == companyid).ToList();

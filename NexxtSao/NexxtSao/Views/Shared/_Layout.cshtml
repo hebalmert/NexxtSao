@@ -57,21 +57,30 @@
                     </li>
                 }
 
-                @if (User.IsInRole("User"))
+                @if (User.IsInRole("User") | User.IsInRole("Dentist"))
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Archivo
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @Html.ActionLink("Ciudad", "Index", "Cities", new { }, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Zona", "Index", "Zones", new { }, new { @class = "dropdown-item" })
-                            <div class="dropdown-divider"></div>
-                            @Html.ActionLink("Categoria Tratamiento", "Index", "TreatmentCategories", new { }, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Tratamientos", "Index", "Treatments", new { }, new { @class = "dropdown-item" })
-                            <div class="dropdown-divider"></div>
-                            @Html.ActionLink("Especialidad Odontologos", "Index", "DentistSpecialties", new { }, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Odontologos", "Index", "Dentists", new { }, new { @class = "dropdown-item" })
+                            @if (User.IsInRole("User"))
+                            {
+                                @Html.ActionLink("Ciudad", "Index", "Cities", new { }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Zona", "Index", "Zones", new { }, new { @class = "dropdown-item" })
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Categoria Tratamiento", "Index", "TreatmentCategories", new { }, new { @class = "dropdown-item" })
+                            }
+                            @if (User.IsInRole("Dentist"))
+                            {
+                                @Html.ActionLink("Tratamientos", "Index", "Treatments", new { }, new { @class = "dropdown-item" })
+                            }
+                            @if (User.IsInRole("User"))
+                            {
+                                <div class="dropdown-divider"></div>
+                                @Html.ActionLink("Especialidad Odontologos", "Index", "DentistSpecialties", new { }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Odontologos", "Index", "Dentists", new { }, new { @class = "dropdown-item" })
+                            }
                         </div>
                     </li>
                 }
