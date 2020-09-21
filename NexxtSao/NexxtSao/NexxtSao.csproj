@@ -300,11 +300,14 @@
     <Content Include="Content\ImgCarrusel\banner1.svg" />
     <Content Include="Content\ImgCarrusel\banner2.svg" />
     <Content Include="Content\ImgCarrusel\banner3.svg" />
+    <Content Include="Content\ImgHomePage\business_user.png" />
     <Content Include="Content\ImgHomePage\ImgAgenda1.gif" />
     <Content Include="Content\ImgHomePage\ImgDentist1.gif" />
     <Content Include="Content\ImgHomePage\ImgMercadoPago.gif" />
     <Content Include="Content\ImgHomePage\ImgPagos1.gif" />
     <Content Include="Content\ImgHomePage\ImgPayPal.gif" />
+    <Content Include="Content\ImgHomePage\mail %281%29.png" />
+    <Content Include="Content\ImgHomePage\phone.png" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

@@ -853,6 +853,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contactanos.
+        /// </summary>
+        public static string Contactanos_Titulo {
+            get {
+                return ResourceManager.GetString("Contactanos_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pais.
         /// </summary>
         public static string Country_Model_Pais {

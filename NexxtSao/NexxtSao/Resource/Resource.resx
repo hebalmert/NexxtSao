@@ -381,6 +381,9 @@
   <data name="Company_ViewIndex_Titulo1" xml:space="preserve">
     <value>Compañia</value>
   </data>
+  <data name="Contactanos_Titulo" xml:space="preserve">
+    <value>Contactanos</value>
+  </data>
   <data name="Country_Model_Pais" xml:space="preserve">
     <value>Pais</value>
   </data>
