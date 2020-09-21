@@ -19,7 +19,5 @@ namespace NexxtSao.Models.MVC
         [Index("Company_Color_Index", IsUnique = true)]
         public string ColorDate { get; set; }
 
-        public virtual ICollection<Event> Events { get; set; }
-
     }
 }

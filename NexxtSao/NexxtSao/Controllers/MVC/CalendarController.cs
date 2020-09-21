@@ -33,6 +33,27 @@ namespace NexxtSao.Controllers.MVC
             return View();
         }
 
+        public JsonResult GetEvents(int? professionalId)
+        {
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+                var compania = user.CompanyId;
+                
+                if (professionalId > 0)
+                {
+                    var events = db.Events.Where(p => p.DentistId == professionalId && p.CompanyId == compania).ToList();
+                    return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+                else
+                {
+                    var events = db.Events.Where(p => p.CompanyId == compania && p.DentistId == 0).ToList();
+                    return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+
+            }
+        }
+
         public JsonResult SaveEvent(Event e)
         {
             var status = false;
@@ -45,7 +66,6 @@ namespace NexxtSao.Controllers.MVC
                 if (e.EventId > 0)
                 {
                     //Update the event
-
                     var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
 
                     var v = db.Events.Where(a => a.EventId == e.EventId).FirstOrDefault();
@@ -57,11 +77,11 @@ namespace NexxtSao.Controllers.MVC
                         v.ClientId = e.ClientId;
                         v.Cliente = clientes.Cliente;
                         v.Subject = e.Subject;
-                        //v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone());
-                        //v.End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone());
-                        //v.Description = e.Description;
+                        v.Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone(user.CompanyId));
+                        v.End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone(user.CompanyId));
+                        v.Description = e.Description;
                         //v.IsFullDay = e.IsFullDay;
-                        //v.ThemeColor = e.ThemeColor;
+                        v.ThemeColor = e.ThemeColor;
                     }
                 }
                 else
@@ -80,11 +100,11 @@ namespace NexxtSao.Controllers.MVC
                         ClientId = e.ClientId,
                         Cliente = clientes.Cliente,
                         Subject = e.Subject,
-                        //Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone()),
-                        //End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone()),
-                        //Description = e.Description,
+                        Start = TimeZoneInfo.ConvertTimeFromUtc(e.Start, ComboHelper.GetTimeZone(user.CompanyId)),
+                        End = TimeZoneInfo.ConvertTimeFromUtc(e.End, ComboHelper.GetTimeZone(user.CompanyId)),
+                        Description = e.Description,
                         //IsFullDay = e.IsFullDay,
-                        //ThemeColor = e.ThemeColor,
+                        ThemeColor = e.ThemeColor,
                     };
                     db.Events.Add(nuevoEvento);
                 }
@@ -112,27 +132,6 @@ namespace NexxtSao.Controllers.MVC
             return new JsonResult { Data = new { status = status } };
         }
 
-        public JsonResult GetEvents(int? professionalId)
-        {
-            {
-                db.Configuration.ProxyCreationEnabled = false;
-                var user = db.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-                var compania = user.CompanyId;
-                
-                if (professionalId > 0)
-                {
-                    var events = db.Events.Where(p => p.DentistId == professionalId && p.CompanyId == compania).ToList();
-                    return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-                }
-                else
-                {
-                    var events = db.Events.Where(p => p.CompanyId == compania && p.DentistId == 0).ToList();
-                    return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-                }
-
-            }
-        }
-
         public JsonResult CallProfesional()
         {
             db.Configuration.ProxyCreationEnabled = false;
@@ -144,6 +143,24 @@ namespace NexxtSao.Controllers.MVC
             return Json(profe);
         }
 
+        [HttpPost]
+        public JsonResult DoneEvent(int eventid)
+        {
+            var status = false;
+            db.Configuration.ProxyCreationEnabled = false;
+
+            {
+                var v = db.Events.Where(a => a.EventId == eventid).FirstOrDefault();
+                if (v != null)
+                {
+                    v.ThemeColor = "green";
+                    v.Terminado = true;
+                    db.SaveChanges();
+                    status = true;
+                }
+            }
+            return new JsonResult { Data = new { status = status } };
+        }
 
 
         protected override void Dispose(bool disposing)

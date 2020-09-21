@@ -42,7 +42,6 @@ namespace NexxtSao.Controllers.MVC
                 DentistId = evento.DentistId,
                 Odontologo = evento.Odontologo,
                 Cliente = evento.Cliente,
-                Hora = evento.Hour.Hora,
                 Start = evento.Start,
                 Subject = evento.Subject,
                 Description = evento.Description,
@@ -69,7 +68,7 @@ namespace NexxtSao.Controllers.MVC
             {
                 return HttpNotFound();
             }
-            evento.Asistencia = true;
+            evento.Terminado = true;
             db.Entry(evento).State = EntityState.Modified;
             db.SaveChanges();
 
@@ -127,7 +126,7 @@ namespace NexxtSao.Controllers.MVC
                     .Include(e => e.Client)
                     .Include(e => e.Dentist);
 
-                return View(events.OrderBy(o=> o.Hour.Orden).ToList());
+                return View(events.ToList());
             }
             else
             {
@@ -136,7 +135,7 @@ namespace NexxtSao.Controllers.MVC
                     .Include(e => e.Client)
                     .Include(e => e.Dentist);
 
-                return View(events.OrderBy(o => o.Hour.Orden).ToList());
+                return View(events.ToList());
             }
         }
 
@@ -220,8 +219,8 @@ namespace NexxtSao.Controllers.MVC
             }
 
             ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo", evento.DentistId);
-            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
-            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
+            //ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            //ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
@@ -240,8 +239,8 @@ namespace NexxtSao.Controllers.MVC
             }
 
             ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo", evento.DentistId);
-            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
-            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
+            //ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            //ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }
@@ -281,8 +280,8 @@ namespace NexxtSao.Controllers.MVC
             }
 
             ViewBag.DentistId = new SelectList(ComboHelper.GetDentist(evento.CompanyId), "DentistId", "Odontologo", evento.DentistId);
-            ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
-            ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
+            //ViewBag.HourId = new SelectList(ComboHelper.GetHora(), "HourId", "Hora", evento.HourId);
+            //ViewBag.ColorId = new SelectList(ComboHelper.GetColor(), "ColorId", "ColorDate", evento.ColorId);
 
             return View(evento);
         }

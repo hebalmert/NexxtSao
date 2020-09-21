@@ -18,6 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pais)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TiempoUTC)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -26,6 +29,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TiempoUTC)
             </td>
             <td>
                 <button title="Editar" class="btn btn-warning btn-sm" onclick="location.href =

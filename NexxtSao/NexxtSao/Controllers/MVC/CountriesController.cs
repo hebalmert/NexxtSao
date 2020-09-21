@@ -49,7 +49,7 @@ namespace NexxtSao.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CountryId,Pais")] Country country)
+        public ActionResult Create(Country country)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace NexxtSao.Controllers.MVC
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CountryId,Pais")] Country country)
+        public ActionResult Edit(Country country)
         {
             if (ModelState.IsValid)
             {

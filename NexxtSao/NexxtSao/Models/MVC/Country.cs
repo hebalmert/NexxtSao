@@ -19,6 +19,9 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Country_Model_Pais")]
         public string Pais { get; set; }
 
+        [Display(ResourceType = typeof(Resource), Name = "Country_Model_TimepoUTC")]
+        public int TiempoUTC { get; set; }
+
         public virtual ICollection<Company> Companies { get; set; }
 
     }

@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Agenda_Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Agenda_Detalle" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Agenda_FechaFinal" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Agenda_FechaInicio" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="Agenda_Motivo" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Agenda_NuevaTarea" xml:space="preserve">
+    <value>New Date</value>
+  </data>
+  <data name="Agenda_Titulo" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
   <data name="ButtonBack" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -128,6 +149,9 @@
   </data>
   <data name="ButtonDetail" xml:space="preserve">
     <value>Detail</value>
+  </data>
+  <data name="ButtonDone" xml:space="preserve">
+    <value>Done</value>
   </data>
   <data name="ButtonEdit" xml:space="preserve">
     <value>Edit</value>
@@ -360,8 +384,18 @@
   <data name="Country_Model_Pais" xml:space="preserve">
     <value>Country</value>
   </data>
+  <data name="Country_Model_TiempoUTC" xml:space="preserve">
+    <value>UTC Time</value>
+  </data>
+  <data name="Country_Model_TimepoUTC" xml:space="preserve">
+    <value>UTC Time</value>
+  </data>
   <data name="Country_ViewIndex_Titulo1" xml:space="preserve">
     <value>Country</value>
+  </data>
+  <data name="Country_View_Titulo_UTC" xml:space="preserve">
+    <value>UTC Time</value>
+    <comment> </comment>
   </data>
   <data name="DentistPercentage_IndexView_Titulo1" xml:space="preserve">
     <value>Percentages</value>

@@ -51,27 +51,20 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateStart")]
         public DateTime Start { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
-        [Display(ResourceType = typeof(Resource), Name = "Event_Model_Hora")]
-        public int HourId { get; set; }
+        [Display(ResourceType = typeof(Resource), Name = "Event_Model_DateEnd")]
+        public DateTime End { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Required")]
-        [Range(1, double.MaxValue, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_Range")]
+        [MaxLength(25, ErrorMessageResourceType = typeof(Resource), ErrorMessageResourceName = "Msg_MaxLength")]
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Color")]
-        public int ColorId { get; set; }
+        public string ThemeColor { get; set; }
 
         [Display(ResourceType = typeof(Resource), Name = "Event_Model_Asistencia")]
-        public bool Asistencia { get; set; }
+        public bool Terminado { get; set; }
 
         public virtual Company Company { get; set; }
 
         public virtual Dentist Dentist { get; set; }
 
         public virtual Client Client { get; set; }
-
-        public virtual Color Color { get; set; }
-
-        public virtual Hour Hour { get; set; }
     }
 }

@@ -195,9 +195,11 @@ namespace NexxtSao.Classes
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         //Tiempo Horario para Guardar con formato la fecha
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        public static TimeZoneInfo GetTimeZone()
+        public static TimeZoneInfo GetTimeZone(int companyid)
         {
-            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone("COLOMBIA", new TimeSpan(-3, 0, 0), "Colombia", "Colombia");
+            var pais = db.Companies.Find(companyid);
+
+            TimeZoneInfo tz = TimeZoneInfo.CreateCustomTimeZone(pais.Country.Pais, new TimeSpan(pais.Country.TiempoUTC, 0, 0), pais.Country.Pais, pais.Country.Pais);
 
             return tz;
         }

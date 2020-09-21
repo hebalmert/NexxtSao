@@ -61,6 +61,69 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Agenda_Color {
+            get {
+                return ResourceManager.GetString("Agenda_Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detalle.
+        /// </summary>
+        public static string Agenda_Detalle {
+            get {
+                return ResourceManager.GetString("Agenda_Detalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha Fin.
+        /// </summary>
+        public static string Agenda_FechaFinal {
+            get {
+                return ResourceManager.GetString("Agenda_FechaFinal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha Inicio.
+        /// </summary>
+        public static string Agenda_FechaInicio {
+            get {
+                return ResourceManager.GetString("Agenda_FechaInicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Motivo.
+        /// </summary>
+        public static string Agenda_Motivo {
+            get {
+                return ResourceManager.GetString("Agenda_Motivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nuevo Cita.
+        /// </summary>
+        public static string Agenda_NuevaTarea {
+            get {
+                return ResourceManager.GetString("Agenda_NuevaTarea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agenda de Citas.
+        /// </summary>
+        public static string Agenda_Titulo {
+            get {
+                return ResourceManager.GetString("Agenda_Titulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Item.
         /// </summary>
         public static string Button_Add {
@@ -129,6 +192,15 @@ namespace Resources {
         public static string ButtonDetail {
             get {
                 return ResourceManager.GetString("ButtonDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hecho.
+        /// </summary>
+        public static string ButtonDone {
+            get {
+                return ResourceManager.GetString("ButtonDone", resourceCulture);
             }
         }
         
@@ -786,6 +858,33 @@ namespace Resources {
         public static string Country_Model_Pais {
             get {
                 return ResourceManager.GetString("Country_Model_Pais", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiempo UTC.
+        /// </summary>
+        public static string Country_Model_TiempoUTC {
+            get {
+                return ResourceManager.GetString("Country_Model_TiempoUTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiempo UTC.
+        /// </summary>
+        public static string Country_Model_TimepoUTC {
+            get {
+                return ResourceManager.GetString("Country_Model_TimepoUTC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tiempo UTC.
+        /// </summary>
+        public static string Country_View_Titulo_UTC {
+            get {
+                return ResourceManager.GetString("Country_View_Titulo_UTC", resourceCulture);
             }
         }
         

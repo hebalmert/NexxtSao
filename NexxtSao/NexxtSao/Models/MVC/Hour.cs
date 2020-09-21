@@ -23,7 +23,5 @@ namespace NexxtSao.Models.MVC
         [Display(ResourceType = typeof(Resource), Name = "Hora_Model_Orden")]
         [Index("Company_Oden_Index", IsUnique = true)]
         public string Orden { get; set; }
-
-        public virtual ICollection<Event> Events { get; set; }
     }
 }

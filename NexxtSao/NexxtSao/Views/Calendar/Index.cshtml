@@ -60,6 +60,11 @@
                             <i class="fa fa-pencil-alt"></i>
                             @Resources.Resource.ButtonEdit
                         </button>
+
+                        <button type="button" id="btnDone" class="btn btn-outline-success btn-sm">
+                            <i class="fa fa-check"></i>
+                            @Resources.Resource.ButtonDone
+                        </button>
                     </div>
                 </div>
             </div>
@@ -74,7 +79,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Save Event</h4>
+                <h4 class="modal-title">@Resources.Resource.Agenda_NuevaTarea</h4>
             </div>
 
             <div class="modal-body">
@@ -96,14 +101,14 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-10">
-                            <label>Subject</label>
+                            <label>@Resources.Resource.Agenda_Motivo</label>
                             <input type="text" id="txtSubject" class="form-control" style="width:280px" />
                         </div>
                     </div>
 
                     <div class="input-group">
                         <div class="col-md-10">
-                            <label>Start</label>
+                            <label>@Resources.Resource.Agenda_FechaInicio</label>
                             <div class="input-group" style="width:280px">
                                 <input type="text" class="form-control" id="txtStart" />
                                 <div class="input-group-prepend">
@@ -112,41 +117,42 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="col-md-10">
                             <div class="checkbox">
                                 <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group" id="divEndDate" style="display:none">
                         <div class="col-md-10">
-                            <label>End</label>
+                            <label>@Resources.Resource.Agenda_FechaFinal</label>
                             <div class="input-group" style="width:280px">
-                                <input type="text" id="txtEnd" class="form-control" />
+                                <input type="text" class="form-control" id="txtEnd"/>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text fa fa-calendar-alt"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-md-10">
                             <div>
-                                <label>Description</label>
+                                <label>@Resources.Resource.Agenda_Detalle</label>
                                 <textarea id="txtDescription" rows="3" class="form-control" , style="width:280px"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-10">
-                            <label>Theme Color</label>
+                            <label>@Resources.Resource.Agenda_Color</label>
                             <select id="ddThemeColor" class="form-control">
                                 <option value="">Default</option>
                                 <option value="red">Red</option>
                                 <option value="blue">Blue</option>
                                 <option value="black">Black</option>
-                                <option value="green">Green</option>
+                                @*<option value="green">Green</option>*@
                             </select>
                         </div>
                     </div>
@@ -209,7 +215,7 @@
                                     start: moment(v.Start),
                                     end: v.End != null ? moment(v.End) : null,
                                     color: v.ThemeColor,
-                                    allDay: v.IsFullDay
+                                    //allDay: v.IsFullDay
                                 });
                         })
                         GenerateCalender(events);
@@ -245,7 +251,7 @@
                                     start: moment(v.Start),
                                     end: v.End != null ? moment(v.End) : null,
                                     color: v.ThemeColor,
-                                    allDay: v.IsFullDay
+                                    //allDay: v.IsFullDay
                                 });
                             })
 
@@ -265,16 +271,15 @@
                         contentHeight: 600,
                         defaultView: 'basicWeek',
                         defaultDate: new Date(),
-                        defaultDateColor: '#0059B2', //Todavia no funciona
-                        timeFormat: 'h(:mm) A',
-                        header:
-                        {
+                        timeFormat: 'h(:mm)a',
+                        header: {
                             left: 'prev,next today',
                             center: 'title',
                             right: 'month,basicWeek,basicDay,agenda'
                         },
                         eventLimit: true,
-                        eventTextColor: '#FFFFFF',  //Se cambia el texto de la cita que parece en el calendario
+                        eventTextColor: '#FFFFFF',
+                        eventColor: '#2693FF',
                         events: events,
                         eventClick: function (calEvent, jsEvent, view) {
                             selectedEvent = calEvent;
@@ -305,7 +310,6 @@
                                 description: '',
                                 start: start,
                                 end: end,
-                                allDay: false,
                                 color: ''
                             };
                             openAddEditForm();
@@ -326,7 +330,6 @@
                                 End: event.end != null ? event.end.format('MM/DD/YYYY hh:mm A') : null,
                                 Description: event.description,
                                 ThemeColor: event.color,
-                                IsFullDay: event.allDay
                             };
                             SaveEvent(data);
                         }
@@ -347,8 +350,9 @@
                         success: function (data) {
                             if (data.status) {
                                 //Refresh the calender
-                                $('#myModal').modal('hide');
+                                $('#myModalSave').modal('hide');
                                 FetchEventAndRenderCalendar();
+                                CallProfesional();
                             }
                         },
                         error: function () {
@@ -357,6 +361,28 @@
                     })
                 }
             })
+
+            $('#btnDone').click(function () {
+                if (selectedEvent != null && confirm('Se ha Ejecutado?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/Calendar/DoneEvent',
+                        data: { 'eventid': selectedEvent.eventId },
+                        success: function (data) {
+                            if (data.status) {
+                                //Refresh the calender
+                                $('#myModalSave').modal('hide');
+                                FetchEventAndRenderCalendar();
+                                CallProfesional();
+                            }
+                        },
+                        error: function () {
+                            alert('Failed');
+                        }
+                    })
+                }
+            })
+
 
             $('#txtStart,#txtEnd').datetimepicker({
                 format: 'm/d/Y H:i A',
@@ -383,18 +409,19 @@
             //    ]
             //});
 
-            $('#chkIsFullDay').change(function () {
-                if ($(this).is(':checked')) {
-                    $('#divEndDate').hide();
-                }
-                else {
-                    $('#divEndDate').show();
-                }
-            });
+            //$('#chkIsFullDay').change(function () {
+            //    if ($(this).is(':checked')) {
+            //        $('#divEndDate').hide();
+            //    }
+            //    else {
+            //        $('#divEndDate').show();
+            //    }
+            //});
 
 
             function openAddEditForm() {
                 if (selectedEvent != null) {
+                    $('#divEndDate').show()
                     $('#hdEventID').val(selectedEvent.eventId);
                     $('#CompanyId').val(selectedEvent.CompanyId);
                     $('#DentistId').val(selectedEvent.DentistId);
@@ -403,9 +430,10 @@
                     $('#Cliente').val(selectedEvent.Cliente);
                     $('#txtSubject').val(selectedEvent.title);
                     $('#txtStart').val(selectedEvent.start.format('MM/DD/YYYY hh:mm A'));
-                    $('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
-                    $('#chkIsFullDay').change();
-                    $('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('MM/DD/YYYY hh:mm A') : '');
+                    //$('#chkIsFullDay').prop("checked", selectedEvent.allDay || false);
+                    //$('#chkIsFullDay').change();
+                    $('#txtEnd').val(selectedEvent.end.format('MM/DD/YYYY hh:mm A'));
+                    //$('#txtEnd').val(selectedEvent.end != null ? selectedEvent.end.format('MM/DD/YYYY hh:mm A') : '');
                     $('#txtDescription').val(selectedEvent.description);
                     $('#ddThemeColor').val(selectedEvent.color);
                 }
@@ -455,7 +483,7 @@
                     End: $('#chkIsFullDay').is(':checked') ? null : $('#txtEnd').val().trim(),
                     Description: $('#txtDescription').val(),
                     ThemeColor: $('#ddThemeColor').val(),
-                    IsFullDay: $('#chkIsFullDay').is(':checked')
+                    //IsFullDay: $('#chkIsFullDay').is(':checked')
                 }
                 console.log(data);
                 SaveEvent(data);
