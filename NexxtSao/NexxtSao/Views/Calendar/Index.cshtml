@@ -350,9 +350,8 @@
                         success: function (data) {
                             if (data.status) {
                                 //Refresh the calender
-                                $('#myModalSave').modal('hide');
                                 FetchEventAndRenderCalendar();
-                                CallProfesional();
+                                $('#myModal').modal('hide');
                             }
                         },
                         error: function () {
@@ -371,9 +370,8 @@
                         success: function (data) {
                             if (data.status) {
                                 //Refresh the calender
-                                $('#myModalSave').modal('hide');
                                 FetchEventAndRenderCalendar();
-                                CallProfesional();
+                                $('#myModal').modal('hide');
                             }
                         },
                         error: function () {
