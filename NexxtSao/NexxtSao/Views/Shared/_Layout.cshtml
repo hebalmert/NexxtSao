@@ -71,7 +71,7 @@
                                 <div class="dropdown-divider"></div>
                                 @Html.ActionLink("Categoria Tratamiento", "Index", "TreatmentCategories", new { }, new { @class = "dropdown-item" })
                             }
-                            @if (User.IsInRole("Dentist"))
+                            @if (User.IsInRole("Dentist") || User.IsInRole("User"))
                             {
                                 @Html.ActionLink("Tratamientos", "Index", "Treatments", new { }, new { @class = "dropdown-item" })
                             }
